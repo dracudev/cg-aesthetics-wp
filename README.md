@@ -5,7 +5,7 @@ Modern spa website built with Headless WordPress (GraphQL API) and Astro for opt
 ## 🚀 Project Structure
 
 ```tree
-carmen-estetica-wp/
+serenity-spa-wp/
 ├── docker-compose.yml          # Docker setup for WordPress + MySQL
 ├── wordpress/                  # WordPress backend (Headless CMS)
 │   ├── wp-content/
@@ -47,7 +47,7 @@ carmen-estetica-wp/
 ### 1. Clone and Setup
 
 ```bash
-cd /home/dracudev/dev/carmen-estetica-wp
+cd /home/dracudev/dev/serenity-spa-wp
 ```
 
 ### 2. Start WordPress with Docker
