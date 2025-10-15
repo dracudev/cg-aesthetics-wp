@@ -27,20 +27,9 @@ serenity-spa-wp/
 
 ## 📋 Prerequisites
 
-- **Docker Desktop** (recommended) or Docker + Docker Compose
+- **Docker + Docker Compose**
 - **Node.js** 18+ and **pnpm**
 - **Git**
-
-## ✅ Current Status
-
-**Phase 2.4** - Content Population in progress
-
-- ✅ Docker environment running
-- ✅ WordPress installed and configured
-- ✅ Custom post types and taxonomies created
-- ✅ ACF fields manually registered to GraphQL
-- ✅ Astro frontend connected to WordPress
-- 📝 Ready for content creation
 
 ## 🛠️ Quick Start
 
@@ -358,41 +347,8 @@ docker-compose exec wordpress chown -R www-data:www-data /var/www/html/wp-conten
 - Use WordPress security plugins
 - Keep all plugins and WordPress core updated
 
-## 📄 Alternative: Local WP / WordPress Studio
-
-If you prefer a GUI tool instead of Docker:
-
-1. Download **Local WP** (by WP Engine): <https://localwp.com/>
-2. Create new site: "Serenity Spa"
-3. Copy theme from `wordpress/wp-content/themes/serenity-spa-headless/` to Local WP's themes folder
-4. Install plugins via Local WP admin panel
-5. Update `frontend/.env` with Local WP's URL (e.g., <http://serenity-spa.local>)
-
-## 📚 Documentation
-
-- [PROJECT_SCOPE.md](./PROJECT_SCOPE.md) - Complete project scope and phases
-- [wordpress/README.md](./wordpress/README.md) - WordPress setup details
-- [WPGraphQL Docs](https://www.wpgraphql.com/)
-- [Astro Docs](https://docs.astro.build/)
-- [ACF Docs](https://www.advancedcustomfields.com/resources/)
-
-## 🤝 Contributing
-
-1. Create feature branch
-2. Make changes
-3. Test thoroughly
-4. Submit pull request
-
 ## 📝 License
 
 Private project for Serenity Spa
-
-## 🆘 Support
-
-For issues or questions, refer to:
-
-- Project documentation in `PROJECT_SCOPE.md`
-- WordPress README in `wordpress/README.md`
-- Contact project lead
 
 ---

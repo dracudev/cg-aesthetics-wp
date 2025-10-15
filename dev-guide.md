@@ -61,13 +61,13 @@ This project aims to deliver a high-performance, SEO-optimized website for Seren
 
 #### Tasks
 
-- [ ] Finalize design requirements and wireframes
-- [ ] Define WordPress content model architecture
-- [ ] Select and evaluate booking system plugins
-- [ ] Set up development environment
-- [ ] Create project repository and version control structure
-- [ ] Define API schema and data flow
-- [ ] Document technical architecture
+- [x] Finalize design requirements and wireframes
+- [x] Define WordPress content model architecture
+- [x] Select and evaluate booking system plugins
+- [x] Set up development environment
+- [x] Create project repository and version control structure
+- [x] Define API schema and data flow
+- [x] Document technical architecture
 
 #### Deliverables
 
