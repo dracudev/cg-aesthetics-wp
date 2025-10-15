@@ -4,10 +4,10 @@ services:
   # MySQL Database
   db:
     image: mysql:8.0
-    container_name: serenity-spa-db
+    container_name: cg-aesthetics-db
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: serenity_spa
+      MYSQL_DATABASE: cg_aesthetics
       MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
@@ -16,12 +16,12 @@ services:
     ports:
       - "3306:3306"
     networks:
-      - serenity-network
+      - cg-aesthetics-network
 
   # WordPress
   wordpress:
     image: wordpress:latest
-    container_name: serenity-spa-wordpress
+    container_name: cg-aesthetics-wordpress
     restart: unless-stopped
     depends_on:
       - db
@@ -29,7 +29,7 @@ services:
       - "8000:80"
     environment:
       WORDPRESS_DB_HOST: db:3306
-      WORDPRESS_DB_NAME: serenity_spa
+      WORDPRESS_DB_NAME: cg_aesthetics
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
       WORDPRESS_DEBUG: 1
@@ -44,7 +44,7 @@ services:
         @ini_set('display_errors', 0);
     volumes:
       # Mount custom theme
-      - ./wordpress/wp-content/themes/serenity-spa-headless:/var/www/html/wp-content/themes/serenity-spa-headless
+      - ./wordpress/wp-content/themes/cg-aesthetics-headless:/var/www/html/wp-content/themes/cg-aesthetics-headless
       # Mount plugins directory for persistence
       - ./wordpress/wp-content/plugins:/var/www/html/wp-content/plugins
       # Mount uploads directory for media
@@ -52,34 +52,34 @@ services:
       # WordPress core (optional - for persistence)
       - wordpress_data:/var/www/html
     networks:
-      - serenity-network
+      - cg-aesthetics-network
 
   # WP-CLI for command line operations
   wpcli:
     image: wordpress:cli
-    container_name: serenity-spa-wpcli
+    container_name: cg-aesthetics-wpcli
     depends_on:
       - wordpress
       - db
     volumes:
-      - ./wordpress/wp-content/themes/serenity-spa-headless:/var/www/html/wp-content/themes/serenity-spa-headless
+      - ./wordpress/wp-content/themes/cg-aesthetics-headless:/var/www/html/wp-content/themes/cg-aesthetics-headless
       - ./wordpress/wp-content/plugins:/var/www/html/wp-content/plugins
       - ./wordpress/wp-content/uploads:/var/www/html/wp-content/uploads
       - wordpress_data:/var/www/html
     environment:
       WORDPRESS_DB_HOST: db:3306
-      WORDPRESS_DB_NAME: serenity_spa
+      WORDPRESS_DB_NAME: cg_aesthetics
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
     networks:
-      - serenity-network
+      - cg-aesthetics-network
     user: "33:33" # www-data user
     command: tail -f /dev/null # Keep container running
 
   # phpMyAdmin for database management (optional)
   phpmyadmin:
     image: phpmyadmin:latest
-    container_name: serenity-spa-phpmyadmin
+    container_name: cg-aesthetics-phpmyadmin
     restart: unless-stopped
     depends_on:
       - db
@@ -89,12 +89,12 @@ services:
       PMA_HOST: db
       MYSQL_ROOT_PASSWORD: rootpassword
     networks:
-      - serenity-network
+      - cg-aesthetics-network
 
 volumes:
   db_data:
   wordpress_data:
 
 networks:
-  serenity-network:
+  cg-aesthetics-network:
     driver: bridge

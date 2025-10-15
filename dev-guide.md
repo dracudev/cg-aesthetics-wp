@@ -1,8 +1,8 @@
-# Serenity Spa Website - Project Scope Document
+# CG Aesthetics Website - Project Scope Document
 
 ## Executive Summary
 
-**Project Name:** Serenity Spa Website  
+**Project Name:** CG Aesthetics Website  
 **Project Goal:** Launch a modern, fast website using Headless WordPress and Astro to increase online bookings  
 **Target Launch Date:** TBD  
 **Technology Stack:** Headless WordPress (Backend/CMS) + Astro (Frontend) + GraphQL API
@@ -11,7 +11,7 @@
 
 ## Project Overview
 
-This project aims to deliver a high-performance, SEO-optimized website for Serenity Spa that showcases services, builds trust through testimonials, and facilitates seamless online booking. The headless architecture will provide editorial flexibility while ensuring optimal frontend performance.
+This project aims to deliver a high-performance, SEO-optimized website for CG Aesthetics that showcases services, builds trust through testimonials, and facilitates seamless online booking. The headless architecture will provide editorial flexibility while ensuring optimal frontend performance.
 
 ---
 

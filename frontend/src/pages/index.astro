@@ -5,7 +5,9 @@ import { GET_SITE_SETTINGS, GET_FEATURED_SERVICES, GET_FEATURED_TESTIMONIALS } f
 import type { SiteSettingsResponse, ServicesResponse, TestimonialsResponse } from '../types/wordpress';
 
 // Fetch data from WordPress
-let siteSettings, featuredServices, featuredTestimonials;
+let siteSettings;
+let featuredServices: Array<any> = [];
+let featuredTestimonials: Array<any> = [];
 let error: string | null = null;
 
 try {
@@ -28,13 +30,13 @@ try {
 const graphqlEndpoint = import.meta.env.PUBLIC_GRAPHQL_ENDPOINT;
 ---
 
-<Layout title={siteSettings?.title || 'Serenity Spa'}>
+<Layout title={siteSettings?.title || 'Beauty Studio'}>
   <main class="min-h-screen">
     <!-- Hero Section -->
     <section class="bg-gradient-to-br from-emerald-50 to-teal-50 py-20 px-4">
       <div class="max-w-6xl mx-auto text-center">
         <h1 class="text-5xl md:text-6xl font-bold text-emerald-900 mb-6">
-          Welcome to Serenity Spa
+          Welcome to Beauty Studio
         </h1>
         <p class="text-xl text-emerald-700 mb-8 max-w-2xl mx-auto">
           Experience ultimate relaxation and rejuvenation with our luxury spa treatments

@@ -1,4 +1,4 @@
-# Serenity Spa - Frontend (Astro)
+# CG Aesthetics - Frontend (Astro)
 
 Modern, performant frontend built with Astro, TypeScript, Tailwind CSS, and GraphQL.
 
@@ -20,8 +20,8 @@ pnpm build
 Create `.env` file:
 
 ```env
-PUBLIC_WORDPRESS_URL=http://serenity-spa.local
-PUBLIC_GRAPHQL_ENDPOINT=http://serenity-spa.local/graphql
+PUBLIC_WORDPRESS_URL=http://cg-aesthetics.local
+PUBLIC_GRAPHQL_ENDPOINT=http://cg-aesthetics.local/graphql
 ```
 
 ## 📁 Structure

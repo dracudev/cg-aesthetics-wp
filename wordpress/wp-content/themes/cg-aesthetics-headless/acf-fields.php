@@ -2,7 +2,7 @@
 /**
  * ACF Field Groups Configuration
  * 
- * This file contains all Advanced Custom Fields configurations for the Serenity Spa project.
+ * This file contains all Advanced Custom Fields configurations for the Beauty Studio project.
  * Import this via ACF Tools > Import or use ACF Local JSON.
  */
 

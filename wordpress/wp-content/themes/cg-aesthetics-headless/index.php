@@ -8,7 +8,7 @@
 </head>
 <body <?php body_class(); ?>>
     <div class="headless-notice">
-        <h1>🚀 Serenity Spa Headless WordPress</h1>
+        <h1>🚀 Beauty Studio Headless WordPress</h1>
         <p>This is a headless WordPress installation. Content is served via GraphQL API.</p>
         
         <h2>GraphQL Endpoint</h2>

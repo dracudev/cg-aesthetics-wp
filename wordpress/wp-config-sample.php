@@ -1,5 +1,5 @@
 /**
- * WordPress Configuration for Serenity Spa Headless CMS
+ * WordPress Configuration for Beauty Studio Headless CMS
  * 
  * This is a sample wp-config.php file for local development.
  * Copy this to wp-config.php and update with your database credentials.

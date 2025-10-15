@@ -1,8 +1,8 @@
 <?php
 /**
- * Serenity Spa Headless Theme Functions
+ * CG Aesthetics Headless Theme Functions
  * 
- * This theme serves as a headless CMS backend for the Serenity Spa Astro frontend.
+ * This theme serves as a headless CMS backend for the CG Aesthetics Astro frontend.
  * It includes custom post types, taxonomies, and GraphQL configuration.
  */
 
@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) {
 /**
  * Theme Setup
  */
-function serenity_spa_setup() {
+function cg_aesthetics_setup() {
     // Add theme support
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
@@ -25,37 +25,37 @@ function serenity_spa_setup() {
     add_image_size('service-hero', 1200, 600, true);
     add_image_size('team-member', 400, 400, true);
 }
-add_action('after_setup_theme', 'serenity_spa_setup');
+add_action('after_setup_theme', 'cg_aesthetics_setup');
 
 /**
  * Disable unnecessary features for headless setup
  */
-function serenity_spa_disable_features() {
+function cg_aesthetics_disable_features() {
     // Remove default post type (we'll use custom post types)
     // Uncomment if you don't need blog posts
     // add_filter('use_block_editor_for_post_type', '__return_false', 10);
 }
-add_action('init', 'serenity_spa_disable_features');
+add_action('init', 'cg_aesthetics_disable_features');
 
 /**
  * Register Custom Post Type: Services
  */
-function serenity_spa_register_services_cpt() {
+function cg_aesthetics_register_services_cpt() {
     $labels = array(
-        'name'                  => _x('Services', 'Post Type General Name', 'serenity-spa'),
-        'singular_name'         => _x('Service', 'Post Type Singular Name', 'serenity-spa'),
-        'menu_name'             => __('Services', 'serenity-spa'),
-        'all_items'             => __('All Services', 'serenity-spa'),
-        'add_new_item'          => __('Add New Service', 'serenity-spa'),
-        'add_new'               => __('Add New', 'serenity-spa'),
-        'edit_item'             => __('Edit Service', 'serenity-spa'),
-        'update_item'           => __('Update Service', 'serenity-spa'),
-        'view_item'             => __('View Service', 'serenity-spa'),
-        'search_items'          => __('Search Services', 'serenity-spa'),
+        'name'                  => _x('Services', 'Post Type General Name', 'cg-aesthetics'),
+        'singular_name'         => _x('Service', 'Post Type Singular Name', 'cg-aesthetics'),
+        'menu_name'             => __('Services', 'cg-aesthetics'),
+        'all_items'             => __('All Services', 'cg-aesthetics'),
+        'add_new_item'          => __('Add New Service', 'cg-aesthetics'),
+        'add_new'               => __('Add New', 'cg-aesthetics'),
+        'edit_item'             => __('Edit Service', 'cg-aesthetics'),
+        'update_item'           => __('Update Service', 'cg-aesthetics'),
+        'view_item'             => __('View Service', 'cg-aesthetics'),
+        'search_items'          => __('Search Services', 'cg-aesthetics'),
     );
 
     $args = array(
-        'label'                 => __('Service', 'serenity-spa'),
+        'label'                 => __('Service', 'cg-aesthetics'),
         'labels'                => $labels,
         'supports'              => array('title', 'editor', 'excerpt', 'thumbnail'),
         'public'                => true,
@@ -79,27 +79,27 @@ function serenity_spa_register_services_cpt() {
 
     register_post_type('spa_service', $args);
 }
-add_action('init', 'serenity_spa_register_services_cpt', 0);
+add_action('init', 'cg_aesthetics_register_services_cpt', 0);
 
 /**
  * Register Custom Post Type: Team Members
  */
-function serenity_spa_register_team_cpt() {
+function cg_aesthetics_register_team_cpt() {
     $labels = array(
-        'name'                  => _x('Team Members', 'Post Type General Name', 'serenity-spa'),
-        'singular_name'         => _x('Team Member', 'Post Type Singular Name', 'serenity-spa'),
-        'menu_name'             => __('Team', 'serenity-spa'),
-        'all_items'             => __('All Team Members', 'serenity-spa'),
-        'add_new_item'          => __('Add New Team Member', 'serenity-spa'),
-        'add_new'               => __('Add New', 'serenity-spa'),
-        'edit_item'             => __('Edit Team Member', 'serenity-spa'),
-        'update_item'           => __('Update Team Member', 'serenity-spa'),
-        'view_item'             => __('View Team Member', 'serenity-spa'),
-        'search_items'          => __('Search Team Members', 'serenity-spa'),
+        'name'                  => _x('Team Members', 'Post Type General Name', 'cg-aesthetics'),
+        'singular_name'         => _x('Team Member', 'Post Type Singular Name', 'cg-aesthetics'),
+        'menu_name'             => __('Team', 'cg-aesthetics'),
+        'all_items'             => __('All Team Members', 'cg-aesthetics'),
+        'add_new_item'          => __('Add New Team Member', 'cg-aesthetics'),
+        'add_new'               => __('Add New', 'cg-aesthetics'),
+        'edit_item'             => __('Edit Team Member', 'cg-aesthetics'),
+        'update_item'           => __('Update Team Member', 'cg-aesthetics'),
+        'view_item'             => __('View Team Member', 'cg-aesthetics'),
+        'search_items'          => __('Search Team Members', 'cg-aesthetics'),
     );
 
     $args = array(
-        'label'                 => __('Team Member', 'serenity-spa'),
+        'label'                 => __('Team Member', 'cg-aesthetics'),
         'labels'                => $labels,
         'supports'              => array('title', 'thumbnail'),
         'public'                => true,
@@ -123,27 +123,27 @@ function serenity_spa_register_team_cpt() {
 
     register_post_type('team_member', $args);
 }
-add_action('init', 'serenity_spa_register_team_cpt', 0);
+add_action('init', 'cg_aesthetics_register_team_cpt', 0);
 
 /**
  * Register Custom Post Type: Testimonials
  */
-function serenity_spa_register_testimonials_cpt() {
+function cg_aesthetics_register_testimonials_cpt() {
     $labels = array(
-        'name'                  => _x('Testimonials', 'Post Type General Name', 'serenity-spa'),
-        'singular_name'         => _x('Testimonial', 'Post Type Singular Name', 'serenity-spa'),
-        'menu_name'             => __('Testimonials', 'serenity-spa'),
-        'all_items'             => __('All Testimonials', 'serenity-spa'),
-        'add_new_item'          => __('Add New Testimonial', 'serenity-spa'),
-        'add_new'               => __('Add New', 'serenity-spa'),
-        'edit_item'             => __('Edit Testimonial', 'serenity-spa'),
-        'update_item'           => __('Update Testimonial', 'serenity-spa'),
-        'view_item'             => __('View Testimonial', 'serenity-spa'),
-        'search_items'          => __('Search Testimonials', 'serenity-spa'),
+        'name'                  => _x('Testimonials', 'Post Type General Name', 'cg-aesthetics'),
+        'singular_name'         => _x('Testimonial', 'Post Type Singular Name', 'cg-aesthetics'),
+        'menu_name'             => __('Testimonials', 'cg-aesthetics'),
+        'all_items'             => __('All Testimonials', 'cg-aesthetics'),
+        'add_new_item'          => __('Add New Testimonial', 'cg-aesthetics'),
+        'add_new'               => __('Add New', 'cg-aesthetics'),
+        'edit_item'             => __('Edit Testimonial', 'cg-aesthetics'),
+        'update_item'           => __('Update Testimonial', 'cg-aesthetics'),
+        'view_item'             => __('View Testimonial', 'cg-aesthetics'),
+        'search_items'          => __('Search Testimonials', 'cg-aesthetics'),
     );
 
     $args = array(
-        'label'                 => __('Testimonial', 'serenity-spa'),
+        'label'                 => __('Testimonial', 'cg-aesthetics'),
         'labels'                => $labels,
         'supports'              => array('title'),
         'public'                => true,
@@ -167,30 +167,30 @@ function serenity_spa_register_testimonials_cpt() {
 
     register_post_type('testimonial', $args);
 }
-add_action('init', 'serenity_spa_register_testimonials_cpt', 0);
+add_action('init', 'cg_aesthetics_register_testimonials_cpt', 0);
 
 /**
  * Register Taxonomy: Service Categories
  */
-function serenity_spa_register_service_categories() {
+function cg_aesthetics_register_service_categories() {
     $labels = array(
-        'name'                       => _x('Service Categories', 'Taxonomy General Name', 'serenity-spa'),
-        'singular_name'              => _x('Service Category', 'Taxonomy Singular Name', 'serenity-spa'),
-        'menu_name'                  => __('Categories', 'serenity-spa'),
-        'all_items'                  => __('All Categories', 'serenity-spa'),
-        'parent_item'                => __('Parent Category', 'serenity-spa'),
-        'parent_item_colon'          => __('Parent Category:', 'serenity-spa'),
-        'new_item_name'              => __('New Category Name', 'serenity-spa'),
-        'add_new_item'               => __('Add New Category', 'serenity-spa'),
-        'edit_item'                  => __('Edit Category', 'serenity-spa'),
-        'update_item'                => __('Update Category', 'serenity-spa'),
-        'view_item'                  => __('View Category', 'serenity-spa'),
-        'separate_items_with_commas' => __('Separate categories with commas', 'serenity-spa'),
-        'add_or_remove_items'        => __('Add or remove categories', 'serenity-spa'),
-        'choose_from_most_used'      => __('Choose from the most used', 'serenity-spa'),
-        'popular_items'              => __('Popular Categories', 'serenity-spa'),
-        'search_items'               => __('Search Categories', 'serenity-spa'),
-        'not_found'                  => __('Not Found', 'serenity-spa'),
+        'name'                       => _x('Service Categories', 'Taxonomy General Name', 'cg-aesthetics'),
+        'singular_name'              => _x('Service Category', 'Taxonomy Singular Name', 'cg-aesthetics'),
+        'menu_name'                  => __('Categories', 'cg-aesthetics'),
+        'all_items'                  => __('All Categories', 'cg-aesthetics'),
+        'parent_item'                => __('Parent Category', 'cg-aesthetics'),
+        'parent_item_colon'          => __('Parent Category:', 'cg-aesthetics'),
+        'new_item_name'              => __('New Category Name', 'cg-aesthetics'),
+        'add_new_item'               => __('Add New Category', 'cg-aesthetics'),
+        'edit_item'                  => __('Edit Category', 'cg-aesthetics'),
+        'update_item'                => __('Update Category', 'cg-aesthetics'),
+        'view_item'                  => __('View Category', 'cg-aesthetics'),
+        'separate_items_with_commas' => __('Separate categories with commas', 'cg-aesthetics'),
+        'add_or_remove_items'        => __('Add or remove categories', 'cg-aesthetics'),
+        'choose_from_most_used'      => __('Choose from the most used', 'cg-aesthetics'),
+        'popular_items'              => __('Popular Categories', 'cg-aesthetics'),
+        'search_items'               => __('Search Categories', 'cg-aesthetics'),
+        'not_found'                  => __('Not Found', 'cg-aesthetics'),
     );
 
     $args = array(
@@ -209,12 +209,12 @@ function serenity_spa_register_service_categories() {
 
     register_taxonomy('service_category', array('spa_service'), $args);
 }
-add_action('init', 'serenity_spa_register_service_categories', 0);
+add_action('init', 'cg_aesthetics_register_service_categories', 0);
 
 /**
  * Add CORS headers for GraphQL API
  */
-function serenity_spa_add_cors_headers() {
+function cg_aesthetics_add_cors_headers() {
     // Get the frontend URL from environment or set default
     $allowed_origin = defined('FRONTEND_URL') ? FRONTEND_URL : 'http://localhost:4321';
     
@@ -223,27 +223,27 @@ function serenity_spa_add_cors_headers() {
     header("Access-Control-Allow-Credentials: true");
     header("Access-Control-Allow-Headers: Content-Type, Authorization");
 }
-add_action('graphql_init', 'serenity_spa_add_cors_headers');
+add_action('graphql_init', 'cg_aesthetics_add_cors_headers');
 
 /**
  * Flush rewrite rules on theme activation
  */
-function serenity_spa_activation() {
-    serenity_spa_register_services_cpt();
-    serenity_spa_register_team_cpt();
-    serenity_spa_register_testimonials_cpt();
-    serenity_spa_register_service_categories();
+function cg_aesthetics_activation() {
+    cg_aesthetics_register_services_cpt();
+    cg_aesthetics_register_team_cpt();
+    cg_aesthetics_register_testimonials_cpt();
+    cg_aesthetics_register_service_categories();
     flush_rewrite_rules();
 }
-add_action('after_switch_theme', 'serenity_spa_activation');
+add_action('after_switch_theme', 'cg_aesthetics_activation');
 
 /**
  * Enqueue admin styles (optional)
  */
-function serenity_spa_admin_styles() {
-    wp_enqueue_style('serenity-spa-admin', get_template_directory_uri() . '/style.css');
+function cg_aesthetics_admin_styles() {
+    wp_enqueue_style('cg-aesthetics-admin', get_template_directory_uri() . '/style.css');
 }
-add_action('admin_enqueue_scripts', 'serenity_spa_admin_styles');
+add_action('admin_enqueue_scripts', 'cg_aesthetics_admin_styles');
 
 /**
  * Load ACF Field Groups
@@ -254,7 +254,7 @@ require_once get_template_directory() . '/acf-fields.php';
  * Register ACF Fields to GraphQL Manually
  * Since WPGraphQL for ACF has compatibility issues, we register fields manually
  */
-function serenity_spa_register_acf_to_graphql() {
+function cg_aesthetics_register_acf_to_graphql() {
     if (!function_exists('register_graphql_field') || !function_exists('get_field')) {
         return;
     }
@@ -375,4 +375,4 @@ function serenity_spa_register_acf_to_graphql() {
         },
     ]);
 }
-add_action('graphql_register_types', 'serenity_spa_register_acf_to_graphql');
+add_action('graphql_register_types', 'cg_aesthetics_register_acf_to_graphql');

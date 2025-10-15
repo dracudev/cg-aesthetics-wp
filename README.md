@@ -1,16 +1,16 @@
-# Serenity Spa - WordPress Headless CMS + Astro Frontend
+# CG Aesthetics - WordPress Headless CMS + Astro Frontend
 
-Modern spa website built with Headless WordPress (GraphQL API) and Astro for optimal performance.
+Modern aesthetics clinic website built with Headless WordPress (GraphQL API) and Astro for optimal performance.
 
 ## 🚀 Project Structure
 
 ```tree
-serenity-spa-wp/
+cg-aesthetics-wp/
 ├── docker-compose.yml          # Docker setup for WordPress + MySQL
 ├── wordpress/                  # WordPress backend (Headless CMS)
 │   ├── wp-content/
 │   │   ├── themes/
-│   │   │   └── serenity-spa-headless/  # Custom headless theme
+│   │   │   └── cg-aesthetics-headless/  # Custom headless theme
 │   │   ├── plugins/            # WordPress plugins (WPGraphQL, ACF)
 │   │   └── uploads/            # Media uploads
 │   └── README.md               # WordPress setup instructions
@@ -36,7 +36,7 @@ serenity-spa-wp/
 ### 1. Clone and Setup
 
 ```bash
-cd /home/dracudev/dev/serenity-spa-wp
+cd /home/dracudev/dev/cg-aesthetics-wp
 ```
 
 ### 2. Start WordPress with Docker
@@ -59,7 +59,7 @@ Services will be available at:
 
 Visit <http://localhost:8000> and complete the installation:
 
-- **Site Title:** Serenity Spa
+- **Site Title:** CG Aesthetics
 - **Username:** admin
 - **Password:** (choose a secure password)
 - **Email:** <your-email@example.com>
@@ -70,10 +70,10 @@ Or use WP-CLI:
 # Run WordPress installation via WP-CLI
 docker-compose exec wpcli wp core install \
   --url="http://localhost:8000" \
-  --title="Serenity Spa" \
+  --title="CG Aesthetics" \
   --admin_user="admin" \
   --admin_password="SecurePass123!" \
-  --admin_email="admin@serenityspa.local" \
+  --admin_email="admin@cg-aesthetics.local" \
   --skip-email
 ```
 
@@ -87,7 +87,7 @@ docker-compose exec wpcli wp plugin install wp-graphql --activate
 docker-compose exec wpcli wp plugin install advanced-custom-fields --activate
 
 # Activate custom theme
-docker-compose exec wpcli wp theme activate serenity-spa-headless
+docker-compose exec wpcli wp theme activate cg-aesthetics-headless
 
 # Flush permalinks
 docker-compose exec wpcli wp rewrite structure '/%postname%/' --hard
@@ -208,7 +208,7 @@ WordPress environment variables are set in `docker-compose.yml`. To modify:
 ```yaml
 environment:
   WORDPRESS_DB_HOST: db:3306
-  WORDPRESS_DB_NAME: serenity_spa
+  WORDPRESS_DB_NAME: cg_aesthetics
   WORDPRESS_DB_USER: wordpress
   WORDPRESS_DB_PASSWORD: wordpress
   FRONTEND_URL: 'http://localhost:4321'
@@ -283,7 +283,7 @@ PUBLIC_GRAPHQL_ENDPOINT=http://localhost:8000/graphql
 
 1. **Backend Development:**
 
-   - Modify theme files in `wordpress/wp-content/themes/serenity-spa-headless/`
+   - Modify theme files in `wordpress/wp-content/themes/cg-aesthetics-headless/`
    - Changes are automatically reflected (volume mounted)
    - Test GraphQL queries at <http://localhost:8000/graphql>
 
@@ -349,6 +349,6 @@ docker-compose exec wordpress chown -R www-data:www-data /var/www/html/wp-conten
 
 ## 📝 License
 
-Private project for Serenity Spa
+Private project for CG Aesthetics
 
 ---
