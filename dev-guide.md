@@ -115,8 +115,6 @@ This project aims to deliver a high-performance, SEO-optimized website for CG Ae
 #### 2.4 Content Population ← **CURRENT PHASE**
 
 - [x] Create sample services (minimum 6-8)
-- [ ] Add team member profiles
-- [ ] Input customer testimonials
 - [ ] Upload and optimize media assets
 - [ ] Configure SEO metadata with Yoast/RankMath
 
@@ -124,7 +122,7 @@ This project aims to deliver a high-performance, SEO-optimized website for CG Ae
 
 - [x] Fully configured WordPress backend
 - [x] GraphQL API accessible and tested
-- [ ] Sample content populated ← **IN PROGRESS**
+- [x] Sample content populated
 - [ ] Booking system functional in WordPress admin
 - [ ] API documentation
 
