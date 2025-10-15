@@ -34,9 +34,7 @@ PUBLIC_GRAPHQL_ENDPOINT=http://serenity-spa.local/graphql
 ## 📖 Resources
 
 - [Astro Docs](https://docs.astro.build/)
-- [Project Scope](../PROJECT_SCOPE.md)
-- [WordPress Setup](../wordpress/SETUP_GUIDE.md)
+- [Project Scope](../dev-guide.md)
+- [WordPress Setup](../wordpress/README.md)
 
 ---
-
-See main README: `../README.md`
