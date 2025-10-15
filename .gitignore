@@ -3,6 +3,9 @@
 .env.local
 .env.*.local
 
+# Local development
+AGENT.md
+
 # Node.js
 node_modules/
 npm-debug.log*
@@ -20,6 +23,7 @@ build/
 
 # WordPress - Ignore everything except custom theme/plugins
 wordpress/*
+!wordpress/README.md
 !wordpress/wp-content/
 wordpress/wp-content/*
 !wordpress/wp-content/themes/

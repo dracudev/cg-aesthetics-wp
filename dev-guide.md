@@ -87,7 +87,6 @@ This project aims to deliver a high-performance, SEO-optimized website for CG Ae
 - [x] Install and configure WPGraphQL plugin
 - [x] Install and configure Advanced Custom Fields (ACF)
 - [x] ~~Install WPGraphQL for ACF extension~~ (Manual ACF GraphQL registration due to plugin bug)
-- [ ] Set up SSL and security hardening
 - [x] Configure CORS policies for API access
 
 #### 2.2 Content Model Development
@@ -105,7 +104,7 @@ This project aims to deliver a high-performance, SEO-optimized website for CG Ae
 
 #### 2.3 Booking System Integration
 
-- [ ] Research and select booking plugin (recommendations: Amelia, Bookly, or Simply Schedule Appointments)
+- [ ] Research and select booking plugin
 - [ ] Install and configure booking plugin
 - [ ] Set up service availability and scheduling rules
 - [ ] Configure email notifications
@@ -115,7 +114,7 @@ This project aims to deliver a high-performance, SEO-optimized website for CG Ae
 
 #### 2.4 Content Population ← **CURRENT PHASE**
 
-- [ ] Create sample services (minimum 6-8)
+- [x] Create sample services (minimum 6-8)
 - [ ] Add team member profiles
 - [ ] Input customer testimonials
 - [ ] Upload and optimize media assets

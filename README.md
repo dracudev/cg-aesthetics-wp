@@ -36,7 +36,8 @@ cg-aesthetics-wp/
 ### 1. Clone and Setup
 
 ```bash
-cd /home/dracudev/dev/cg-aesthetics-wp
+git clone https://github.com/dracudev/cg-aesthetics-wp.git
+cd cg-aesthetics-wp
 ```
 
 ### 2. Start WordPress with Docker
