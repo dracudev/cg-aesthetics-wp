@@ -1,0 +1,79 @@
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Node.js
+node_modules/
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-store/
+
+# Build outputs
+dist/
+build/
+.astro/
+.vercel/
+.netlify/
+
+# WordPress - Ignore everything except custom theme/plugins
+wordpress/*
+!wordpress/wp-content/
+wordpress/wp-content/*
+!wordpress/wp-content/themes/
+!wordpress/wp-content/plugins/
+!wordpress/wp-content/mu-plugins/
+
+# But ignore third-party plugins (keep only custom ones if needed)
+wordpress/wp-content/plugins/akismet/
+wordpress/wp-content/plugins/hello.php
+wordpress/wp-content/plugins/index.php
+wordpress/wp-content/plugins/advanced-custom-fields/
+wordpress/wp-content/plugins/wp-graphql/
+
+# WordPress - specific exclusions
+wordpress/wp-content/uploads/
+wordpress/wp-content/cache/
+wordpress/wp-content/backup-db/
+wordpress/wp-content/backups/
+wordpress/wp-content/upgrade/
+
+# WordPress config (keep sample files)
+wordpress/wp-config.php
+!wordpress/wp-config-sample.php
+!wordpress/.env.example
+
+# Database
+*.sql
+*.sql.gz
+
+# Logs
+logs/
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Docker volumes (if you want to exclude data)
+# docker/mysql/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Package manager locks (optional - some prefer to commit these)
+# pnpm-lock.yaml
+# package-lock.json
+# yarn.lock

@@ -1,0 +1,174 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { query } from '../lib/apollo-client';
+import { GET_SITE_SETTINGS, GET_FEATURED_SERVICES, GET_FEATURED_TESTIMONIALS } from '../lib/queries';
+import type { SiteSettingsResponse, ServicesResponse, TestimonialsResponse } from '../types/wordpress';
+
+// Fetch data from WordPress
+let siteSettings, featuredServices, featuredTestimonials;
+let error: string | null = null;
+
+try {
+  // Fetch site settings
+  const settingsData = await query<SiteSettingsResponse>(GET_SITE_SETTINGS);
+  siteSettings = settingsData.generalSettings;
+
+  // Fetch featured services
+  const servicesData = await query<ServicesResponse>(GET_FEATURED_SERVICES, { first: 3 });
+  featuredServices = servicesData.services.nodes;
+
+  // Fetch featured testimonials
+  const testimonialsData = await query<TestimonialsResponse>(GET_FEATURED_TESTIMONIALS, { first: 3 });
+  featuredTestimonials = testimonialsData.testimonials.nodes;
+} catch (e) {
+  console.error('Error fetching data from WordPress:', e);
+  error = e instanceof Error ? e.message : 'Failed to fetch data from WordPress';
+}
+
+const graphqlEndpoint = import.meta.env.PUBLIC_GRAPHQL_ENDPOINT;
+---
+
+<Layout title={siteSettings?.title || 'Serenity Spa'}>
+  <main class="min-h-screen">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-emerald-50 to-teal-50 py-20 px-4">
+      <div class="max-w-6xl mx-auto text-center">
+        <h1 class="text-5xl md:text-6xl font-bold text-emerald-900 mb-6">
+          Welcome to Serenity Spa
+        </h1>
+        <p class="text-xl text-emerald-700 mb-8 max-w-2xl mx-auto">
+          Experience ultimate relaxation and rejuvenation with our luxury spa treatments
+        </p>
+        <a 
+          href="/services" 
+          class="inline-block bg-emerald-600 text-white px-8 py-3 rounded-full font-medium hover:bg-emerald-700 transition-colors"
+        >
+          Explore Our Services
+        </a>
+      </div>
+    </section>
+
+    <!-- Status Section -->
+    <section class="py-12 px-4 bg-white">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-8">WordPress Connection Status</h2>
+        
+        {error ? (
+          <div class="bg-red-50 border border-red-200 rounded-lg p-6">
+            <h3 class="text-red-800 font-semibold mb-2">⚠️ Connection Error</h3>
+            <p class="text-red-700 mb-4">{error}</p>
+            <div class="bg-white rounded p-4 text-sm">
+              <p class="font-medium mb-2">Troubleshooting Steps:</p>
+              <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                <li>Ensure WordPress is running at: <code class="bg-gray-100 px-2 py-1 rounded">{graphqlEndpoint}</code></li>
+                <li>Check that WPGraphQL plugin is installed and activated</li>
+                <li>Verify CORS settings in WordPress functions.php</li>
+                <li>Check the browser console for detailed errors</li>
+              </ol>
+            </div>
+          </div>
+        ) : (
+          <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-6">
+            <h3 class="text-emerald-800 font-semibold mb-2">✅ Successfully Connected to WordPress!</h3>
+            <div class="grid md:grid-cols-3 gap-4 mt-4">
+              <div class="bg-white rounded p-4">
+                <p class="text-sm text-gray-600">Site Title</p>
+                <p class="font-semibold">{siteSettings?.title}</p>
+              </div>
+              <div class="bg-white rounded p-4">
+                <p class="text-sm text-gray-600">Featured Services</p>
+                <p class="font-semibold">{featuredServices?.length || 0} found</p>
+              </div>
+              <div class="bg-white rounded p-4">
+                <p class="text-sm text-gray-600">Testimonials</p>
+                <p class="font-semibold">{featuredTestimonials?.length || 0} found</p>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+
+    <!-- Featured Services -->
+    {!error && featuredServices && featuredServices.length > 0 && (
+      <section class="py-16 px-4 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-4xl font-bold text-center mb-12">Featured Services</h2>
+          <div class="grid md:grid-cols-3 gap-8">
+            {featuredServices.map((service) => (
+              <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow">
+                {service.featuredImage?.node.sourceUrl && (
+                  <img 
+                    src={service.featuredImage.node.sourceUrl} 
+                    alt={service.featuredImage.node.altText || service.title}
+                    class="w-full h-48 object-cover"
+                  />
+                )}
+                <div class="p-6">
+                  <h3 class="text-2xl font-semibold mb-2">{service.title}</h3>
+                  <div class="flex justify-between items-center mb-4">
+                    <span class="text-emerald-600 font-bold text-lg">
+                      {service.serviceDetails.servicePrice}
+                    </span>
+                    <span class="text-gray-600 text-sm">
+                      {service.serviceDetails.serviceDuration} min
+                    </span>
+                  </div>
+                  <p class="text-gray-700 mb-4" set:html={service.excerpt} />
+                  <a 
+                    href={`/services/${service.slug}`}
+                    class="text-emerald-600 font-medium hover:text-emerald-700"
+                  >
+                    Learn More →
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Testimonials -->
+    {!error && featuredTestimonials && featuredTestimonials.length > 0 && (
+      <section class="py-16 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-4xl font-bold text-center mb-12">What Our Clients Say</h2>
+          <div class="grid md:grid-cols-3 gap-8">
+            {featuredTestimonials.map((testimonial) => (
+              <div class="bg-emerald-50 rounded-lg p-6">
+                <div class="flex items-center mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <svg 
+                      class={`w-5 h-5 ${i < testimonial.testimonialDetails.rating ? 'text-yellow-400' : 'text-gray-300'}`}
+                      fill="currentColor" 
+                      viewBox="0 0 20 20"
+                    >
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <p class="text-gray-700 mb-4 italic">"{testimonial.testimonialDetails.reviewText}"</p>
+                <p class="font-semibold text-gray-900">{testimonial.testimonialDetails.clientName}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- CTA Section -->
+    <section class="bg-emerald-600 text-white py-16 px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-4xl font-bold mb-4">Ready to Relax?</h2>
+        <p class="text-xl mb-8">Book your appointment today and experience the Serenity difference</p>
+        <a 
+          href="/booking" 
+          class="inline-block bg-white text-emerald-600 px-8 py-3 rounded-full font-medium hover:bg-emerald-50 transition-colors"
+        >
+          Book Now
+        </a>
+      </div>
+    </section>
+  </main>
+</Layout>
