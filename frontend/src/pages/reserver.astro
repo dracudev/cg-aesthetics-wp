@@ -1,0 +1,162 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const WP_URL = import.meta.env.PUBLIC_WORDPRESS_URL || 'http://localhost:8000';
+// Use page ID to ensure we get the correct page
+const BOOKING_PAGE_URL = `${WP_URL}/?page_id=20`;
+
+// Optional: Fetch page meta for SEO
+const pageTitle = 'Réserver un rendez-vous | CG Aesthetics';
+const pageDescription = 'Réservez votre soin esthétique en ligne. Choisissez votre service, date et heure préférés.';
+---
+
+<Layout title={pageTitle}>
+  <div class="booking-page">
+    <!-- Hero Section -->
+    <section class="booking-hero">
+      <div class="container mx-auto px-4 py-12 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">
+          Réservez votre rendez-vous
+        </h1>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Choisissez votre soin, la date et l'heure qui vous conviennent. 
+          Réservation en ligne simple et rapide.
+        </p>
+      </div>
+    </section>
+
+    <!-- Booking Form Section - Minimal wrapper -->
+    <section class="booking-form-container">
+      <!-- Amelia Booking Form Iframe -->
+      <iframe
+        id="amelia-booking-iframe"
+        src={BOOKING_PAGE_URL}
+        title="Formulaire de réservation"
+        class="w-full border-0"
+        loading="lazy"
+      ></iframe>
+    </section>
+
+    <!-- Trust Signals -->
+    <section class="trust-signals bg-gray-50 py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-3 gap-8 text-center">
+          <div class="trust-item">
+            <div class="text-4xl mb-4">📅</div>
+            <h3 class="text-lg font-semibold mb-2">Disponibilités en temps réel</h3>
+            <p class="text-gray-600">Consultez nos créneaux disponibles et réservez instantanément</p>
+          </div>
+          <div class="trust-item">
+            <div class="text-4xl mb-4">✉️</div>
+            <h3 class="text-lg font-semibold mb-2">Confirmation immédiate</h3>
+            <p class="text-gray-600">Recevez votre confirmation par email après la réservation</p>
+          </div>
+          <div class="trust-item">
+            <div class="text-4xl mb-4">🔒</div>
+            <h3 class="text-lg font-semibold mb-2">Paiement sécurisé</h3>
+            <p class="text-gray-600">Vos données sont protégées et sécurisées</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Alternative -->
+    <section class="contact-alternative py-12">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-2xl font-semibold mb-4">Besoin d'aide pour réserver ?</h2>
+        <p class="text-gray-600 mb-6">
+          Notre équipe est disponible pour vous assister
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="tel:+41XXXXXXXXX" 
+            class="inline-flex items-center justify-center px-6 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition"
+          >
+            📞 Appelez-nous
+          </a>
+          <a 
+            href="/contact" 
+            class="inline-flex items-center justify-center px-6 py-3 border-2 border-gray-800 text-gray-800 rounded-lg hover:bg-gray-50 transition"
+          >
+            📧 Contactez-nous
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .booking-page {
+    min-height: 100vh;
+  }
+
+  .booking-hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+  }
+
+  /* Minimal styling for iframe container */
+  .booking-form-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  /* Iframe responsive adjustments */
+  #amelia-booking-iframe {
+    display: block;
+    width: 100%;
+    min-height: 600px;
+  }
+
+  /* Trust signals styling */
+  .trust-item {
+    padding: 1.5rem;
+  }
+
+  /* Smooth transitions */
+  a {
+    transition: all 0.3s ease;
+  }
+  
+  /* Remove on mobile for cleaner look */
+  @media (max-width: 768px) {
+    .booking-form-container {
+      padding: 1rem 0.5rem;
+    }
+  }
+</style>
+
+<script>
+  // Auto-resize iframe based on content
+  const iframe = document.getElementById('amelia-booking-iframe') as HTMLIFrameElement;
+  
+  if (iframe) {
+    // Listen for messages from iframe to adjust height
+    window.addEventListener('message', (event) => {
+      // Security check - only accept messages from our WordPress domain
+      const wpUrl = 'http://localhost:8000'; // Will be replaced in production
+      if (event.origin !== wpUrl.replace(/\/$/, '')) return;
+      
+      if (event.data.type === 'ameliaHeight') {
+        iframe.style.height = event.data.height + 'px';
+      }
+    });
+
+    // Fallback: try to access iframe content height (works if same-origin)
+    iframe.addEventListener('load', () => {
+      try {
+        const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
+        if (iframeDoc) {
+          const height = iframeDoc.body.scrollHeight;
+          iframe.style.height = height + 'px';
+        }
+      } catch (e) {
+        // Cross-origin, can't access - use default height
+        console.log('Cross-origin iframe, using default height');
+      }
+    });
+  }
+</script>

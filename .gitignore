@@ -3,6 +3,9 @@
 .env.local
 .env.*.local
 
+# Agent documentation (internal reference only, not pushed to GitHub)
+agent-docs/
+
 # Local development
 AGENT.md
 
@@ -36,6 +39,7 @@ wordpress/wp-content/plugins/hello.php
 wordpress/wp-content/plugins/index.php
 wordpress/wp-content/plugins/advanced-custom-fields/
 wordpress/wp-content/plugins/wp-graphql/
+wordpress/wp-content/plugins/ameliabooking/
 
 # WordPress - specific exclusions
 wordpress/wp-content/uploads/

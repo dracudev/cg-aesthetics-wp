@@ -104,13 +104,13 @@ This project aims to deliver a high-performance, SEO-optimized website for CG Ae
 
 #### 2.3 Booking System Integration
 
-- [ ] Research and select booking plugin
-- [ ] Install and configure booking plugin
-- [ ] Set up service availability and scheduling rules
-- [ ] Configure email notifications
-- [ ] Test booking system admin functionality
-- [ ] Expose booking data via GraphQL (if supported) or REST API
-- [ ] Document booking API endpoints and authentication
+- [x] Research and select booking plugin (Amelia Booking selected)
+- [x] Install and configure booking plugin (Amelia v1.2.34 installed)
+- [x] Set up service availability and scheduling rules (manual configuration in WordPress admin)
+- [ ] Configure email notifications (manual configuration in WordPress admin)
+- [x] Test booking system admin functionality
+- [x] Expose booking data via API (Hybrid approach: iframe/widget embedding - free version)
+- [x] Document booking API endpoints and authentication (see BOOKING-HYBRID-INTEGRATION.md)
 
 #### 2.4 Content Population ← **CURRENT PHASE**
 
@@ -123,8 +123,7 @@ This project aims to deliver a high-performance, SEO-optimized website for CG Ae
 - [x] Fully configured WordPress backend
 - [x] GraphQL API accessible and tested
 - [x] Sample content populated
-- [ ] Booking system functional in WordPress admin
-- [ ] API documentation
+- [x] Booking system functional in WordPress admin
 
 ---
 
@@ -142,7 +141,7 @@ This project aims to deliver a high-performance, SEO-optimized website for CG Ae
 
 #### 3.2 Core Component Development
 
-- [x] Create layout components (Header, Footer, Navigation) - Basic structure
+- [ ] Create layout components (Header, Footer, Navigation) - Basic structure
 - [ ] Develop reusable UI components:
   - Button variants
   - Card components

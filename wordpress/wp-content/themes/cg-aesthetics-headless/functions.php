@@ -246,6 +246,19 @@ function cg_aesthetics_admin_styles() {
 add_action('admin_enqueue_scripts', 'cg_aesthetics_admin_styles');
 
 /**
+ * Disable admin bar on front-end for all users (headless theme)
+ */
+add_filter('show_admin_bar', '__return_false');
+
+/**
+ * Remove WordPress admin bar CSS
+ */
+function cg_aesthetics_remove_admin_bar_css() {
+    remove_action('wp_head', '_admin_bar_bump_cb');
+}
+add_action('get_header', 'cg_aesthetics_remove_admin_bar_css');
+
+/**
  * Load ACF Field Groups
  */
 require_once get_template_directory() . '/acf-fields.php';

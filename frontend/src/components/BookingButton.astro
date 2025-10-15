@@ -1,0 +1,44 @@
+---
+interface Props {
+  text?: string;
+  variant?: 'primary' | 'secondary' | 'outline';
+  size?: 'sm' | 'md' | 'lg';
+  serviceId?: number;
+  class?: string;
+}
+
+const {
+  text = 'Réserver maintenant',
+  variant = 'primary',
+  size = 'md',
+  serviceId,
+  class: className = '',
+} = Astro.props;
+
+// Build booking URL
+const bookingUrl = serviceId 
+  ? `/reserver?service=${serviceId}`
+  : '/reserver';
+
+// Variant classes
+const variantClasses = {
+  primary: 'bg-purple-600 text-white hover:bg-purple-700',
+  secondary: 'bg-gray-800 text-white hover:bg-gray-900',
+  outline: 'border-2 border-purple-600 text-purple-600 hover:bg-purple-50',
+};
+
+// Size classes
+const sizeClasses = {
+  sm: 'px-4 py-2 text-sm',
+  md: 'px-6 py-3 text-base',
+  lg: 'px-8 py-4 text-lg',
+};
+---
+
+<a
+  href={bookingUrl}
+  class={`inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 ${variantClasses[variant]} ${sizeClasses[size]} ${className}`}
+>
+  <span class="mr-2">📅</span>
+  {text}
+</a>

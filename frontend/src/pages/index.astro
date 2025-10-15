@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import BookingButton from '../components/BookingButton.astro';
 import { query } from '../lib/apollo-client';
 import { GET_SITE_SETTINGS, GET_FEATURED_SERVICES, GET_FEATURED_TESTIMONIALS } from '../lib/queries';
 import type { SiteSettingsResponse, ServicesResponse, TestimonialsResponse } from '../types/wordpress';
@@ -41,12 +42,15 @@ const graphqlEndpoint = import.meta.env.PUBLIC_GRAPHQL_ENDPOINT;
         <p class="text-xl text-emerald-700 mb-8 max-w-2xl mx-auto">
           Experience ultimate relaxation and rejuvenation with our luxury spa treatments
         </p>
-        <a 
-          href="/services" 
-          class="inline-block bg-emerald-600 text-white px-8 py-3 rounded-full font-medium hover:bg-emerald-700 transition-colors"
-        >
-          Explore Our Services
-        </a>
+        <div class="flex gap-4 justify-center">
+          <BookingButton text="Réserver maintenant" size="lg" />
+          <a 
+            href="/services" 
+            class="inline-block bg-white text-emerald-600 border-2 border-emerald-600 px-8 py-3 rounded-lg font-medium hover:bg-emerald-50 transition-colors"
+          >
+            Nos services
+          </a>
+        </div>
       </div>
     </section>
 
@@ -162,14 +166,13 @@ const graphqlEndpoint = import.meta.env.PUBLIC_GRAPHQL_ENDPOINT;
     <!-- CTA Section -->
     <section class="bg-emerald-600 text-white py-16 px-4">
       <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-4xl font-bold mb-4">Ready to Relax?</h2>
-        <p class="text-xl mb-8">Book your appointment today and experience the Serenity difference</p>
-        <a 
-          href="/booking" 
-          class="inline-block bg-white text-emerald-600 px-8 py-3 rounded-full font-medium hover:bg-emerald-50 transition-colors"
-        >
-          Book Now
-        </a>
+        <h2 class="text-4xl font-bold mb-4">Prête à vous détendre ?</h2>
+        <p class="text-xl mb-8">Réservez votre rendez-vous dès aujourd'hui</p>
+        <BookingButton 
+          text="Réserver maintenant" 
+          variant="secondary"
+          size="lg"
+        />
       </div>
     </section>
   </main>
