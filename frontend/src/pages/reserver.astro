@@ -5,12 +5,48 @@ const WP_URL = import.meta.env.PUBLIC_WORDPRESS_URL || 'http://localhost:8000';
 // Use page ID to ensure we get the correct page
 const BOOKING_PAGE_URL = `${WP_URL}/?page_id=20`;
 
-// Optional: Fetch page meta for SEO
-const pageTitle = 'Réserver un rendez-vous | CG Aesthetics';
-const pageDescription = 'Réservez votre soin esthétique en ligne. Choisissez votre service, date et heure préférés.';
+// SEO Configuration
+const seoTitle = 'Réserver un rendez-vous | CG Aesthetics';
+const seoDescription = 'Réservez votre soin esthétique en ligne. Choisissez votre service, date et heure préférés. Confirmation immédiate par email.';
+const seoCanonical = Astro.site ? new URL('/reserver', Astro.site).href : undefined;
+
+// Schema.org for booking page
+const bookingSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: seoTitle,
+  description: seoDescription,
+  url: seoCanonical,
+  isPartOf: {
+    '@type': 'WebSite',
+    name: 'CG Aesthetics',
+    url: Astro.site?.href,
+  },
+  potentialAction: {
+    '@type': 'ReserveAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: seoCanonical,
+      actionPlatform: [
+        'http://schema.org/DesktopWebPlatform',
+        'http://schema.org/MobileWebPlatform'
+      ]
+    },
+    result: {
+      '@type': 'Reservation',
+      name: 'Spa Appointment'
+    }
+  }
+};
 ---
 
-<Layout title={pageTitle}>
+<Layout 
+  title={seoTitle}
+  description={seoDescription}
+  canonical={seoCanonical}
+  type="website"
+  schema={bookingSchema}
+>
   <div class="booking-page">
     <!-- Hero Section -->
     <section class="booking-hero">

@@ -1,8 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import BookingButton from '../components/BookingButton.astro';
+import OptimizedImage from '../components/OptimizedImage.astro';
 import { query } from '../lib/apollo-client';
 import { GET_SITE_SETTINGS, GET_FEATURED_SERVICES, GET_FEATURED_TESTIMONIALS } from '../lib/queries';
+import { buildAggregateRatingSchema } from '../lib/seo';
 import type { SiteSettingsResponse, ServicesResponse, TestimonialsResponse } from '../types/wordpress';
 
 // Fetch data from WordPress
@@ -29,9 +31,38 @@ try {
 }
 
 const graphqlEndpoint = import.meta.env.PUBLIC_GRAPHQL_ENDPOINT;
+
+// SEO Configuration
+const seoTitle = siteSettings?.title 
+  ? `${siteSettings.title} - Luxury Spa & Wellness Center` 
+  : 'CG Aesthetics - Luxury Spa & Wellness Center';
+
+const seoDescription = siteSettings?.description 
+  || 'Experience ultimate relaxation and rejuvenation with our luxury spa treatments, professional massages, facials, and wellness services. Book your appointment today.';
+
+// Get featured service image for Open Graph
+const ogImage = featuredServices[0]?.featuredImage?.node?.sourceUrl;
+
+// Build aggregate rating schema from testimonials
+let aggregateRatingSchema;
+if (featuredTestimonials && featuredTestimonials.length > 0) {
+  const ratings = featuredTestimonials
+    .map(t => t.testimonialDetails?.rating)
+    .filter(r => r !== undefined);
+  
+  if (ratings.length > 0) {
+    aggregateRatingSchema = buildAggregateRatingSchema(ratings, featuredTestimonials.length);
+  }
+}
 ---
 
-<Layout title={siteSettings?.title || 'Beauty Studio'}>
+<Layout 
+  title={seoTitle}
+  description={seoDescription}
+  image={ogImage}
+  type="website"
+  schema={aggregateRatingSchema}
+>
   <main class="min-h-screen">
     <!-- Hero Section -->
     <section class="bg-gradient-to-br from-emerald-50 to-teal-50 py-20 px-4">
@@ -104,10 +135,14 @@ const graphqlEndpoint = import.meta.env.PUBLIC_GRAPHQL_ENDPOINT;
             {featuredServices.map((service) => (
               <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow">
                 {service.featuredImage?.node.sourceUrl && (
-                  <img 
+                  <OptimizedImage
                     src={service.featuredImage.node.sourceUrl} 
                     alt={service.featuredImage.node.altText || service.title}
+                    width={400}
+                    height={300}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     class="w-full h-48 object-cover"
+                    loading="lazy"
                   />
                 )}
                 <div class="p-6">

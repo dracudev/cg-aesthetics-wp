@@ -1,39 +1,20 @@
 ---
+import SEO, { type SEOProps } from '../components/SEO.astro';
 import '../styles/global.css';
 
-interface Props {
+interface Props extends SEOProps {
   title?: string;
   description?: string;
 }
 
-const { 
-  title = 'Beauty Studio - Luxury Wellness & Beauty',
-  description = 'Experience ultimate relaxation and rejuvenation at Beauty Studio. Professional massage, facial treatments, and wellness services.'
-} = Astro.props;
-
-const siteUrl = import.meta.env.PUBLIC_WORDPRESS_URL || 'http://localhost:4321';
+const props = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:url" content={siteUrl} />
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
+    <SEO {...props} />
     
     <!-- Fonts (Example - Update with your preferred fonts) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -42,8 +23,6 @@ const siteUrl = import.meta.env.PUBLIC_WORDPRESS_URL || 'http://localhost:4321';
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" 
       rel="stylesheet" 
     />
-    
-    <title>{title}</title>
   </head>
   <body class="bg-neutral-50 text-neutral-900 antialiased">
     <slot />
