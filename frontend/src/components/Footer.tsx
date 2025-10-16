@@ -3,15 +3,13 @@ import { Separator } from '@/components/ui/separator';
 
 const footerLinks = {
   services: [
-    { label: 'Soins du visage', href: '/services/soins-visage' },
     { label: 'Massages', href: '/services/massages' },
-    { label: 'Épilation', href: '/services/epilation' },
-    { label: 'Manucure & Pédicure', href: '/services/manucure-pedicure' },
+    { label: 'Soins du corps', href: '/services/soins-corps' },
+    { label: 'Soins du visage', href: '/services/soins-visage' },
   ],
   info: [
     { label: 'À Propos', href: '/a-propos' },
     { label: 'Contact', href: '/contact' },
-    { label: 'Blog', href: '/blog' },
     { label: 'Témoignages', href: '/testimonials' },
   ],
   legal: [
