@@ -1,0 +1,336 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Button } from '../../components/ui/button';
+import { Card, CardContent } from '../../components/ui/card';
+import { client } from '../../lib/apollo-client';
+import { GET_SERVICE_BY_SLUG, GET_SERVICES } from '../../lib/queries';
+import { generateSEOMetadata, buildServiceSchema } from '../../lib/seo';
+import OptimizedImage from '../../components/OptimizedImage.astro';
+import type { Service } from '../../types/wordpress';
+import { Clock, DollarSign, CheckCircle2, Calendar, ArrowLeft, Sparkles } from 'lucide-react';
+
+// Dynamic service detail page
+
+export async function getStaticPaths() {
+  const { data } = await client.query({
+    query: GET_SERVICES,
+  }) as { data: { services: { nodes: Service[] } } };
+
+  return data.services.nodes.map((service: Service) => ({
+    params: { slug: service.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+
+const { data } = await client.query({
+  query: GET_SERVICE_BY_SLUG,
+  variables: { slug },
+}) as { data: { service: Service } };
+
+const service = data.service;
+
+// Generate SEO metadata from WordPress SEO data
+const seoData = generateSEOMetadata(
+  service.seo,
+  service.title,
+  service.excerpt || service.serviceDetails.serviceDescription,
+  service.featuredImage?.node.sourceUrl
+);
+
+// Build service schema
+const siteUrl = Astro.site?.href || 'http://localhost:4321';
+const serviceUrl = (siteUrl + Astro.url.pathname).replace(/\/+$/, '');
+
+const serviceSchema = buildServiceSchema({
+  title: service.title,
+  description: service.serviceDetails.serviceDescription,
+  price: service.serviceDetails.servicePrice,
+  duration: service.serviceDetails.serviceDuration,
+  image: service.featuredImage?.node.sourceUrl,
+  url: serviceUrl,
+});
+
+// Combine with WordPress schema if available
+const combinedSchema = service.schemaOrg 
+  ? {
+      '@context': 'https://schema.org',
+      '@graph': [serviceSchema, JSON.parse(service.schemaOrg)]
+    }
+  : serviceSchema;
+---
+
+<Layout 
+  title={seoData.title}
+  description={seoData.description}
+  canonical={seoData.canonical}
+  image={seoData.image}
+  imageAlt={seoData.imageAlt}
+  type="service"
+  noindex={seoData.noindex}
+  nofollow={seoData.nofollow}
+  schema={combinedSchema}
+>
+  <main>
+    <!-- Hero Section with Image -->
+    <section class="relative overflow-hidden" style="background-color: var(--color-primary-background);">
+      {service.featuredImage?.node && (
+        <div class="relative h-[60vh] md:h-[70vh] max-h-[600px]">
+          <OptimizedImage
+            src={service.featuredImage.node.sourceUrl}
+            alt={service.featuredImage.node.altText || service.title}
+            width={1920}
+            height={1080}
+            sizes="100vw"
+            class="w-full h-full object-cover"
+            loading="eager"
+            fetchpriority="high"
+          />
+          <!-- Gradient Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent"></div>
+          
+          <!-- Back Button -->
+          <div class="absolute top-6 left-6 z-10">
+            <a 
+              href="/"
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-[var(--radius-pill)] bg-white/90 backdrop-blur-sm hover:bg-white transition-[var(--transition-default)]"
+              style="color: var(--color-text-heading);"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              <span class="font-[var(--font-weight-medium)]">Retour</span>
+            </a>
+          </div>
+
+          <!-- Title Overlay -->
+          <div class="absolute bottom-0 left-0 right-0 p-6 md:p-12">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="max-w-4xl">
+                <h1 
+                  class="text-4xl md:text-6xl lg:text-7xl font-[var(--font-weight-bold)] leading-[var(--line-height-tight)] tracking-[var(--letter-spacing-tight)] text-white mb-4"
+                  style="font-family: var(--font-heading); text-shadow: 0 2px 20px rgba(0,0,0,0.3);"
+                >
+                  {service.title}
+                </h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+      
+      {!service.featuredImage?.node && (
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+          <div class="max-w-4xl">
+            <a 
+              href="/"
+              class="inline-flex items-center gap-2 mb-8 transition-colors"
+              style="color: var(--color-secondary-mauve);"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              <span class="font-[var(--font-weight-medium)]">Retour</span>
+            </a>
+            <h1 
+              class="text-4xl md:text-6xl lg:text-7xl font-[var(--font-weight-bold)] leading-[var(--line-height-tight)] tracking-[var(--letter-spacing-tight)]"
+              style="font-family: var(--font-heading); color: var(--color-text-heading);"
+            >
+              {service.title}
+            </h1>
+          </div>
+        </div>
+      )}
+    </section>
+
+    <!-- Service Info Cards -->
+    <section class="py-8 md:py-12" style="background-color: var(--color-white);">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+          <div class="grid sm:grid-cols-2 gap-4 -mt-12 relative z-10">
+            <Card client:visible className="border-0 shadow-[var(--shadow-medium)] transition-all duration-300 hover:shadow-[var(--shadow-hover)]">
+              <CardContent client:load className="p-6">
+                <div class="flex items-center gap-4">
+                  <div 
+                    class="p-3 rounded-full"
+                    style="background-color: var(--color-primary-accent-light);"
+                  >
+                    <Clock 
+                      className="h-6 w-6 text-[var(--color-accent-rose-gold)]"
+                    />
+                  </div>
+                  <div>
+                    <p 
+                      class="text-sm font-[var(--font-weight-medium)] mb-1"
+                      style="color: var(--color-text-muted);"
+                    >
+                      Durée
+                    </p>
+                    <p 
+                      class="text-2xl font-[var(--font-weight-bold)]"
+                      style="color: var(--color-text-heading); font-family: var(--font-heading);"
+                    >
+                      {service.serviceDetails.serviceDuration} min
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card client:visible className="border-0 shadow-[var(--shadow-medium)] transition-all duration-300 hover:shadow-[var(--shadow-hover)]">
+              <CardContent client:load className="p-6">
+                <div class="flex items-center gap-4">
+                  <div 
+                    class="p-3 rounded-full"
+                    style="background-color: var(--color-primary-accent-light);"
+                  >
+                    <Sparkles 
+                      className="h-6 w-6 text-[var(--color-accent-rose-gold)]"
+                    />
+                  </div>
+                  <div>
+                    <p 
+                      class="text-sm font-[var(--font-weight-medium)] mb-1"
+                      style="color: var(--color-text-muted);"
+                    >
+                      Tarif
+                    </p>
+                    <p 
+                      class="text-2xl font-[var(--font-weight-bold)]"
+                      style="color: var(--color-accent-rose-gold); font-family: var(--font-heading);"
+                    >
+                      {service.serviceDetails.servicePrice}
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Description -->
+    <section class="py-16 md:py-24" style="background-color: var(--color-white);">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+          <div 
+            class="prose prose-lg max-w-none"
+            style="color: var(--color-text-body); font-size: var(--font-size-body-lg); line-height: var(--line-height-relaxed);"
+            set:html={service.serviceDetails.serviceDescription}
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits -->
+    {service.serviceDetails.serviceBenefits && 
+     service.serviceDetails.serviceBenefits.length > 0 && (
+      <section class="py-16 md:py-24" style="background-color: var(--color-secondary-gray-light);">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="max-w-4xl mx-auto">
+            <h2 
+              class="text-3xl md:text-4xl font-[var(--font-weight-semibold)] tracking-[var(--letter-spacing-wide)] mb-12 text-center"
+              style="font-family: var(--font-heading); color: var(--color-text-heading);"
+            >
+              Bienfaits du Soin
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6">
+              {service.serviceDetails.serviceBenefits.map(benefit => (
+                <div class="flex items-start gap-4 group">
+                  <div 
+                    class="flex-shrink-0 p-2 rounded-full transition-transform duration-300 group-hover:scale-110"
+                    style="background-color: var(--color-primary-accent);"
+                  >
+                    <CheckCircle2 
+                      className="h-5 w-5 text-[var(--color-accent-rose-gold)]"
+                    />
+                  </div>
+                  <p 
+                    class="text-base leading-[var(--line-height-relaxed)] pt-1"
+                    style="color: var(--color-text-body);"
+                  >
+                    {benefit.benefitText}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Gallery -->
+    {service.serviceDetails.serviceGallery && 
+     service.serviceDetails.serviceGallery.length > 0 && (
+      <section class="py-16 md:py-24" style="background-color: var(--color-white);">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="max-w-6xl mx-auto">
+            <h2 
+              class="text-3xl md:text-4xl font-[var(--font-weight-semibold)] tracking-[var(--letter-spacing-wide)] mb-12 text-center"
+              style="font-family: var(--font-heading); color: var(--color-text-heading);"
+            >
+              Galerie
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {service.serviceDetails.serviceGallery.map((image, index) => (
+                <div class="relative overflow-hidden rounded-[var(--radius-large)] aspect-[4/3] group">
+                  <OptimizedImage
+                    src={image.sourceUrl}
+                    alt={image.altText || `${service.title} - Image ${index + 1}`}
+                    width={500}
+                    height={375}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Booking CTA -->
+    {service.serviceDetails.bookableOnline && (
+      <section 
+        class="py-20 md:py-32 relative overflow-hidden"
+        style="background: linear-gradient(135deg, var(--color-accent-rose-gold) 0%, var(--color-secondary-mauve) 100%);"
+      >
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div class="max-w-3xl mx-auto text-center space-y-8">
+            <h2 
+              class="text-3xl md:text-5xl font-[var(--font-weight-bold)] tracking-[var(--letter-spacing-wide)] text-white"
+              style="font-family: var(--font-heading);"
+            >
+              Prête à Vivre Cette Expérience ?
+            </h2>
+            <p class="text-lg md:text-xl text-white/90 leading-[var(--line-height-relaxed)] max-w-2xl mx-auto">
+              Réservez votre rendez-vous en ligne et offrez-vous un moment de bien-être absolu
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
+              <Button 
+                size="lg"
+                className="w-full sm:w-auto gap-2 text-base px-10 py-6 rounded-[var(--radius-pill)] bg-[var(--color-white)] text-[var(--color-accent-rose-gold)] hover:bg-[var(--color-primary-background)] shadow-[var(--shadow-large)] transition-[var(--transition-interactive)]"
+                client:load
+              >
+                <Calendar className="h-5 w-5" />
+                Réserver Maintenant
+              </Button>
+              <Button 
+                variant="outline"
+                size="lg"
+                className="w-full sm:w-auto text-base px-10 py-6 rounded-[var(--radius-pill)] border-2 border-[var(--color-white)] bg-transparent text-[var(--color-white)] hover:bg-[var(--color-white)] hover:text-[var(--color-secondary-mauve)] transition-[var(--transition-interactive)]"
+                client:load
+              >
+                Voir Tous les Services
+              </Button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Decorative circles -->
+        <div class="absolute top-10 right-10 w-64 h-64 rounded-full opacity-10 bg-white blur-3xl"></div>
+        <div class="absolute bottom-10 left-10 w-96 h-96 rounded-full opacity-10 bg-white blur-3xl"></div>
+      </section>
+    )}
+  </main>
+</Layout>
