@@ -1,13 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Button } from '../components/ui/button';
+import { Card, CardContent } from '../components/ui/card';
+import { Calendar, Clock, CheckCircle2, Mail, Phone, MapPin } from 'lucide-react';
 
 const WP_URL = import.meta.env.PUBLIC_WORDPRESS_URL || 'http://localhost:8000';
 // Use page ID to ensure we get the correct page
 const BOOKING_PAGE_URL = `${WP_URL}/?page_id=20`;
 
 // SEO Configuration
-const seoTitle = 'Réserver un rendez-vous | CG Aesthetics';
-const seoDescription = 'Réservez votre soin esthétique en ligne. Choisissez votre service, date et heure préférés. Confirmation immédiate par email.';
+const seoTitle = 'Réserver un Rendez-vous - CG Aesthetics | Booking en Ligne';
+const seoDescription = 'Réservez votre soin esthétique en ligne. Choisissez votre service, date et heure préférés. Confirmation immédiate par email. Réservation simple et rapide.';
 const seoCanonical = Astro.site ? new URL('/reserver', Astro.site).href : undefined;
 
 // Schema.org for booking page
@@ -47,99 +50,242 @@ const bookingSchema = {
   type="website"
   schema={bookingSchema}
 >
-  <div class="booking-page">
+  <main>
     <!-- Hero Section -->
-    <section class="booking-hero">
-      <div class="container mx-auto px-4 py-12 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">
-          Réservez votre rendez-vous
-        </h1>
-        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-          Choisissez votre soin, la date et l'heure qui vous conviennent. 
-          Réservation en ligne simple et rapide.
-        </p>
-      </div>
-    </section>
-
-    <!-- Booking Form Section - Minimal wrapper -->
-    <section class="booking-form-container">
-      <!-- Amelia Booking Form Iframe -->
-      <iframe
-        id="amelia-booking-iframe"
-        src={BOOKING_PAGE_URL}
-        title="Formulaire de réservation"
-        class="w-full border-0"
-        loading="lazy"
-      ></iframe>
-    </section>
-
-    <!-- Trust Signals -->
-    <section class="trust-signals bg-gray-50 py-12">
-      <div class="container mx-auto px-4">
-        <div class="grid md:grid-cols-3 gap-8 text-center">
-          <div class="trust-item">
-            <div class="text-4xl mb-4">📅</div>
-            <h3 class="text-lg font-semibold mb-2">Disponibilités en temps réel</h3>
-            <p class="text-gray-600">Consultez nos créneaux disponibles et réservez instantanément</p>
-          </div>
-          <div class="trust-item">
-            <div class="text-4xl mb-4">✉️</div>
-            <h3 class="text-lg font-semibold mb-2">Confirmation immédiate</h3>
-            <p class="text-gray-600">Recevez votre confirmation par email après la réservation</p>
-          </div>
-          <div class="trust-item">
-            <div class="text-4xl mb-4">🔒</div>
-            <h3 class="text-lg font-semibold mb-2">Paiement sécurisé</h3>
-            <p class="text-gray-600">Vos données sont protégées et sécurisées</p>
+    <section class="relative overflow-hidden" style="background: linear-gradient(135deg, var(--color-primary-background) 0%, var(--color-secondary-gray-light) 100%);">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+        <div class="max-w-4xl mx-auto text-center space-y-8">
+          <div class="space-y-4">
+            <p class="text-sm md:text-base font-medium tracking-[var(--letter-spacing-widest)] uppercase" style="color: var(--color-secondary-mauve);">
+              Réservation en Ligne
+            </p>
+            <h1 
+              class="text-4xl md:text-6xl lg:text-7xl font-[var(--font-weight-bold)] leading-[var(--line-height-tight)] tracking-[var(--letter-spacing-tight)]"
+              style="font-family: var(--font-heading); color: var(--color-text-heading);"
+            >
+              Réservez Votre
+              <span class="block mt-2" style="color: var(--color-accent-rose-gold);">Moment de Bien-être</span>
+            </h1>
+            <p 
+              class="text-lg md:text-xl max-w-2xl mx-auto leading-[var(--line-height-relaxed)]"
+              style="color: var(--color-text-muted); font-size: var(--font-size-body-lg);"
+            >
+              Choisissez votre soin, la date et l'heure qui vous conviennent. Réservation simple et confirmation immédiate.
+            </p>
           </div>
         </div>
       </div>
+      
+      <!-- Decorative Element -->
+      <div class="absolute bottom-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, var(--color-secondary-gray), transparent);"></div>
+    </section>
+
+    <!-- Booking Form Section -->
+    <section class="pt-4" style="background-color: var(--color-white);">
+
+
+          <!-- Booking Form Card -->
+          <Card client:visible className="border-0 shadow-[var(--shadow-medium)] overflow-hidden">
+            <CardContent client:load className="p-0">
+              <!-- Amelia Booking Form Iframe -->
+              <iframe
+                id="amelia-booking-iframe"
+                src={BOOKING_PAGE_URL}
+                title="Formulaire de réservation"
+                class="w-full border-0"
+                loading="lazy"
+              ></iframe>
+            </CardContent>
+          </Card>
+
+
     </section>
 
     <!-- Contact Alternative -->
-    <section class="contact-alternative py-12">
-      <div class="container mx-auto px-4 text-center">
-        <h2 class="text-2xl font-semibold mb-4">Besoin d'aide pour réserver ?</h2>
-        <p class="text-gray-600 mb-6">
-          Notre équipe est disponible pour vous assister
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a 
-            href="tel:+41XXXXXXXXX" 
-            class="inline-flex items-center justify-center px-6 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition"
-          >
-            📞 Appelez-nous
-          </a>
-          <a 
-            href="/contact" 
-            class="inline-flex items-center justify-center px-6 py-3 border-2 border-gray-800 text-gray-800 rounded-lg hover:bg-gray-50 transition"
-          >
-            📧 Contactez-nous
-          </a>
+    <section class="py-16 md:py-24" style="background-color: var(--color-secondary-gray-light);">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center space-y-8">
+          <div class="space-y-4">
+            <h2 
+              class="text-3xl md:text-4xl font-[var(--font-weight-semibold)] tracking-[var(--letter-spacing-wide)]"
+              style="font-family: var(--font-heading); color: var(--color-text-heading);"
+            >
+              Besoin d'Aide pour Réserver ?
+            </h2>
+            <p 
+              class="text-lg leading-[var(--line-height-relaxed)]"
+              style="color: var(--color-text-muted);"
+            >
+              Notre équipe est à votre disposition pour vous assister
+            </p>
+          </div>
+
+          <div class="grid sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
+            <Card client:visible className="border-0 shadow-[var(--shadow-default)] hover:shadow-[var(--shadow-hover)] transition-all duration-300">
+              <CardContent client:load className="p-6 text-center space-y-3">
+                <div 
+                  class="inline-flex p-3 rounded-full"
+                  style="background-color: var(--color-primary-accent-light);"
+                >
+                  <Phone 
+                    className="h-5 w-5 text-[var(--color-accent-rose-gold)]"
+                  />
+                </div>
+                <h3 
+                  class="text-base font-[var(--font-weight-semibold)]"
+                  style="color: var(--color-text-heading);"
+                >
+                  Téléphone
+                </h3>
+                <a 
+                  href="tel:+41763999732"
+                  class="text-sm transition-colors hover:text-[var(--color-accent-rose-gold)]"
+                  style="color: var(--color-text-muted);"
+                >
+                  +41 76 399 97 32
+                </a>
+              </CardContent>
+            </Card>
+
+            <Card client:visible className="border-0 shadow-[var(--shadow-default)] hover:shadow-[var(--shadow-hover)] transition-all duration-300">
+              <CardContent client:load className="p-6 text-center space-y-3">
+                <div 
+                  class="inline-flex p-3 rounded-full"
+                  style="background-color: var(--color-primary-accent-light);"
+                >
+                  <Mail 
+                    className="h-5 w-5 text-[var(--color-accent-rose-gold)]"
+                  />
+                </div>
+                <h3 
+                  class="text-base font-[var(--font-weight-semibold)]"
+                  style="color: var(--color-text-heading);"
+                >
+                  Email
+                </h3>
+                <a 
+                  href="mailto:info@cgaesthetics.ch"
+                  class="text-sm transition-colors hover:text-[var(--color-accent-rose-gold)]"
+                  style="color: var(--color-text-muted);"
+                >
+                  info@cgaesthetics.ch
+                </a>
+              </CardContent>
+            </Card>
+
+            <Card client:visible className="border-0 shadow-[var(--shadow-default)] hover:shadow-[var(--shadow-hover)] transition-all duration-300">
+              <CardContent client:load className="p-6 text-center space-y-3">
+                <div 
+                  class="inline-flex p-3 rounded-full"
+                  style="background-color: var(--color-primary-accent-light);"
+                >
+                  <MapPin 
+                    className="h-5 w-5 text-[var(--color-accent-rose-gold)]"
+                  />
+                </div>
+                <h3 
+                  class="text-base font-[var(--font-weight-semibold)]"
+                  style="color: var(--color-text-heading);"
+                >
+                  Adresse
+                </h3>
+                <p 
+                  class="text-sm"
+                  style="color: var(--color-text-muted);"
+                >
+                  Avenue des Alpes, 60, Montreux, Suisse
+                </p>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </div>
     </section>
-  </div>
+
+    <!-- Additional Info Section -->
+    <section class="py-16 md:py-24" style="background-color: var(--color-white);">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-12 space-y-4">
+            <h2 
+              class="text-3xl md:text-4xl font-[var(--font-weight-semibold)] tracking-[var(--letter-spacing-wide)]"
+              style="font-family: var(--font-heading); color: var(--color-text-heading);"
+            >
+              Comment Ça Marche ?
+            </h2>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-8">
+            <div class="text-center space-y-4">
+              <div 
+                class="inline-flex items-center justify-center w-16 h-16 rounded-full text-2xl font-[var(--font-weight-bold)] text-white"
+                style="background: linear-gradient(135deg, var(--color-accent-rose-gold) 0%, var(--color-secondary-mauve) 100%); font-family: var(--font-heading);"
+              >
+                1
+              </div>
+              <h3 
+                class="text-xl font-[var(--font-weight-semibold)]"
+                style="color: var(--color-text-heading); font-family: var(--font-body);"
+              >
+                Choisissez Votre Soin
+              </h3>
+              <p 
+                class="text-sm leading-relaxed"
+                style="color: var(--color-text-muted);"
+              >
+                Parcourez notre gamme de services et sélectionnez celui qui vous convient
+              </p>
+            </div>
+
+            <div class="text-center space-y-4">
+              <div 
+                class="inline-flex items-center justify-center w-16 h-16 rounded-full text-2xl font-[var(--font-weight-bold)] text-white"
+                style="background: linear-gradient(135deg, var(--color-accent-rose-gold) 0%, var(--color-secondary-mauve) 100%); font-family: var(--font-heading);"
+              >
+                2
+              </div>
+              <h3 
+                class="text-xl font-[var(--font-weight-semibold)]"
+                style="color: var(--color-text-heading); font-family: var(--font-body);"
+              >
+                Sélectionnez Date & Heure
+              </h3>
+              <p 
+                class="text-sm leading-relaxed"
+                style="color: var(--color-text-muted);"
+              >
+                Choisissez le créneau qui s'adapte le mieux à votre emploi du temps
+              </p>
+            </div>
+
+            <div class="text-center space-y-4">
+              <div 
+                class="inline-flex items-center justify-center w-16 h-16 rounded-full text-2xl font-[var(--font-weight-bold)] text-white"
+                style="background: linear-gradient(135deg, var(--color-accent-rose-gold) 0%, var(--color-secondary-mauve) 100%); font-family: var(--font-heading);"
+              >
+                3
+              </div>
+              <h3 
+                class="text-xl font-[var(--font-weight-semibold)]"
+                style="color: var(--color-text-heading); font-family: var(--font-body);"
+              >
+                Confirmez & Profitez
+              </h3>
+              <p 
+                class="text-sm leading-relaxed"
+                style="color: var(--color-text-muted);"
+              >
+                Recevez votre confirmation et préparez-vous à un moment unique
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 </Layout>
 
 <style>
-  .booking-page {
-    min-height: 100vh;
-  }
-
-  .booking-hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-  }
-
-  /* Minimal styling for iframe container */
-  .booking-form-container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-  }
-
   /* Iframe responsive adjustments */
   #amelia-booking-iframe {
     display: block;
@@ -147,21 +293,9 @@ const bookingSchema = {
     min-height: 600px;
   }
 
-  /* Trust signals styling */
-  .trust-item {
-    padding: 1.5rem;
-  }
-
-  /* Smooth transitions */
-  a {
-    transition: all 0.3s ease;
-  }
-  
-  /* Remove on mobile for cleaner look */
-  @media (max-width: 768px) {
-    .booking-form-container {
-      padding: 1rem 0.5rem;
-    }
+  /* Smooth iframe loading */
+  #amelia-booking-iframe {
+    transition: opacity var(--duration-default) var(--ease-elegant);
   }
 </style>
 
@@ -173,7 +307,7 @@ const bookingSchema = {
     // Listen for messages from iframe to adjust height
     window.addEventListener('message', (event) => {
       // Security check - only accept messages from our WordPress domain
-      const wpUrl = 'http://localhost:8000'; // Will be replaced in production
+      const wpUrl = import.meta.env.PUBLIC_WORDPRESS_URL || 'http://localhost:8000';
       if (event.origin !== wpUrl.replace(/\/$/, '')) return;
       
       if (event.data.type === 'ameliaHeight') {
