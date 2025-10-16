@@ -191,9 +191,9 @@ const benefits = [
 
           <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredServices.map((service) => (
-              <Card client:visible className="group overflow-hidden border-0 transition-all duration-500 hover:-translate-y-2">
+              <Card client:visible noTopPadding className="group border-0 transition-all duration-500 hover:-translate-y-2">
                 {service.featuredImage?.node.sourceUrl && (
-                  <div class="relative overflow-hidden aspect-[4/3]">
+                  <div class="relative overflow-hidden aspect-[4/3] rounded-t-xl">
                     <OptimizedImage
                       src={service.featuredImage.node.sourceUrl} 
                       alt={service.featuredImage.node.altText || service.title}

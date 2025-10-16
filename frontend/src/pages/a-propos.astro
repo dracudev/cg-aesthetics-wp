@@ -185,10 +185,10 @@ const values = [
           </div>
 
           <!-- Profile Card -->
-          <Card client:visible className="border-0 shadow-[var(--shadow-medium)] overflow-hidden">
+          <Card client:visible noTopPadding className="border-0 shadow-[var(--shadow-medium)]">
             <div class="grid md:grid-cols-2 gap-0">
               <!-- Image -->
-              <div class="relative aspect-[4/5] md:aspect-auto">
+              <div class="relative aspect-[4/5] md:aspect-auto overflow-hidden rounded-t-xl md:rounded-t-none md:rounded-l-xl">
                 <OptimizedImage
                   src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?q=80&w=1887&auto=format&fit=crop"
                   alt="Carmen Gómez, Fondatrice de CG Aesthetics"
