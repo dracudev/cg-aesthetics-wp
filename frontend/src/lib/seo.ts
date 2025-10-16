@@ -148,6 +148,15 @@ export function buildServiceSchema(service: {
     provider: {
       '@type': 'BeautySalon',
       name: 'CG Aesthetics',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Avenue des Alpes, 60',
+        addressLocality: 'Montreux',
+        addressRegion: 'Vaud',
+        postalCode: '1820',
+        addressCountry: 'CH',
+      },
+      telephone: '+41763999732',
     },
   };
 
@@ -159,7 +168,7 @@ export function buildServiceSchema(service: {
     schema.offers = {
       '@type': 'Offer',
       price: service.price.replace(/[^0-9.]/g, ''),
-      priceCurrency: 'USD',
+      priceCurrency: 'CHF',
     };
   }
 
@@ -191,6 +200,12 @@ export function buildPersonSchema(person: {
     worksFor: {
       '@type': 'BeautySalon',
       name: 'CG Aesthetics',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Avenue des Alpes, 60',
+        addressLocality: 'Montreux',
+        addressCountry: 'CH',
+      },
     },
   };
 }
@@ -222,6 +237,12 @@ export function buildReviewSchema(review: {
     itemReviewed: {
       '@type': 'BeautySalon',
       name: 'CG Aesthetics',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Avenue des Alpes, 60',
+        addressLocality: 'Montreux',
+        addressCountry: 'CH',
+      },
     },
   };
 }
