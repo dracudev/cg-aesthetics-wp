@@ -18,6 +18,12 @@ export const SERVICE_DETAILS_FRAGMENT = gql`
         mediaDetails {
           width
           height
+          sizes {
+            sourceUrl
+            width
+            height
+            name
+          }
         }
       }
     }
@@ -44,6 +50,27 @@ export const SERVICE_DETAILS_FRAGMENT = gql`
         description
       }
     }
+    seo {
+      title
+      metaDesc
+      canonical
+      opengraphTitle
+      opengraphDescription
+      opengraphImage {
+        sourceUrl
+        altText
+      }
+      twitterTitle
+      twitterDescription
+      twitterImage {
+        sourceUrl
+        altText
+      }
+      metaRobotsNoindex
+      metaRobotsNofollow
+      focuskw
+    }
+    schemaOrg
   }
 `;
 
@@ -136,6 +163,16 @@ export const TEAM_MEMBER_DETAILS_FRAGMENT = gql`
         specialtyName
       }
     }
+    seo {
+      title
+      metaDesc
+      canonical
+      opengraphImage {
+        sourceUrl
+        altText
+      }
+    }
+    schemaOrg
   }
 `;
 
@@ -180,6 +217,7 @@ export const TESTIMONIAL_DETAILS_FRAGMENT = gql`
         }
       }
     }
+    schemaOrg
   }
 `;
 
@@ -221,6 +259,10 @@ export const GET_SITE_SETTINGS = gql`
       description
       url
       language
+    }
+    seoSettings {
+      title
+      metaDesc
     }
   }
 `;

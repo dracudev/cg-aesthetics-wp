@@ -2,6 +2,35 @@
  * TypeScript Type Definitions for WordPress Content
  */
 
+// SEO Types
+export interface SEO {
+  title?: string;
+  metaDesc?: string;
+  canonical?: string;
+  opengraphTitle?: string;
+  opengraphDescription?: string;
+  opengraphImage?: {
+    sourceUrl: string;
+    altText?: string;
+  };
+  twitterTitle?: string;
+  twitterDescription?: string;
+  twitterImage?: {
+    sourceUrl: string;
+    altText?: string;
+  };
+  metaRobotsNoindex?: string;
+  metaRobotsNofollow?: string;
+  focuskw?: string;
+  breadcrumbs?: Breadcrumb[];
+  schema?: string;
+}
+
+export interface Breadcrumb {
+  text: string;
+  url: string;
+}
+
 // Service Types
 export interface Service {
   id: string;
@@ -36,6 +65,8 @@ export interface Service {
   serviceCategories: {
     nodes: ServiceCategory[];
   };
+  seo?: SEO;
+  schemaOrg?: string;
 }
 
 export interface ServiceCategory {
@@ -66,6 +97,8 @@ export interface TeamMember {
       specialtyName: string;
     }>;
   };
+  seo?: SEO;
+  schemaOrg?: string;
 }
 
 // Testimonial Types
@@ -88,6 +121,7 @@ export interface Testimonial {
       slug: string;
     };
   };
+  schemaOrg?: string;
 }
 
 // Site Settings
@@ -129,4 +163,5 @@ export interface TestimonialsResponse {
 
 export interface SiteSettingsResponse {
   generalSettings: SiteSettings;
+  seoSettings?: SEO;
 }
