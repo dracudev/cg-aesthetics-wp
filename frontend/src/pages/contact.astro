@@ -1,0 +1,505 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Button } from '../components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
+import { Input } from '../components/ui/input';
+import { Textarea } from '../components/ui/textarea';
+import { Label } from '../components/ui/label';
+import OptimizedImage from '../components/OptimizedImage.astro';
+import { MapPin, Phone, Mail, Clock, Send, Instagram, Facebook } from 'lucide-react';
+
+// SEO Configuration
+const seoTitle = 'Contact - CG Aesthetics | Contactez notre Institut de Beauté à Montreux';
+const seoDescription = 'Contactez CG Aesthetics pour prendre rendez-vous ou poser vos questions. Notre équipe est à votre écoute pour vous offrir une expérience beauté exceptionnelle à Montreux.';
+const canonicalUrl = Astro.site ? new URL('/contact', Astro.site).href : undefined;
+const ogImage = Astro.site ? new URL('/images/contact-hero.jpg', Astro.site).href : '/images/contact-hero.jpg';
+
+// Business Information
+const businessInfo = {
+  name: 'CG Aesthetics',
+  address: {
+    street: 'Avenue des Alpes, 60',
+    city: 'Montreux',
+    postalCode: '1820',
+    country: 'Suisse'
+  },
+  phone: '+41 76 399 97 32',
+  email: 'contact@cgaesthetics.ch',
+  hours: [
+    { day: 'Lundi', hours: '9h00 - 18h00' },
+    { day: 'Mardi', hours: '9h00 - 18h00' },
+    { day: 'Mercredi', hours: '9h00 - 18h00' },
+    { day: 'Jeudi', hours: '9h00 - 18h00' },
+    { day: 'Vendredi', hours: '9h00 - 18h00' },
+    { day: 'Samedi', hours: 'Fermé' },
+    { day: 'Dimanche', hours: 'Fermé' }
+  ],
+  social: {
+    instagram: 'https://instagram.com/cgaesthetics',
+    facebook: 'https://facebook.com/cgaesthetics'
+  }
+};
+
+// Schema.org Local Business
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BeautySalon',
+  name: businessInfo.name,
+  image: ogImage,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: businessInfo.address.street,
+    addressLocality: businessInfo.address.city,
+    postalCode: businessInfo.address.postalCode,
+    addressCountry: 'CH'
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 46.4312,
+    longitude: 6.9107
+  },
+  url: Astro.site?.href || '',
+  telephone: businessInfo.phone,
+  email: businessInfo.email,
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '09:00',
+      closes: '18:00'
+    }
+  ],
+  priceRange: '$$',
+  sameAs: [
+    businessInfo.social.instagram,
+    businessInfo.social.facebook
+  ]
+};
+---
+
+<Layout 
+  title={seoTitle}
+  description={seoDescription}
+  canonical={canonicalUrl}
+  image={ogImage}
+  imageAlt="Contact CG Aesthetics Montreux"
+  type="website"
+  schema={localBusinessSchema}
+>
+  <main>
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden min-h-[60vh] flex items-center justify-center">
+      <!-- Background Image -->
+      <div class="absolute inset-0 z-0">
+        <OptimizedImage
+          src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?q=80&w=2667&auto=format&fit=crop"
+          alt="Réception accueillante d'un spa de luxe"
+          width={2667}
+          height={1440}
+          class="w-full h-full object-cover"
+          loading="eager"
+        />
+        <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60"></div>
+      </div>
+
+      <!-- Content -->
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32 relative z-10">
+        <div class="max-w-4xl mx-auto text-center space-y-6">
+          <p class="text-sm md:text-base font-medium tracking-[var(--letter-spacing-widest)] uppercase text-white/90">
+            Nous Contacter
+          </p>
+          <h1 
+            class="text-4xl md:text-6xl lg:text-7xl font-[var(--font-weight-bold)] leading-[var(--line-height-tight)] tracking-[var(--letter-spacing-tight)] text-white"
+            style="font-family: var(--font-heading);"
+          >
+            Parlons de Votre
+            <span class="block mt-2" style="color: var(--color-accent-rose-gold-light);">Beauté</span>
+          </h1>
+          <p class="text-lg md:text-xl text-white/95 leading-[var(--line-height-relaxed)] max-w-2xl mx-auto">
+            Notre équipe est à votre écoute pour répondre à toutes vos questions et vous accompagner dans votre parcours beauté.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-16 md:py-24" style="background-color: var(--color-white);">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+          <div class="grid lg:grid-cols-2 gap-12">
+            <!-- Contact Form -->
+            <div>
+              <div class="mb-8 space-y-3">
+                <h2 
+                  class="text-3xl md:text-4xl font-[var(--font-weight-semibold)]"
+                  style="font-family: var(--font-heading); color: var(--color-text-heading);"
+                >
+                  Envoyez-nous un Message
+                </h2>
+                <p style="color: var(--color-text-muted); line-height: var(--line-height-relaxed);">
+                  Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.
+                </p>
+              </div>
+
+              <Card client:visible className="border-0 shadow-[var(--shadow-medium)]">
+                <CardContent client:load className="pt-6">
+                  <form class="space-y-6" id="contact-form">
+                    <div class="grid sm:grid-cols-2 gap-4">
+                      <div>
+                        <Label htmlFor="firstName" client:load>Prénom *</Label>
+                        <Input 
+                          id="firstName" 
+                          name="firstName" 
+                          type="text" 
+                          placeholder="Votre prénom"
+                          required
+                          client:load
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="lastName" client:load>Nom *</Label>
+                        <Input 
+                          id="lastName" 
+                          name="lastName" 
+                          type="text" 
+                          placeholder="Votre nom"
+                          required
+                          client:load
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <Label htmlFor="email" client:load>Email *</Label>
+                      <Input 
+                        id="email" 
+                        name="email" 
+                        type="email" 
+                        placeholder="votre.email@exemple.com"
+                        required
+                        client:load
+                      />
+                    </div>
+
+                    <div>
+                      <Label htmlFor="phone" client:load>Téléphone</Label>
+                      <Input 
+                        id="phone" 
+                        name="phone" 
+                        type="tel" 
+                        placeholder="+41 XX XXX XX XX"
+                        client:load
+                      />
+                    </div>
+
+                    <div>
+                      <Label htmlFor="subject" client:load>Sujet *</Label>
+                      <Input 
+                        id="subject" 
+                        name="subject" 
+                        type="text" 
+                        placeholder="L'objet de votre message"
+                        required
+                        client:load
+                      />
+                    </div>
+
+                    <div>
+                      <Label htmlFor="message" client:load>Message *</Label>
+                      <Textarea 
+                        id="message" 
+                        name="message" 
+                        placeholder="Parlez-nous de vos besoins..."
+                        rows={6}
+                        required
+                        client:load
+                      />
+                    </div>
+
+                    <div class="pt-2">
+                      <Button 
+                        type="submit"
+                        size="lg"
+                        className="w-full gap-2 rounded-[var(--radius-pill)] bg-[var(--color-accent-rose-gold)] hover:bg-[var(--color-accent-rose-gold-dark)] shadow-[var(--shadow-rose-gold)]"
+                        client:load
+                      >
+                        <Send className="h-5 w-5" />
+                        Envoyer le Message
+                      </Button>
+                    </div>
+
+                    <p class="text-xs text-center" style="color: var(--color-text-muted);">
+                      * Champs obligatoires. Vos données sont protégées et ne seront jamais partagées.
+                    </p>
+                  </form>
+                </CardContent>
+              </Card>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="space-y-6">
+              <!-- Business Hours -->
+              <Card client:visible className="border-0 shadow-[var(--shadow-medium)] mb-6">
+                <CardHeader>
+                  <CardTitle client:load className="flex items-center gap-3">
+                    <div 
+                      class="p-2 rounded-full"
+                      style="background-color: var(--color-primary-accent-light);"
+                    >
+                      <Clock className="h-5 w-5 text-[var(--color-accent-rose-gold)]" />
+                    </div>
+                    Horaires d'Ouverture
+                  </CardTitle>
+                </CardHeader>
+                <CardContent client:load>
+                  <div class="space-y-2">
+                    {businessInfo.hours.map(({ day, hours }) => (
+                      <div class="flex justify-between items-center py-2.5 border-b last:border-b-0 border-[var(--color-secondary-gray)]">
+                        <span 
+                          class="font-[var(--font-weight-medium)]"
+                          style="color: var(--color-text-body);"
+                        >
+                          {day}
+                        </span>
+                        <span 
+                          class={hours === 'Fermé' ? 'text-[var(--color-text-muted)]' : 'text-[var(--color-accent-rose-gold)] font-[var(--font-weight-medium)]'}
+                        >
+                          {hours}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              <!-- Contact Details -->
+              <Card client:visible className="border-0 shadow-[var(--shadow-medium)] mt-6">
+                <CardHeader>
+                  <CardTitle client:load>Coordonnées</CardTitle>
+                </CardHeader>
+                <CardContent client:load>
+                  <div class="space-y-6">
+                    <!-- Address -->
+                    <div class="flex gap-4">
+                      <div 
+                        class="p-2 rounded-full h-fit"
+                        style="background-color: var(--color-primary-accent-light);"
+                      >
+                        <MapPin className="h-5 w-5 text-[var(--color-accent-rose-gold)]" />
+                      </div>
+                      <div class="space-y-1">
+                        <h3 
+                          class="font-[var(--font-weight-semibold)]"
+                          style="color: var(--color-text-heading);"
+                        >
+                          Adresse
+                        </h3>
+                        <p style="color: var(--color-text-body);">
+                          {businessInfo.address.street}<br />
+                          {businessInfo.address.postalCode} {businessInfo.address.city}<br />
+                          {businessInfo.address.country}
+                        </p>
+                      </div>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="flex gap-4">
+                      <div 
+                        class="p-2 rounded-full h-fit"
+                        style="background-color: var(--color-primary-accent-light);"
+                      >
+                        <Phone className="h-5 w-5 text-[var(--color-accent-rose-gold)]" />
+                      </div>
+                      <div class="space-y-1">
+                        <h3 
+                          class="font-[var(--font-weight-semibold)]"
+                          style="color: var(--color-text-heading);"
+                        >
+                          Téléphone
+                        </h3>
+                        <a 
+                          href={`tel:${businessInfo.phone}`}
+                          class="transition-colors hover:text-[var(--color-accent-rose-gold)]"
+                          style="color: var(--color-text-body);"
+                        >
+                          {businessInfo.phone}
+                        </a>
+                      </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="flex gap-4">
+                      <div 
+                        class="p-2 rounded-full h-fit"
+                        style="background-color: var(--color-primary-accent-light);"
+                      >
+                        <Mail className="h-5 w-5 text-[var(--color-accent-rose-gold)]" />
+                      </div>
+                      <div class="space-y-1">
+                        <h3 
+                          class="font-[var(--font-weight-semibold)]"
+                          style="color: var(--color-text-heading);"
+                        >
+                          Email
+                        </h3>
+                        <a 
+                          href={`mailto:${businessInfo.email}`}
+                          class="transition-colors hover:text-[var(--color-accent-rose-gold)]"
+                          style="color: var(--color-text-body);"
+                        >
+                          {businessInfo.email}
+                        </a>
+                      </div>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div class="pt-6 border-t" style="border-color: var(--color-secondary-gray);">
+                    <h3 
+                      class="font-[var(--font-weight-semibold)] mb-4"
+                      style="color: var(--color-text-heading);"
+                    >
+                      Suivez-nous
+                    </h3>
+                    <div class="flex gap-3">
+                      <a 
+                        href={businessInfo.social.instagram}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="p-3 rounded-full transition-all hover:scale-110 hover:shadow-[var(--shadow-rose-gold)]"
+                        style="background-color: var(--color-primary-accent-light);"
+                        aria-label="Instagram"
+                      >
+                        <Instagram className="h-5 w-5 text-[var(--color-accent-rose-gold)]" />
+                      </a>
+                      <a 
+                        href={businessInfo.social.facebook}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="p-3 rounded-full transition-all hover:scale-110 hover:shadow-[var(--shadow-rose-gold)]"
+                        style="background-color: var(--color-primary-accent-light);"
+                        aria-label="Facebook"
+                      >
+                        <Facebook className="h-5 w-5 text-[var(--color-accent-rose-gold)]" />
+                      </a>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="py-16 md:py-24" style="background-color: var(--color-secondary-gray-light);">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-12 space-y-3">
+            <h2 
+              class="text-3xl md:text-4xl font-[var(--font-weight-semibold)]"
+              style="font-family: var(--font-heading); color: var(--color-text-heading);"
+            >
+              Venez Nous Rendre Visite
+            </h2>
+            <p style="color: var(--color-text-muted); line-height: var(--line-height-relaxed);">
+              Notre institut est situé au cœur de Montreux, facilement accessible
+            </p>
+          </div>
+
+          <!-- Google Maps Embed -->
+          <div class="rounded-xl overflow-hidden shadow-[var(--shadow-large)]" style="height: 450px;">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2746.8362743927677!2d6.908889776583498!3d46.431199271098345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478ea0c0b8e0a2e7%3A0x8c8c8c8c8c8c8c8c!2sAv.%20des%20Alpes%2C%201820%20Montreux%2C%20Switzerland!5e0!3m2!1sen!2s!4v1697458000000!5m2!1sen!2s"
+              width="100%"
+              height="100%"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Localisation de CG Aesthetics à Montreux"
+            ></iframe>
+          </div>
+
+          <!-- Directions -->
+          <div class="mt-8 text-center">
+            <p style="color: var(--color-text-muted);">
+              <strong style="color: var(--color-text-body);">Parking disponible</strong> • 
+              À 5 minutes à pied de la gare de Montreux • 
+              Accessible en transport en commun
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section 
+      class="py-20 md:py-32 relative overflow-hidden"
+      style="background: linear-gradient(135deg, var(--color-accent-rose-gold) 0%, var(--color-secondary-mauve) 100%);"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="max-w-3xl mx-auto text-center space-y-8">
+          <h2 
+            class="text-3xl md:text-5xl font-[var(--font-weight-bold)] tracking-[var(--letter-spacing-wide)] text-white"
+            style="font-family: var(--font-heading);"
+          >
+            Prête pour Votre Transformation ?
+          </h2>
+          <p class="text-lg md:text-xl text-white/90 leading-[var(--line-height-relaxed)] max-w-2xl mx-auto">
+            Réservez votre rendez-vous dès maintenant et découvrez l'expérience CG Aesthetics
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
+            <Button 
+              size="lg"
+              className="w-full sm:w-auto gap-2 text-base px-10 py-6 rounded-[var(--radius-pill)] bg-[var(--color-white)] text-[var(--color-accent-rose-gold)] hover:bg-[var(--color-primary-background)] shadow-[var(--shadow-large)] transition-[var(--transition-interactive)]"
+              client:load
+            >
+              <a href="/reserver" class="flex items-center gap-2">
+                <Clock className="h-5 w-5" />
+                Réserver un Rendez-vous
+              </a>
+            </Button>
+            <Button 
+              variant="outline"
+              size="lg"
+              className="w-full sm:w-auto text-base px-10 py-6 rounded-[var(--radius-pill)] border-2 border-[var(--color-white)] bg-transparent text-[var(--color-white)] hover:bg-[var(--color-white)] hover:text-[var(--color-secondary-mauve)] transition-[var(--transition-interactive)]"
+              client:load
+            >
+              <a href="/services">
+                Découvrir Nos Services
+              </a>
+            </Button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Decorative circles -->
+      <div class="absolute top-10 right-10 w-64 h-64 rounded-full opacity-10 bg-white blur-3xl"></div>
+      <div class="absolute bottom-10 left-10 w-96 h-96 rounded-full opacity-10 bg-white blur-3xl"></div>
+    </section>
+  </main>
+</Layout>
+
+<script>
+  // Contact form handling
+  const form = document.getElementById('contact-form');
+  
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(form as HTMLFormElement);
+      const data = Object.fromEntries(formData.entries());
+      
+      // Here you would normally send the data to your backend
+      console.log('Form submitted:', data);
+      
+      // Show success message (you can customize this)
+      alert('Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.');
+      
+      // Reset form
+      (form as HTMLFormElement).reset();
+    });
+  }
+</script>
