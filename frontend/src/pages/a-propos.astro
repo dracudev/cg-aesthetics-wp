@@ -1,0 +1,333 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Button } from '../components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
+import OptimizedImage from '../components/OptimizedImage.astro';
+import { buildPersonSchema } from '../lib/seo';
+import { User, Heart, Award, Sparkles } from 'lucide-react';
+
+// SEO Configuration
+const seoTitle = 'À Propos de CG Aesthetics | Découvrez notre fondatrice Carmen Gómez';
+const seoDescription = 'Découvrez l\'histoire de CG Aesthetics, notre passion pour la beauté et l\'expertise de notre fondatrice, Carmen Gómez. Une approche personnalisée pour des soins d\'exception.';
+const canonicalUrl = Astro.site ? new URL('/a-propos', Astro.site).href : undefined;
+const ogImage = Astro.site ? new URL('/images/about-hero.jpg', Astro.site).href : '/images/about-hero.jpg';
+
+// Build Person Schema for Carmen Gómez
+const founderSchema = buildPersonSchema({
+  name: 'Carmen Gómez',
+  jobTitle: 'Fondatrice & Esthéticienne Principale',
+  description: 'Esthéticienne passionnée avec plus de 15 ans d\'expérience dans l\'industrie de la beauté, dédiée à offrir des soins personnalisés et exceptionnels à chaque cliente.',
+  image: ogImage,
+  url: canonicalUrl || '',
+});
+
+// Mission values
+const values = [
+  {
+    icon: Heart,
+    title: 'Passion',
+    description: 'Notre amour pour l\'art de sublimer la beauté naturelle guide chacune de nos actions.'
+  },
+  {
+    icon: Award,
+    title: 'Excellence',
+    description: 'Nous utilisons uniquement les meilleures techniques et produits pour garantir des résultats optimaux.'
+  },
+  {
+    icon: Sparkles,
+    title: 'Innovation',
+    description: 'Nous restons à la pointe des dernières avancées en matière de soins esthétiques.'
+  },
+  {
+    icon: User,
+    title: 'Personnalisation',
+    description: 'Chaque cliente est unique et mérite une attention sur-mesure pour ses besoins spécifiques.'
+  }
+];
+---
+
+<Layout 
+  title={seoTitle}
+  description={seoDescription}
+  canonical={canonicalUrl}
+  image={ogImage}
+  imageAlt="Carmen Gómez, fondatrice de CG Aesthetics"
+  type="profile"
+  schema={founderSchema}
+>
+  <main>
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden min-h-[70vh] flex items-center justify-center">
+      <!-- Background Image -->
+      <div class="absolute inset-0 z-0">
+        <OptimizedImage
+          src="https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=2574&auto=format&fit=crop"
+          alt="Intérieur serein du salon CG Aesthetics"
+          width={2574}
+          height={1440}
+          class="w-full h-full object-cover"
+          loading="eager"
+        />
+        <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50"></div>
+      </div>
+
+      <!-- Content -->
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32 relative z-10">
+        <div class="max-w-4xl mx-auto text-center space-y-6">
+          <p class="text-sm md:text-base font-medium tracking-[var(--letter-spacing-widest)] uppercase text-white/90">
+            Notre Histoire
+          </p>
+          <h1 
+            class="text-4xl md:text-6xl lg:text-7xl font-[var(--font-weight-bold)] leading-[var(--line-height-tight)] tracking-[var(--letter-spacing-tight)] text-white"
+            style="font-family: var(--font-heading);"
+          >
+            La Passion de la Beauté
+          </h1>
+          <p class="text-lg md:text-xl text-white/95 leading-[var(--line-height-relaxed)] max-w-2xl mx-auto">
+            Découvrez la vision et l'expertise qui animent CG Aesthetics.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Introduction Block -->
+    <section class="py-16 md:py-24" style="background-color: var(--color-white);">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto space-y-8">
+          <div class="text-center space-y-4 mb-12">
+            <h2 
+              class="text-3xl md:text-5xl font-[var(--font-weight-semibold)] tracking-[var(--letter-spacing-wide)]"
+              style="font-family: var(--font-heading); color: var(--color-text-heading);"
+            >
+              Notre Mission
+            </h2>
+          </div>
+
+          <div class="space-y-6 text-lg leading-[var(--line-height-relaxed)]" style="color: var(--color-text-body);">
+            <p>
+              Chez CG Aesthetics, nous croyons que chaque personne mérite de se sentir belle et confiante dans sa peau. 
+              Notre mission est de créer une expérience unique où le bien-être rencontre l'excellence esthétique, 
+              dans un environnement chaleureux et accueillant qui vous fait vous sentir chez vous.
+            </p>
+            
+            <p>
+              Nous nous engageons à offrir des soins personnalisés qui répondent aux besoins spécifiques de chaque cliente. 
+              En utilisant les techniques les plus avancées et les produits de la plus haute qualité, nous garantissons 
+              des résultats exceptionnels qui révèlent votre beauté naturelle tout en respectant l'harmonie de votre visage 
+              et de votre corps.
+            </p>
+
+            <p>
+              Notre approche holistique va au-delà des simples traitements esthétiques. Nous créons un sanctuaire de 
+              sérénité où vous pouvez vous échapper du stress quotidien, vous reconnecter avec vous-même et repartir 
+              rayonnante, tant à l'intérieur qu'à l'extérieur. Chaque visite est une célébration de votre beauté unique.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="py-16 md:py-24" style="background-color: var(--color-secondary-gray-light);">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center mb-16 space-y-4">
+          <h2 
+            class="text-3xl md:text-5xl font-[var(--font-weight-semibold)] tracking-[var(--letter-spacing-wide)]"
+            style="font-family: var(--font-heading); color: var(--color-text-heading);"
+          >
+            Nos Valeurs
+          </h2>
+          <p style="color: var(--color-text-muted); font-size: var(--font-size-body-lg); line-height: var(--line-height-relaxed);">
+            Les piliers qui guident notre approche de la beauté et du bien-être
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {values.map(({ icon: Icon, title, description }) => (
+            <div class="text-center space-y-4 group">
+              <div 
+                class="inline-flex p-4 rounded-full transition-all duration-300 group-hover:scale-110 group-hover:shadow-[var(--shadow-rose-gold)]"
+                style="background-color: var(--color-white);"
+              >
+                <Icon 
+                  className="h-8 w-8 text-[var(--color-accent-rose-gold)]"
+                />
+              </div>
+              <h3 
+                class="text-xl font-[var(--font-weight-semibold)]"
+                style="color: var(--color-text-heading); font-family: var(--font-body);"
+              >
+                {title}
+              </h3>
+              <p 
+                class="text-sm leading-[var(--line-height-relaxed)]"
+                style="color: var(--color-text-muted);"
+              >
+                {description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section class="py-16 md:py-24" style="background-color: var(--color-white);">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-16 space-y-4">
+            <h2 
+              class="text-3xl md:text-5xl font-[var(--font-weight-semibold)] tracking-[var(--letter-spacing-wide)]"
+              style="font-family: var(--font-heading); color: var(--color-text-heading);"
+            >
+              Rencontrez Notre Fondatrice
+            </h2>
+          </div>
+
+          <!-- Profile Card -->
+          <Card client:visible className="border-0 shadow-[var(--shadow-medium)] overflow-hidden">
+            <div class="grid md:grid-cols-2 gap-0">
+              <!-- Image -->
+              <div class="relative aspect-[4/5] md:aspect-auto">
+                <OptimizedImage
+                  src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?q=80&w=1887&auto=format&fit=crop"
+                  alt="Carmen Gómez, Fondatrice de CG Aesthetics"
+                  width={600}
+                  height={750}
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              </div>
+
+              <!-- Content -->
+              <div class="p-8 md:p-12 flex flex-col justify-center space-y-6">
+                <div class="space-y-3">
+                  <div 
+                    class="inline-block px-4 py-2 rounded-full text-sm font-medium"
+                    style="background-color: var(--color-primary-accent-light); color: var(--color-secondary-mauve);"
+                  >
+                    Fondatrice & Esthéticienne Principale
+                  </div>
+                  
+                  <h3 
+                    class="text-3xl md:text-4xl font-[var(--font-weight-bold)]"
+                    style="font-family: var(--font-heading); color: var(--color-text-heading);"
+                  >
+                    Carmen Gómez
+                  </h3>
+                </div>
+
+                <div class="space-y-4 text-base leading-[var(--line-height-relaxed)]" style="color: var(--color-text-body);">
+                  <p>
+                    La passion de Carmen pour l'esthétique a commencé il y a plus de 15 ans, lorsqu'elle a découvert 
+                    le pouvoir transformateur des soins de beauté. Diplômée des meilleures écoles d'esthétique 
+                    européennes, elle a consacré sa carrière à perfectionner son art et à apprendre les techniques 
+                    les plus innovantes.
+                  </p>
+
+                  <p>
+                    Ce qui distingue Carmen, c'est sa capacité à créer une connexion authentique avec chacune de 
+                    ses clientes. Elle comprend que la beauté n'est pas seulement une question d'apparence, mais 
+                    aussi de confiance en soi et de bien-être intérieur. Son approche empathique et son attention 
+                    méticuleuse aux détails garantissent que chaque cliente repart non seulement plus belle, mais 
+                    aussi revitalisée et confiante.
+                  </p>
+
+                  <p>
+                    Aujourd'hui, Carmen continue de se former aux dernières innovations en matière de soins 
+                    esthétiques, tout en restant fidèle à sa philosophie : révéler la beauté naturelle de chaque 
+                    cliente avec des soins personnalisés et exceptionnels.
+                  </p>
+                </div>
+
+                <!-- Stats -->
+                <div class="grid grid-cols-3 gap-6 pt-6 border-t" style="border-color: var(--color-secondary-gray);">
+                  <div class="text-center">
+                    <div 
+                      class="text-3xl font-[var(--font-weight-bold)]"
+                      style="color: var(--color-accent-rose-gold); font-family: var(--font-heading);"
+                    >
+                      15+
+                    </div>
+                    <div class="text-sm mt-1" style="color: var(--color-text-muted);">
+                      Années d'Expérience
+                    </div>
+                  </div>
+                  <div class="text-center">
+                    <div 
+                      class="text-3xl font-[var(--font-weight-bold)]"
+                      style="color: var(--color-accent-rose-gold); font-family: var(--font-heading);"
+                    >
+                      1000+
+                    </div>
+                    <div class="text-sm mt-1" style="color: var(--color-text-muted);">
+                      Clientes Satisfaites
+                    </div>
+                  </div>
+                  <div class="text-center">
+                    <div 
+                      class="text-3xl font-[var(--font-weight-bold)]"
+                      style="color: var(--color-accent-rose-gold); font-family: var(--font-heading);"
+                    >
+                      5★
+                    </div>
+                    <div class="text-sm mt-1" style="color: var(--color-text-muted);">
+                      Évaluations
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Card>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section 
+      class="py-20 md:py-32 relative overflow-hidden"
+      style="background: linear-gradient(135deg, var(--color-accent-rose-gold) 0%, var(--color-secondary-mauve) 100%);"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="max-w-3xl mx-auto text-center space-y-8">
+          <h2 
+            class="text-3xl md:text-5xl font-[var(--font-weight-bold)] tracking-[var(--letter-spacing-wide)] text-white"
+            style="font-family: var(--font-heading);"
+          >
+            Prête à Révéler Votre Beauté ?
+          </h2>
+          <p class="text-lg md:text-xl text-white/90 leading-[var(--line-height-relaxed)] max-w-2xl mx-auto">
+            Découvrez les soins conçus pour vous par Carmen et son équipe d'expertes passionnées.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
+            <Button 
+              size="lg"
+              className="w-full sm:w-auto gap-2 text-base px-10 py-6 rounded-[var(--radius-pill)] bg-[var(--color-white)] text-[var(--color-accent-rose-gold)] hover:bg-[var(--color-primary-background)] shadow-[var(--shadow-large)] transition-[var(--transition-interactive)]"
+              client:load
+            >
+              <a href="/services" class="flex items-center gap-2">
+                <Sparkles className="h-5 w-5" />
+                Voir Nos Services
+              </a>
+            </Button>
+            <Button 
+              variant="outline"
+              size="lg"
+              className="w-full sm:w-auto text-base px-10 py-6 rounded-[var(--radius-pill)] border-2 border-[var(--color-white)] bg-transparent text-[var(--color-white)] hover:bg-[var(--color-white)] hover:text-[var(--color-secondary-mauve)] transition-[var(--transition-interactive)]"
+              client:load
+            >
+              <a href="/reserver">
+                Réserver un Rendez-vous
+              </a>
+            </Button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Decorative circles -->
+      <div class="absolute top-10 right-10 w-64 h-64 rounded-full opacity-10 bg-white blur-3xl"></div>
+      <div class="absolute bottom-10 left-10 w-96 h-96 rounded-full opacity-10 bg-white blur-3xl"></div>
+    </section>
+  </main>
+</Layout>

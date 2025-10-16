@@ -11,7 +11,7 @@ interface NavItem {
 const navItems: NavItem[] = [
   { label: 'Accueil', href: '/' },
   { label: 'Services', href: '/services' },
-  { label: 'À Propos', href: '/about' },
+  { label: 'À Propos', href: '/a-propos' },
   { label: 'Contact', href: '/contact' },
 ];
 

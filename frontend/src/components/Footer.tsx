@@ -9,7 +9,7 @@ const footerLinks = {
     { label: 'Manucure & Pédicure', href: '/services/manucure-pedicure' },
   ],
   info: [
-    { label: 'À Propos', href: '/about' },
+    { label: 'À Propos', href: '/a-propos' },
     { label: 'Contact', href: '/contact' },
     { label: 'Blog', href: '/blog' },
     { label: 'Témoignages', href: '/testimonials' },
