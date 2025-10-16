@@ -1,37 +1,40 @@
-# CG Aesthetics - WordPress Headless CMS + Astro Frontend
+# CG Aesthetics Website
 
-Modern aesthetics clinic website built with Headless WordPress (GraphQL API) and Astro for optimal performance.
+Modern luxury spa website built with Headless WordPress (GraphQL API) and Astro for optimal performance, SEO, and user experience.
 
-## 🚀 Project Structure
+## Project Structure
 
-```tree
+```
 cg-aesthetics-wp/
 ├── docker-compose.yml          # Docker setup for WordPress + MySQL
+├── dev-guide.md                # Complete development guide & progress tracking
 ├── wordpress/                  # WordPress backend (Headless CMS)
 │   ├── wp-content/
 │   │   ├── themes/
 │   │   │   └── cg-aesthetics-headless/  # Custom headless theme
-│   │   ├── plugins/            # WordPress plugins (WPGraphQL, ACF)
+│   │   ├── plugins/            # WPGraphQL, ACF Pro, Amelia, Yoast SEO
 │   │   └── uploads/            # Media uploads
 │   └── README.md               # WordPress setup instructions
-├── frontend/                   # Astro frontend application
+├── frontend/                   # Astro 4.x frontend application
 │   ├── src/
-│   │   ├── components/         # Reusable UI components
-│   │   ├── layouts/            # Page layouts
-│   │   ├── pages/              # Route pages
-│   │   └── lib/                # Utilities and GraphQL client
-│   ├── public/                 # Static assets
+│   │   ├── components/         # shadcn/ui adapted components + custom
+│   │   ├── layouts/            # Layout.astro with SEO
+│   │   ├── pages/              # 5 core pages (index, services, about, contact, booking)
+│   │   ├── lib/                # Apollo Client, queries, utils, SEO helpers
+│   │   ├── styles/             # Tailwind CSS with custom design tokens
+│   │   └── types/              # TypeScript definitions
+│   ├── public/                 # robots.txt, sitemap, manifest
 │   └── package.json
-└── PROJECT_SCOPE.md            # Complete project documentation
+└── agent-docs/                 # Implementation guides & SEO documentation
 ```
 
-## 📋 Prerequisites
+## Prerequisites
 
 - **Docker + Docker Compose**
 - **Node.js** 18+ and **pnpm**
 - **Git**
 
-## 🛠️ Quick Start
+## Quick Start
 
 ### 1. Clone and Setup
 
@@ -97,7 +100,7 @@ docker-compose exec wpcli wp rewrite flush
 
 **Note:**
 
-- ✅ **ACF fields are manually registered to GraphQL** in `functions.php` (no WPGraphQL for ACF plugin needed due to compatibility issues)
+- **ACF fields are manually registered to GraphQL** in `functions.php` (no WPGraphQL for ACF plugin needed due to compatibility issues)
 - If you have ACF Pro license, you can install it from <https://www.advancedcustomfields.com/my-account/>
 
 ### 5. Create Service Categories
@@ -144,7 +147,7 @@ pnpm dev
 
 The frontend will be available at: <http://localhost:4321>
 
-## 🐳 Docker Commands
+## Docker Commands
 
 ```bash
 # Start services
@@ -175,7 +178,7 @@ docker-compose exec -T wpcli wp db import - < backup.sql
 docker-compose down -v
 ```
 
-## 📦 Frontend Development (pnpm)
+## Frontend Development (pnpm)
 
 ```bash
 cd frontend
@@ -200,7 +203,7 @@ pnpm astro add react
 pnpm check
 ```
 
-## 🔧 Configuration
+## Configuration
 
 ### WordPress Configuration
 
@@ -224,7 +227,7 @@ PUBLIC_WORDPRESS_URL=http://localhost:8000
 PUBLIC_GRAPHQL_ENDPOINT=http://localhost:8000/graphql
 ```
 
-## 📚 Content Model
+## Content Model
 
 ### Custom Post Types
 
@@ -247,108 +250,83 @@ PUBLIC_GRAPHQL_ENDPOINT=http://localhost:8000/graphql
 - **Service Categories** (`service_category`)
   - Hierarchical taxonomy for organizing services
 
-## 🔌 WordPress Plugins
+## WordPress Plugins
 
-| Plugin                 | Purpose                      | Status         | Notes                    |
-| ---------------------- | ---------------------------- | -------------- | ------------------------ |
-| WPGraphQL              | GraphQL API                  | ✅ Installed   | v2.3.8                   |
-| Advanced Custom Fields | Custom field management      | ✅ Installed   | v6.6.0 (Free)            |
-| ~~WPGraphQL for ACF~~  | Expose ACF fields to GraphQL | ❌ Not needed  | Manual registration used |
-| Yoast SEO or Rank Math | SEO optimization             | 🔵 Recommended | Not yet installed        |
-| Amelia or Bookly       | Booking system               | 📅 Phase 2.3   | Future phase             |
+| Plugin                      | Purpose                      | Version | Status    | Notes                          |
+| --------------------------- | ---------------------------- | ------- | --------- | ------------------------------ |
+| WPGraphQL                   | GraphQL API                  | 2.3.8+  | Installed | Core headless functionality    |
+| Advanced Custom Fields Pro  | Custom field management      | 6.6.0+  | Installed | Manual GraphQL registration    |
+| Yoast SEO Premium           | SEO optimization             | Latest  | Installed | Schema.org, XML sitemaps       |
+| Amelia Booking              | Appointment booking system   | 1.2.34+ | Installed | Integrated with services       |
+| ~~WPGraphQL for ACF~~       | Expose ACF fields to GraphQL | N/A     | Not used  | Fields registered in functions |
+| WPGraphQL CORS _(optional)_ | Enhanced CORS control        | Latest  | Optional  | For production deployment      |
 
-## 🎨 Tech Stack
+## Tech Stack
 
 **Backend:**
 
 - WordPress 6.4+ (Headless CMS)
 - MySQL 8.0
 - PHP 8.0+
-- WPGraphQL
+- WPGraphQL 2.3.8+
+- ACF Pro 6.6.0+
+- Yoast SEO Premium
+- Amelia Booking v1.2.34+
 
 **Frontend:**
 
-- Astro 4.x
+- Astro 4.x (Static Site Generation)
 - TypeScript (Strict mode)
-- Tailwind CSS
+- Tailwind CSS 4.x with OKLCH color space
+- shadcn/ui components (adapted for Astro)
 - Apollo Client (GraphQL)
-- React (for interactive components)
+- React 18+ (for interactive components)
+- Lucide React (icons)
+
+**Design System:**
+
+- Typography: Cormorant Garamond (headings) + Montserrat (body)
+- Colors: Rose gold (#d4af8e), Mauve (#a67c7c), Blush pink (#f4d7d7)
+- Responsive: Mobile-first with Tailwind breakpoints
+- Components: Button, Card, Input, Label, Textarea, Sheet, Separator
 
 **DevOps:**
 
 - Docker & Docker Compose
 - pnpm (Package manager)
-- Git
+- Git (version control)
 
-## 📖 Development Workflow
+## Development Workflow
 
 1. **Backend Development:**
 
    - Modify theme files in `wordpress/wp-content/themes/cg-aesthetics-headless/`
-   - Changes are automatically reflected (volume mounted)
+   - Update ACF fields, custom post types, taxonomies
+   - Changes are automatically reflected (Docker volume mounted)
    - Test GraphQL queries at <http://localhost:8000/graphql>
+   - Configure Yoast SEO settings and Schema.org
 
 2. **Frontend Development:**
 
-   - Work in `frontend/src/`
-   - Hot reload enabled with `pnpm dev`
-   - Build and preview before deployment
+   - Work in `frontend/src/` (components, pages, layouts)
+   - Hot reload enabled with `pnpm dev` at <http://localhost:4321>
+   - Component development with shadcn/ui patterns
+   - Type-safe GraphQL queries with TypeScript
+   - Build and preview before deployment: `pnpm build && pnpm preview`
 
 3. **Content Management:**
-   - Log into WordPress admin at <http://localhost:8000/wp-admin>
-   - Create services, team members, testimonials
-   - Content is immediately available via GraphQL
 
-## 🚨 Troubleshooting
+   - WordPress admin: <http://localhost:8000/wp-admin>
+   - Create/edit services with ACF custom fields
+   - Manage Amelia booking appointments
+   - Optimize SEO with Yoast (meta titles, descriptions, Schema.org)
+   - Content is immediately available via GraphQL API
 
-### WordPress container won't start
+4. **Documentation:**
+   - See `dev-guide.md` for complete implementation details
+   - Review `frontend/README.md` for Astro-specific documentation
 
-```bash
-# Check logs
-docker-compose logs wordpress
-
-# Rebuild containers
-docker-compose down
-docker-compose up -d --build
-```
-
-### GraphQL not working
-
-```bash
-# Flush permalinks
-docker-compose exec wpcli wp rewrite flush
-
-# Check plugin status
-docker-compose exec wpcli wp plugin list
-
-# Reinstall WPGraphQL
-docker-compose exec wpcli wp plugin deactivate wp-graphql
-docker-compose exec wpcli wp plugin activate wp-graphql
-```
-
-### Permission issues with uploads
-
-```bash
-# Fix file permissions
-docker-compose exec wordpress chown -R www-data:www-data /var/www/html/wp-content/uploads
-```
-
-### Frontend can't connect to WordPress
-
-- Check `frontend/.env` has correct `PUBLIC_GRAPHQL_ENDPOINT`
-- Verify CORS settings in `functions.php`
-- Test GraphQL endpoint in browser: <http://localhost:8000/graphql>
-
-## 🔐 Security Notes
-
-- Change default database passwords in production
-- Use strong WordPress admin password
-- Don't commit `.env` files with sensitive data
-- Enable HTTPS in production
-- Use WordPress security plugins
-- Keep all plugins and WordPress core updated
-
-## 📝 License
+## License
 
 Private project for CG Aesthetics
 
