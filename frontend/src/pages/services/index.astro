@@ -1,0 +1,293 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Button } from '../../components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card';
+import OptimizedImage from '../../components/OptimizedImage.astro';
+import { query } from '../../lib/apollo-client';
+import { GET_SERVICES } from '../../lib/queries';
+import type { ServicesResponse } from '../../types/wordpress';
+import { Clock, Sparkles, ArrowRight, Calendar } from 'lucide-react';
+
+// Fetch all services from WordPress
+let services: Array<any> = [];
+let error: string | null = null;
+
+try {
+  const servicesData = await query<ServicesResponse>(GET_SERVICES);
+  services = servicesData.services.nodes;
+} catch (e) {
+  console.error('Error fetching services from WordPress:', e);
+  error = e instanceof Error ? e.message : 'Failed to fetch services from WordPress';
+}
+
+// SEO Configuration
+const seoTitle = 'Nos Services - CG Aesthetics | Soins de Beauté à Montreux';
+const seoDescription = 'Découvrez notre gamme complète de soins esthétiques : soins du visage, massages, épilation et traitements anti-âge. Des prestations sur-mesure dans notre institut à Montreux.';
+---
+
+<Layout 
+  title={seoTitle}
+  description={seoDescription}
+  type="website"
+>
+  <main>
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden" style="background: linear-gradient(135deg, var(--color-primary-background) 0%, var(--color-secondary-gray-light) 100%);">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+        <div class="max-w-4xl mx-auto text-center space-y-8">
+          <div class="space-y-4">
+            <p class="text-sm md:text-base font-medium tracking-[var(--letter-spacing-widest)] uppercase" style="color: var(--color-secondary-mauve);">
+              Nos Services
+            </p>
+            <h1 
+              class="text-4xl md:text-6xl lg:text-7xl font-[var(--font-weight-bold)] leading-[var(--line-height-tight)] tracking-[var(--letter-spacing-tight)]"
+              style="font-family: var(--font-heading); color: var(--color-text-heading);"
+            >
+              Des Soins d'Exception
+              <span class="block mt-2" style="color: var(--color-accent-rose-gold);">Pour Votre Bien-être</span>
+            </h1>
+            <p 
+              class="text-lg md:text-xl max-w-2xl mx-auto leading-[var(--line-height-relaxed)]"
+              style="color: var(--color-text-muted); font-size: var(--font-size-body-lg);"
+            >
+              Découvrez notre gamme complète de soins personnalisés, conçus pour sublimer votre beauté naturelle
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Decorative Element -->
+      <div class="absolute bottom-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, var(--color-secondary-gray), transparent);"></div>
+    </section>
+
+    <!-- Services Grid -->
+    {!error && services && services.length > 0 ? (
+      <section class="py-16 md:py-24" style="background-color: var(--color-white);">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service) => (
+              <Card client:visible className="group overflow-hidden border-0 transition-all duration-500 hover:-translate-y-2 hover:shadow-[var(--shadow-large)]">
+                {service.featuredImage?.node.sourceUrl && (
+                  <div class="relative overflow-hidden aspect-[4/3]">
+                    <OptimizedImage
+                      src={service.featuredImage.node.sourceUrl} 
+                      alt={service.featuredImage.node.altText || service.title}
+                      width={400}
+                      height={300}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      loading="lazy"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+                )}
+                <CardHeader>
+                  <CardTitle client:load>
+                    <a 
+                      href={`/services/${service.slug}`}
+                      class="transition-colors hover:text-[var(--color-accent-rose-gold)]"
+                    >
+                      {service.title}
+                    </a>
+                  </CardTitle>
+                  <div class="flex justify-between items-center pt-2">
+                    <span 
+                      class="text-2xl font-[var(--font-weight-bold)]"
+                      style="color: var(--color-accent-rose-gold); font-family: var(--font-heading);"
+                    >
+                      {service.serviceDetails.servicePrice}
+                    </span>
+                    <span 
+                      class="flex items-center gap-1 text-sm"
+                      style="color: var(--color-text-muted);"
+                    >
+                      <Clock className="h-4 w-4" />
+                      {service.serviceDetails.serviceDuration} min
+                    </span>
+                  </div>
+                </CardHeader>
+                <CardContent client:load>
+                  <CardDescription client:load set:html={service.excerpt} />
+                  <div class="mt-6">
+                    <a 
+                      href={`/services/${service.slug}`}
+                      class="inline-flex items-center gap-2 font-[var(--font-weight-medium)] transition-all group-hover:gap-3"
+                      style="color: var(--color-secondary-mauve);"
+                    >
+                      En savoir plus
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </a>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+    ) : (
+      <section class="py-16 md:py-24" style="background-color: var(--color-white);">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="max-w-2xl mx-auto text-center space-y-4">
+            {error ? (
+              <>
+                <h2 
+                  class="text-2xl md:text-3xl font-[var(--font-weight-semibold)]"
+                  style="font-family: var(--font-heading); color: var(--color-text-heading);"
+                >
+                  Erreur de Chargement
+                </h2>
+                <p style="color: var(--color-text-muted);">
+                  Impossible de charger les services. Veuillez réessayer plus tard.
+                </p>
+              </>
+            ) : (
+              <>
+                <h2 
+                  class="text-2xl md:text-3xl font-[var(--font-weight-semibold)]"
+                  style="font-family: var(--font-heading); color: var(--color-text-heading);"
+                >
+                  Aucun Service Disponible
+                </h2>
+                <p style="color: var(--color-text-muted);">
+                  Nos services seront bientôt disponibles.
+                </p>
+              </>
+            )}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Benefits Section -->
+    <section class="py-16 md:py-24" style="background-color: var(--color-secondary-gray-light);">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+          <h2 
+            class="text-3xl md:text-5xl font-[var(--font-weight-semibold)] tracking-[var(--letter-spacing-wide)]"
+            style="font-family: var(--font-heading); color: var(--color-text-heading);"
+          >
+            Pourquoi Choisir CG Aesthetics
+          </h2>
+          <p style="color: var(--color-text-muted); font-size: var(--font-size-body-lg); line-height: var(--line-height-relaxed);">
+            L'excellence au service de votre beauté
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div class="text-center space-y-4">
+            <div 
+              class="inline-flex p-4 rounded-full"
+              style="background-color: var(--color-white);"
+            >
+              <Sparkles 
+                className="h-8 w-8 text-[var(--color-accent-rose-gold)]"
+              />
+            </div>
+            <h3 
+              class="text-xl font-[var(--font-weight-semibold)]"
+              style="color: var(--color-text-heading); font-family: var(--font-body);"
+            >
+              Produits Premium
+            </h3>
+            <p 
+              class="text-sm leading-relaxed"
+              style="color: var(--color-text-muted);"
+            >
+              Nous utilisons uniquement des produits haut de gamme pour des résultats optimaux
+            </p>
+          </div>
+
+          <div class="text-center space-y-4">
+            <div 
+              class="inline-flex p-4 rounded-full"
+              style="background-color: var(--color-white);"
+            >
+              <svg class="h-8 w-8 text-[var(--color-accent-rose-gold)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+            </div>
+            <h3 
+              class="text-xl font-[var(--font-weight-semibold)]"
+              style="color: var(--color-text-heading); font-family: var(--font-body);"
+            >
+              Équipe Expérimentée
+            </h3>
+            <p 
+              class="text-sm leading-relaxed"
+              style="color: var(--color-text-muted);"
+            >
+              Des professionnelles diplômées et passionnées à votre écoute
+            </p>
+          </div>
+
+          <div class="text-center space-y-4 sm:col-span-2 lg:col-span-1">
+            <div 
+              class="inline-flex p-4 rounded-full"
+              style="background-color: var(--color-white);"
+            >
+              <svg class="h-8 w-8 text-[var(--color-accent-rose-gold)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+            <h3 
+              class="text-xl font-[var(--font-weight-semibold)]"
+              style="color: var(--color-text-heading); font-family: var(--font-body);"
+            >
+              Satisfaction Garantie
+            </h3>
+            <p 
+              class="text-sm leading-relaxed"
+              style="color: var(--color-text-muted);"
+            >
+              Votre bien-être est notre priorité absolue
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section 
+      class="py-20 md:py-32 relative overflow-hidden"
+      style="background: linear-gradient(135deg, var(--color-accent-rose-gold) 0%, var(--color-secondary-mauve) 100%);"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="max-w-3xl mx-auto text-center space-y-8">
+          <h2 
+            class="text-3xl md:text-5xl font-[var(--font-weight-bold)] tracking-[var(--letter-spacing-wide)] text-white"
+            style="font-family: var(--font-heading);"
+          >
+            Prête à Commencer Votre Transformation ?
+          </h2>
+          <p class="text-lg md:text-xl text-white/90 leading-[var(--line-height-relaxed)] max-w-2xl mx-auto">
+            Réservez votre premier soin et découvrez une expérience de bien-être inoubliable
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
+            <Button 
+              size="lg"
+              className="w-full sm:w-auto gap-2 text-base px-10 py-6 rounded-[var(--radius-pill)] bg-[var(--color-white)] text-[var(--color-accent-rose-gold)] hover:bg-[var(--color-primary-background)] shadow-[var(--shadow-large)] transition-[var(--transition-interactive)]"
+              client:load
+            >
+              <Calendar className="h-5 w-5" />
+              Réserver Maintenant
+            </Button>
+            <Button 
+              variant="outline"
+              size="lg"
+              className="w-full sm:w-auto text-base px-10 py-6 rounded-[var(--radius-pill)] border-2 border-[var(--color-white)] bg-transparent text-[var(--color-white)] hover:bg-[var(--color-white)] hover:text-[var(--color-secondary-mauve)] transition-[var(--transition-interactive)]"
+              client:load
+            >
+              <a href="/" class="flex items-center gap-2">
+                Retour à l'Accueil
+              </a>
+            </Button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Decorative circles -->
+      <div class="absolute top-10 right-10 w-64 h-64 rounded-full opacity-10 bg-white blur-3xl"></div>
+      <div class="absolute bottom-10 left-10 w-96 h-96 rounded-full opacity-10 bg-white blur-3xl"></div>
+    </section>
+  </main>
+</Layout>
