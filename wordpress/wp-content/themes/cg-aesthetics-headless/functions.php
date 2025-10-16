@@ -264,6 +264,11 @@ add_action('get_header', 'cg_aesthetics_remove_admin_bar_css');
 require_once get_template_directory() . '/acf-fields.php';
 
 /**
+ * Load SEO Configuration
+ */
+require_once get_template_directory() . '/seo-setup.php';
+
+/**
  * Register ACF Fields to GraphQL Manually
  * Since WPGraphQL for ACF has compatibility issues, we register fields manually
  */
