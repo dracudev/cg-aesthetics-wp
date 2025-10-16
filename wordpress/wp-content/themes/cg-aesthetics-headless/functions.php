@@ -309,6 +309,16 @@ function cg_aesthetics_register_acf_to_graphql() {
             $benefits = get_field('service_benefits', $post->ID);
             $gallery = get_field('service_gallery', $post->ID);
             
+            // Map benefits to the correct structure
+            $formatted_benefits = [];
+            if (is_array($benefits)) {
+                foreach ($benefits as $benefit) {
+                    $formatted_benefits[] = [
+                        'benefitText' => isset($benefit['benefit_text']) ? $benefit['benefit_text'] : null,
+                    ];
+                }
+            }
+            
             return [
                 'serviceDescription' => get_field('service_description', $post->ID),
                 'serviceDuration' => (int) get_field('service_duration', $post->ID),
@@ -316,7 +326,7 @@ function cg_aesthetics_register_acf_to_graphql() {
                 'featuredService' => (bool) get_field('featured_service', $post->ID),
                 'bookableOnline' => (bool) get_field('bookable_online', $post->ID),
                 'bookingNotes' => get_field('booking_notes', $post->ID),
-                'serviceBenefits' => is_array($benefits) ? $benefits : [],
+                'serviceBenefits' => $formatted_benefits,
                 'serviceGallery' => is_array($gallery) ? $gallery : [],
             ];
         },
