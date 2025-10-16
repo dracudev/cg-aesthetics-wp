@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Disallow WordPress admin (if exposed)
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+
+# Disallow search results
+Disallow: /*?s=
+Disallow: /*&s=
+
+# Disallow query parameters
+Disallow: /*?*
+Disallow: /*&*
+
+# Allow specific paths
+Allow: /wp-admin/admin-ajax.php
+Allow: /graphql
+
+# Sitemap location (Yoast SEO)
+Sitemap: https://yourdomain.com/sitemap_index.xml
