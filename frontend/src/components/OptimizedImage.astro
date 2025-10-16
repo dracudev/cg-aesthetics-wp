@@ -1,0 +1,64 @@
+---
+/**
+ * Optimized Image Component with lazy loading and responsive sizes
+ */
+
+export interface OptimizedImageProps {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  sizes?: string;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+  decoding?: 'async' | 'sync' | 'auto';
+  fetchpriority?: 'high' | 'low' | 'auto';
+  quality?: number;
+}
+
+const {
+  src,
+  alt,
+  width,
+  height,
+  sizes = '100vw',
+  class: className = '',
+  loading = 'lazy',
+  decoding = 'async',
+  fetchpriority = 'auto',
+  quality = 85,
+} = Astro.props as OptimizedImageProps;
+
+// Generate responsive image sizes
+const responsiveSizes = [400, 600, 800, 1200, 1600];
+const srcset = responsiveSizes
+  .map(size => {
+    const url = new URL(src);
+    url.searchParams.set('w', size.toString());
+    url.searchParams.set('q', quality.toString());
+    return `${url.toString()} ${size}w`;
+  })
+  .join(', ');
+
+// Optimized source URL
+const optimizedSrc = (() => {
+  const url = new URL(src);
+  if (width) url.searchParams.set('w', width.toString());
+  if (height) url.searchParams.set('h', height.toString());
+  url.searchParams.set('q', quality.toString());
+  return url.toString();
+})();
+---
+
+<img
+  src={optimizedSrc}
+  srcset={srcset}
+  sizes={sizes}
+  alt={alt}
+  width={width}
+  height={height}
+  loading={loading}
+  decoding={decoding}
+  fetchpriority={fetchpriority}
+  class={className}
+/>
