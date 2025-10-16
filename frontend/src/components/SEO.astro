@@ -1,0 +1,157 @@
+---
+/**
+ * SEO Component
+ * 
+ * Comprehensive SEO meta tags including:
+ * - Basic meta tags
+ * - Open Graph (Facebook)
+ * - Twitter Cards
+ * - Schema.org structured data
+ * - Canonical URLs
+ */
+
+export interface SEOProps {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  image?: string;
+  imageAlt?: string;
+  type?: 'website' | 'article' | 'service' | 'profile';
+  noindex?: boolean;
+  nofollow?: boolean;
+  schema?: string | object;
+  locale?: string;
+  siteName?: string;
+  twitterHandle?: string;
+}
+
+const {
+  title = 'CG Aesthetics - Luxury Spa & Wellness Center',
+  description = 'Experience ultimate relaxation and rejuvenation at CG Aesthetics. Professional spa treatments, massages, facials, and wellness services in a luxurious setting.',
+  canonical,
+  image,
+  imageAlt = title,
+  type = 'website',
+  noindex = false,
+  nofollow = false,
+  schema,
+  locale = 'en_US',
+  siteName = 'CG Aesthetics',
+  twitterHandle = '@cgaesthetics',
+} = Astro.props as SEOProps;
+
+// Get the current URL - handle when Astro.site is undefined
+const siteUrl = Astro.site?.href || 'http://localhost:4321';
+const currentUrl = canonical || (siteUrl + Astro.url.pathname).replace(/\/+$/, '');
+
+// Default image if none provided
+const defaultImage = siteUrl + '/og-image.jpg';
+const ogImage = image || defaultImage;
+
+// Robots meta
+const robotsContent = [
+  noindex ? 'noindex' : 'index',
+  nofollow ? 'nofollow' : 'follow'
+].join(', ');
+
+// Parse schema if it's a string
+let schemaData: object | undefined = schema as object | undefined;
+if (typeof schema === 'string') {
+  try {
+    schemaData = JSON.parse(schema);
+  } catch (e) {
+    console.error('Invalid schema JSON:', e);
+    schemaData = undefined;
+  }
+}
+
+// Enhanced schema with organization data
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BeautySalon',
+  name: siteName,
+  description: description,
+  url: Astro.site?.href || currentUrl,
+  logo: siteUrl + '/logo.png',
+  sameAs: [
+    'https://facebook.com/cgaesthetics',
+    'https://instagram.com/cgaesthetics',
+    'https://twitter.com/cgaesthetics',
+  ],
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '123 Wellness Street',
+    addressLocality: 'Your City',
+    addressRegion: 'State',
+    postalCode: '12345',
+    addressCountry: 'US'
+  },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '+1-555-123-4567',
+    contactType: 'Customer Service',
+    areaServed: 'US',
+    availableLanguage: ['English']
+  }
+};
+
+// Combine schemas if both exist
+let finalSchema = schemaData;
+if (schemaData && typeof schemaData === 'object') {
+  // If schema is provided, create a graph with both
+  finalSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [organizationSchema, schemaData]
+  };
+} else {
+  finalSchema = organizationSchema;
+}
+---
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<meta name="robots" content={robotsContent} />
+<link rel="canonical" href={currentUrl} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={currentUrl} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:alt" content={imageAlt} />
+<meta property="og:site_name" content={siteName} />
+<meta property="og:locale" content={locale} />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={currentUrl} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+<meta name="twitter:image:alt" content={imageAlt} />
+{twitterHandle && <meta name="twitter:site" content={twitterHandle} />}
+{twitterHandle && <meta name="twitter:creator" content={twitterHandle} />}
+
+<!-- Schema.org Structured Data -->
+{finalSchema && (
+  <script type="application/ld+json" set:html={JSON.stringify(finalSchema)} />
+)}
+
+<!-- Additional SEO -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="format-detection" content="telephone=no" />
+
+<!-- Preconnect to important origins -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="manifest" href="/site.webmanifest" />
