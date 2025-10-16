@@ -1,11 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import BookingButton from '../components/BookingButton.astro';
+import { Button } from '../components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import OptimizedImage from '../components/OptimizedImage.astro';
 import { query } from '../lib/apollo-client';
 import { GET_SITE_SETTINGS, GET_FEATURED_SERVICES, GET_FEATURED_TESTIMONIALS } from '../lib/queries';
 import { buildAggregateRatingSchema } from '../lib/seo';
 import type { SiteSettingsResponse, ServicesResponse, TestimonialsResponse } from '../types/wordpress';
+import { Sparkles, Clock, Star, CheckCircle2, Calendar } from 'lucide-react';
 
 // Fetch data from WordPress
 let siteSettings;
@@ -14,15 +16,12 @@ let featuredTestimonials: Array<any> = [];
 let error: string | null = null;
 
 try {
-  // Fetch site settings
   const settingsData = await query<SiteSettingsResponse>(GET_SITE_SETTINGS);
   siteSettings = settingsData.generalSettings;
 
-  // Fetch featured services
   const servicesData = await query<ServicesResponse>(GET_FEATURED_SERVICES, { first: 3 });
   featuredServices = servicesData.services.nodes;
 
-  // Fetch featured testimonials
   const testimonialsData = await query<TestimonialsResponse>(GET_FEATURED_TESTIMONIALS, { first: 3 });
   featuredTestimonials = testimonialsData.testimonials.nodes;
 } catch (e) {
@@ -30,20 +29,17 @@ try {
   error = e instanceof Error ? e.message : 'Failed to fetch data from WordPress';
 }
 
-const graphqlEndpoint = import.meta.env.PUBLIC_GRAPHQL_ENDPOINT;
-
 // SEO Configuration
 const seoTitle = siteSettings?.title 
-  ? `${siteSettings.title} - Luxury Spa & Wellness Center` 
-  : 'CG Aesthetics - Luxury Spa & Wellness Center';
+  ? `${siteSettings.title} - Institut de Beauté à Montreux` 
+  : 'CG Aesthetics - Institut de Beauté & Bien-être à Montreux, Suisse';
 
 const seoDescription = siteSettings?.description 
-  || 'Experience ultimate relaxation and rejuvenation with our luxury spa treatments, professional massages, facials, and wellness services. Book your appointment today.';
+  || 'Institut de beauté de luxe à Montreux, Suisse. Soins du visage, massages, épilation et traitements esthétiques dans un cadre serein au bord du Lac Léman. Réservez votre rendez-vous.';
 
-// Get featured service image for Open Graph
 const ogImage = featuredServices[0]?.featuredImage?.node?.sourceUrl;
 
-// Build aggregate rating schema from testimonials
+// Build aggregate rating schema
 let aggregateRatingSchema;
 if (featuredTestimonials && featuredTestimonials.length > 0) {
   const ratings = featuredTestimonials
@@ -54,6 +50,13 @@ if (featuredTestimonials && featuredTestimonials.length > 0) {
     aggregateRatingSchema = buildAggregateRatingSchema(ratings, featuredTestimonials.length);
   }
 }
+
+const benefits = [
+  { icon: Sparkles, title: 'Produits Premium', description: 'Soins avec des produits haut de gamme soigneusement sélectionnés' },
+  { icon: Star, title: 'Expertise Reconnue', description: 'Équipe d\'esthéticiennes diplômées et passionnées' },
+  { icon: Clock, title: 'Flexibilité', description: 'Horaires étendus et réservation en ligne simplifiée' },
+  { icon: CheckCircle2, title: 'Satisfaction Garantie', description: 'Votre bien-être est notre priorité absolue' },
+];
 ---
 
 <Layout 
@@ -63,135 +66,229 @@ if (featuredTestimonials && featuredTestimonials.length > 0) {
   type="website"
   schema={aggregateRatingSchema}
 >
-  <main class="min-h-screen">
+  <main>
     <!-- Hero Section -->
-    <section class="bg-gradient-to-br from-emerald-50 to-teal-50 py-20 px-4">
-      <div class="max-w-6xl mx-auto text-center">
-        <h1 class="text-5xl md:text-6xl font-bold text-emerald-900 mb-6">
-          Welcome to Beauty Studio
-        </h1>
-        <p class="text-xl text-emerald-700 mb-8 max-w-2xl mx-auto">
-          Experience ultimate relaxation and rejuvenation with our luxury spa treatments
-        </p>
-        <div class="flex gap-4 justify-center">
-          <BookingButton text="Réserver maintenant" size="lg" />
-          <a 
-            href="/services" 
-            class="inline-block bg-white text-emerald-600 border-2 border-emerald-600 px-8 py-3 rounded-lg font-medium hover:bg-emerald-50 transition-colors"
+    <section class="relative overflow-hidden" style="background: linear-gradient(135deg, var(--color-primary-background) 0%, var(--color-secondary-gray-light) 100%);">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+        <div class="max-w-4xl mx-auto text-center space-y-8">
+          <div class="space-y-4">
+            <p class="text-sm md:text-base font-medium tracking-[var(--letter-spacing-widest)] uppercase" style="color: var(--color-secondary-mauve);">
+              Institut de Beauté & Bien-être
+            </p>
+            <h1 
+              class="text-4xl md:text-6xl lg:text-7xl font-[var(--font-weight-bold)] leading-[var(--line-height-tight)] tracking-[var(--letter-spacing-tight)]"
+              style="font-family: var(--font-heading); color: var(--color-text-heading);"
+            >
+              Révélez Votre
+              <span class="block mt-2" style="color: var(--color-accent-rose-gold);">Beauté Naturelle</span>
+            </h1>
+            <p 
+              class="text-lg md:text-xl max-w-2xl mx-auto leading-[var(--line-height-relaxed)]"
+              style="color: var(--color-text-muted); font-size: var(--font-size-body-lg);"
+            >
+              Offrez-vous un moment d'exception dans notre sanctuaire dédié à votre bien-être. 
+              Des soins personnalisés dans une atmosphère sereine et luxueuse.
+            </p>
+          </div>
+          
+          <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
+            <Button 
+              size="lg"
+              className="w-full sm:w-auto gap-2 text-base px-8 py-6 rounded-[var(--radius-pill)] shadow-[var(--shadow-rose-gold)] hover:shadow-[var(--shadow-large)] bg-[var(--color-accent-rose-gold)] hover:bg-[var(--color-accent-rose-gold-dark)]"
+              client:load
+            >
+              <Calendar className="h-5 w-5" />
+              Réserver un Rendez-vous
+            </Button>
+            <Button 
+              variant="outline"
+              size="lg"
+              className="w-full sm:w-auto text-base px-8 py-6 rounded-[var(--radius-pill)]"
+              client:load
+            >
+              Découvrir nos Services
+            </Button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Decorative Element -->
+      <div class="absolute bottom-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, var(--color-secondary-gray), transparent);"></div>
+    </section>
+
+
+    <!-- Benefits Section -->
+    <section class="py-16 md:py-24" style="background-color: var(--color-white);">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+          <h2 
+            class="text-3xl md:text-5xl font-[var(--font-weight-semibold)] tracking-[var(--letter-spacing-wide)]"
+            style="font-family: var(--font-heading); color: var(--color-text-heading);"
           >
-            Nos services
-          </a>
+            L'Excellence à Votre Service
+          </h2>
+          <p style="color: var(--color-text-muted); font-size: var(--font-size-body-lg); line-height: var(--line-height-relaxed);">
+            Découvrez pourquoi nos clientes nous font confiance pour sublimer leur beauté naturelle
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {benefits.map(({ icon: Icon, title, description }) => (
+            <div class="text-center space-y-4 group">
+              <div 
+                class="inline-flex p-4 rounded-full transition-all duration-300 group-hover:scale-110"
+                style="background-color: var(--color-secondary-gray-light);"
+              >
+                <Icon 
+                  className="h-8 w-8 text-[var(--color-accent-rose-gold)]"
+                />
+              </div>
+              <h3 
+                class="text-xl font-[var(--font-weight-semibold)]"
+                style="color: var(--color-text-heading); font-family: var(--font-body);"
+              >
+                {title}
+              </h3>
+              <p 
+                class="text-sm leading-relaxed"
+                style="color: var(--color-text-muted);"
+              >
+                {description}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
 
-    <!-- Status Section -->
-    <section class="py-12 px-4 bg-white">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl font-bold text-center mb-8">WordPress Connection Status</h2>
-        
-        {error ? (
-          <div class="bg-red-50 border border-red-200 rounded-lg p-6">
-            <h3 class="text-red-800 font-semibold mb-2">⚠️ Connection Error</h3>
-            <p class="text-red-700 mb-4">{error}</p>
-            <div class="bg-white rounded p-4 text-sm">
-              <p class="font-medium mb-2">Troubleshooting Steps:</p>
-              <ol class="list-decimal list-inside space-y-1 text-gray-700">
-                <li>Ensure WordPress is running at: <code class="bg-gray-100 px-2 py-1 rounded">{graphqlEndpoint}</code></li>
-                <li>Check that WPGraphQL plugin is installed and activated</li>
-                <li>Verify CORS settings in WordPress functions.php</li>
-                <li>Check the browser console for detailed errors</li>
-              </ol>
-            </div>
-          </div>
-        ) : (
-          <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-6">
-            <h3 class="text-emerald-800 font-semibold mb-2">✅ Successfully Connected to WordPress!</h3>
-            <div class="grid md:grid-cols-3 gap-4 mt-4">
-              <div class="bg-white rounded p-4">
-                <p class="text-sm text-gray-600">Site Title</p>
-                <p class="font-semibold">{siteSettings?.title}</p>
-              </div>
-              <div class="bg-white rounded p-4">
-                <p class="text-sm text-gray-600">Featured Services</p>
-                <p class="font-semibold">{featuredServices?.length || 0} found</p>
-              </div>
-              <div class="bg-white rounded p-4">
-                <p class="text-sm text-gray-600">Testimonials</p>
-                <p class="font-semibold">{featuredTestimonials?.length || 0} found</p>
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
-    </section>
 
     <!-- Featured Services -->
     {!error && featuredServices && featuredServices.length > 0 && (
-      <section class="py-16 px-4 bg-gray-50">
-        <div class="max-w-6xl mx-auto">
-          <h2 class="text-4xl font-bold text-center mb-12">Featured Services</h2>
-          <div class="grid md:grid-cols-3 gap-8">
+      <section class="py-16 md:py-24" style="background-color: var(--color-secondary-gray-light);">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+            <h2 
+              class="text-3xl md:text-5xl font-[var(--font-weight-semibold)] tracking-[var(--letter-spacing-wide)]"
+              style="font-family: var(--font-heading); color: var(--color-text-heading);"
+            >
+              Nos Soins Signature
+            </h2>
+            <p style="color: var(--color-text-muted); font-size: var(--font-size-body-lg); line-height: var(--line-height-relaxed);">
+              Des soins sur-mesure pour répondre à tous vos besoins de beauté et bien-être
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredServices.map((service) => (
-              <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow">
+              <Card client:visible className="group overflow-hidden border-0 transition-all duration-500 hover:-translate-y-2">
                 {service.featuredImage?.node.sourceUrl && (
-                  <OptimizedImage
-                    src={service.featuredImage.node.sourceUrl} 
-                    alt={service.featuredImage.node.altText || service.title}
-                    width={400}
-                    height={300}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    class="w-full h-48 object-cover"
-                    loading="lazy"
-                  />
+                  <div class="relative overflow-hidden aspect-[4/3]">
+                    <OptimizedImage
+                      src={service.featuredImage.node.sourceUrl} 
+                      alt={service.featuredImage.node.altText || service.title}
+                      width={400}
+                      height={300}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      loading="lazy"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
                 )}
-                <div class="p-6">
-                  <h3 class="text-2xl font-semibold mb-2">{service.title}</h3>
-                  <div class="flex justify-between items-center mb-4">
-                    <span class="text-emerald-600 font-bold text-lg">
+                <CardHeader>
+                  <CardTitle client:load>{service.title}</CardTitle>
+                  <div class="flex justify-between items-center pt-2">
+                    <span 
+                      class="text-2xl font-[var(--font-weight-bold)]"
+                      style="color: var(--color-accent-rose-gold); font-family: var(--font-heading);"
+                    >
                       {service.serviceDetails.servicePrice}
                     </span>
-                    <span class="text-gray-600 text-sm">
+                    <span 
+                      class="flex items-center gap-1 text-sm"
+                      style="color: var(--color-text-muted);"
+                    >
+                      <Clock className="h-4 w-4" />
                       {service.serviceDetails.serviceDuration} min
                     </span>
                   </div>
-                  <p class="text-gray-700 mb-4" set:html={service.excerpt} />
-                  <a 
-                    href={`/services/${service.slug}`}
-                    class="text-emerald-600 font-medium hover:text-emerald-700"
-                  >
-                    Learn More →
-                  </a>
-                </div>
-              </div>
+                </CardHeader>
+                <CardContent client:load>
+                  <CardDescription client:load set:html={service.excerpt} />
+                  <div class="mt-6">
+                    <a 
+                      href={`/services/${service.slug}`}
+                      class="inline-flex items-center gap-2 font-[var(--font-weight-medium)] transition-colors"
+                      style="color: var(--color-secondary-mauve);"
+                    >
+                      En savoir plus
+                      <span class="transition-transform group-hover:translate-x-1">→</span>
+                    </a>
+                  </div>
+                </CardContent>
+              </Card>
             ))}
+          </div>
+
+          <div class="text-center mt-12">
+            <Button 
+              variant="outline"
+              size="lg"
+              className="rounded-[var(--radius-pill)] px-8"
+              client:load
+            >
+              Voir tous nos services
+            </Button>
           </div>
         </div>
       </section>
     )}
 
+
     <!-- Testimonials -->
     {!error && featuredTestimonials && featuredTestimonials.length > 0 && (
-      <section class="py-16 px-4 bg-white">
-        <div class="max-w-6xl mx-auto">
-          <h2 class="text-4xl font-bold text-center mb-12">What Our Clients Say</h2>
+      <section class="py-16 md:py-24" style="background-color: var(--color-white);">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+            <h2 
+              class="text-3xl md:text-5xl font-[var(--font-weight-semibold)] tracking-[var(--letter-spacing-wide)]"
+              style="font-family: var(--font-heading); color: var(--color-text-heading);"
+            >
+              Elles Nous Font Confiance
+            </h2>
+            <p style="color: var(--color-text-muted); font-size: var(--font-size-body-lg); line-height: var(--line-height-relaxed);">
+              Découvrez les avis de nos clientes satisfaites
+            </p>
+          </div>
+
           <div class="grid md:grid-cols-3 gap-8">
             {featuredTestimonials.map((testimonial) => (
-              <div class="bg-emerald-50 rounded-lg p-6">
-                <div class="flex items-center mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <svg 
-                      class={`w-5 h-5 ${i < testimonial.testimonialDetails.rating ? 'text-yellow-400' : 'text-gray-300'}`}
-                      fill="currentColor" 
-                      viewBox="0 0 20 20"
+              <Card client:visible className="border-0 transition-all duration-300 hover:shadow-[var(--shadow-blush)]">
+                <CardContent client:load className="pt-6 space-y-4">
+                  <div class="flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star 
+                        key={i}
+                        className={`h-5 w-5 ${i < testimonial.testimonialDetails.rating ? 'fill-current text-[var(--color-accent-rose-gold)]' : 'text-[var(--color-secondary-gray)]'}`}
+                      />
+                    ))}
+                  </div>
+                  <blockquote 
+                    class="text-base leading-[var(--line-height-relaxed)] italic"
+                    style="color: var(--color-text-body);"
+                  >
+                    "{testimonial.testimonialDetails.reviewText}"
+                  </blockquote>
+                  <div class="pt-4 border-t" style="border-color: var(--color-secondary-gray);">
+                    <p 
+                      class="font-[var(--font-weight-semibold)]"
+                      style="color: var(--color-text-heading);"
                     >
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
-                <p class="text-gray-700 mb-4 italic">"{testimonial.testimonialDetails.reviewText}"</p>
-                <p class="font-semibold text-gray-900">{testimonial.testimonialDetails.clientName}</p>
-              </div>
+                      {testimonial.testimonialDetails.clientName}
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
@@ -199,16 +296,45 @@ if (featuredTestimonials && featuredTestimonials.length > 0) {
     )}
 
     <!-- CTA Section -->
-    <section class="bg-emerald-600 text-white py-16 px-4">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-4xl font-bold mb-4">Prête à vous détendre ?</h2>
-        <p class="text-xl mb-8">Réservez votre rendez-vous dès aujourd'hui</p>
-        <BookingButton 
-          text="Réserver maintenant" 
-          variant="secondary"
-          size="lg"
-        />
+    <section 
+      class="py-20 md:py-32 relative overflow-hidden"
+      style="background: linear-gradient(135deg, var(--color-accent-rose-gold) 0%, var(--color-secondary-mauve) 100%);"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="max-w-3xl mx-auto text-center space-y-8">
+          <h2 
+            class="text-3xl md:text-5xl font-[var(--font-weight-bold)] tracking-[var(--letter-spacing-wide)] text-white"
+            style="font-family: var(--font-heading);"
+          >
+            Prête à Vous Offrir un Moment d'Exception ?
+          </h2>
+          <p class="text-lg md:text-xl text-white/90 leading-[var(--line-height-relaxed)] max-w-2xl mx-auto">
+            Réservez dès maintenant votre rendez-vous et laissez nos expertes sublimer votre beauté naturelle
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
+            <Button 
+              size="lg"
+              className="w-full sm:w-auto gap-2 text-base px-10 py-6 rounded-[var(--radius-pill)] bg-white hover:bg-white/90 shadow-[var(--shadow-large)] text-[var(--color-accent-rose-gold)]"
+              client:load
+            >
+              <Calendar className="h-5 w-5" />
+              Prendre Rendez-vous
+            </Button>
+            <Button 
+              variant="outline"
+              size="lg"
+              className="w-full sm:w-auto text-base px-10 py-6 rounded-[var(--radius-pill)] border-2 border-white text-white hover:bg-white/10"
+              client:load
+            >
+              Nous Contacter
+            </Button>
+          </div>
+        </div>
       </div>
+      
+      <!-- Decorative circles -->
+      <div class="absolute top-10 right-10 w-64 h-64 rounded-full opacity-10 bg-white blur-3xl"></div>
+      <div class="absolute bottom-10 left-10 w-96 h-96 rounded-full opacity-10 bg-white blur-3xl"></div>
     </section>
   </main>
 </Layout>
