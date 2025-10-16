@@ -54,9 +54,7 @@ export interface Service {
     featuredService: boolean;
     bookableOnline: boolean;
     bookingNotes?: string;
-    serviceBenefits?: Array<{
-      benefitText: string;
-    }>;
+    serviceBenefits?: string[]; // Changed from Array<{ benefitText: string }> to string[]
     serviceGallery?: Array<{
       sourceUrl: string;
       altText: string;

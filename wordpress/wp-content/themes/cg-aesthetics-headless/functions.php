@@ -288,7 +288,8 @@ function cg_aesthetics_register_acf_to_graphql() {
             'bookableOnline' => ['type' => 'Boolean'],
             'bookingNotes' => ['type' => 'String'],
             'serviceBenefits' => [
-                'type' => ['list_of' => 'ServiceBenefit'],
+                'type' => ['list_of' => 'String'],
+                'description' => 'List of service benefits (parsed from textarea)',
             ],
             'serviceGallery' => [
                 'type' => ['list_of' => 'MediaItem'],
@@ -296,26 +297,31 @@ function cg_aesthetics_register_acf_to_graphql() {
         ],
     ]);
 
-    register_graphql_object_type('ServiceBenefit', [
-        'fields' => [
-            'benefitText' => ['type' => 'String'],
-        ],
-    ]);
-
     register_graphql_field('Service', 'serviceDetails', [
         'type' => 'ServiceDetails',
         'description' => 'ACF Service Details',
         'resolve' => function($post) {
-            $benefits = get_field('service_benefits', $post->ID);
+            $benefits_raw = get_field('service_benefits', $post->ID);
             $gallery = get_field('service_gallery', $post->ID);
             
-            // Map benefits to the correct structure
+            // Parse benefits from textarea (one per line)
             $formatted_benefits = [];
-            if (is_array($benefits)) {
-                foreach ($benefits as $benefit) {
-                    $formatted_benefits[] = [
-                        'benefitText' => isset($benefit['benefit_text']) ? $benefit['benefit_text'] : null,
-                    ];
+            if (!empty($benefits_raw) && is_string($benefits_raw)) {
+                // Split by newline and filter out empty lines
+                $lines = array_filter(
+                    array_map('trim', explode("\n", $benefits_raw)),
+                    function($line) {
+                        return !empty($line);
+                    }
+                );
+                $formatted_benefits = array_values($lines);
+            }
+            // Backward compatibility: handle old repeater format if it still exists
+            elseif (is_array($benefits_raw)) {
+                foreach ($benefits_raw as $benefit) {
+                    if (isset($benefit['benefit_text']) && !empty($benefit['benefit_text'])) {
+                        $formatted_benefits[] = $benefit['benefit_text'];
+                    }
                 }
             }
             

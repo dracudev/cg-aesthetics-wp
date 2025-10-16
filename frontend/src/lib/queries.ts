@@ -34,9 +34,7 @@ export const SERVICE_DETAILS_FRAGMENT = gql`
       featuredService
       bookableOnline
       bookingNotes
-      serviceBenefits {
-        benefitText
-      }
+      serviceBenefits
       serviceGallery {
         sourceUrl
         altText
