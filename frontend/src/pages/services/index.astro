@@ -274,24 +274,26 @@ const seoDescription = 'Découvrez notre gamme complète de soins esthétiques :
             Réservez votre premier soin et découvrez une expérience de bien-être inoubliable
           </p>
           <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-            <Button 
-              size="lg"
-              className="w-full sm:w-auto gap-2 text-base px-10 py-6 rounded-[var(--radius-pill)] bg-[var(--color-white)] text-[var(--color-accent-rose-gold)] hover:bg-[var(--color-primary-background)] shadow-[var(--shadow-large)] transition-[var(--transition-interactive)]"
-              client:load
-            >
-              <Calendar className="h-5 w-5" />
-              Réserver Maintenant
-            </Button>
-            <Button 
-              variant="outline"
-              size="lg"
-              className="w-full sm:w-auto text-base px-10 py-6 rounded-[var(--radius-pill)] border-2 border-[var(--color-white)] bg-transparent text-[var(--color-white)] hover:bg-[var(--color-white)] hover:text-[var(--color-secondary-mauve)] transition-[var(--transition-interactive)]"
-              client:load
-            >
-              <a href="/" class="flex items-center gap-2">
+            <a href="/reserver" class="w-full sm:w-auto">
+              <Button 
+                size="lg"
+                className="w-full gap-2 text-base px-10 py-6 rounded-[var(--radius-pill)] bg-[var(--color-white)] text-[var(--color-accent-rose-gold)] hover:bg-[var(--color-primary-background)] shadow-[var(--shadow-large)] transition-[var(--transition-interactive)]"
+                client:load
+              >
+                <Calendar className="h-5 w-5" />
+                Réserver Maintenant
+              </Button>
+            </a>
+            <a href="/" class="w-full sm:w-auto">
+              <Button 
+                variant="outline"
+                size="lg"
+                className="w-full text-base px-10 py-6 rounded-[var(--radius-pill)] border-2 border-[var(--color-white)] bg-transparent text-[var(--color-white)] hover:bg-[var(--color-white)] hover:text-[var(--color-secondary-mauve)] transition-[var(--transition-interactive)]"
+                client:load
+              >
                 Retour à l'Accueil
-              </a>
-            </Button>
+              </Button>
+            </a>
           </div>
         </div>
       </div>

@@ -106,22 +106,26 @@ const benefits = [
           </div>
           
           <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-            <Button 
-              size="lg"
-              className="w-full sm:w-auto gap-2 text-base px-8 py-6 rounded-[var(--radius-pill)] shadow-[var(--shadow-large)] bg-[var(--color-accent-rose-gold)] hover:bg-[var(--color-accent-rose-gold-dark)]"
-              client:load
-            >
-              <Calendar className="h-5 w-5" />
-              Réserver un Rendez-vous
-            </Button>
-            <Button 
-              variant="outline"
-              size="lg"
-              className="w-full sm:w-auto text-base px-8 py-6 rounded-[var(--radius-pill)] border-2 border-[var(--color-white)] bg-transparent text-[var(--color-white)] hover:bg-[var(--color-white)] hover:text-[var(--color-secondary-mauve)]"
-              client:load
-            >
-              Découvrir nos Services
-            </Button>
+            <a href="/reserver" class="w-full sm:w-auto">
+              <Button 
+                size="lg"
+                className="w-full gap-2 text-base px-8 py-6 rounded-[var(--radius-pill)] shadow-[var(--shadow-large)] bg-[var(--color-accent-rose-gold)] hover:bg-[var(--color-accent-rose-gold-dark)]"
+                client:load
+              >
+                <Calendar className="h-5 w-5" />
+                Réserver un Rendez-vous
+              </Button>
+            </a>
+            <a href="/services" class="w-full sm:w-auto">
+              <Button 
+                variant="outline"
+                size="lg"
+                className="w-full text-base px-8 py-6 rounded-[var(--radius-pill)] border-2 border-[var(--color-white)] bg-transparent text-[var(--color-white)] hover:bg-[var(--color-white)] hover:text-[var(--color-secondary-mauve)]"
+                client:load
+              >
+                Découvrir nos Services
+              </Button>
+            </a>
           </div>
         </div>
       </div>
@@ -242,14 +246,16 @@ const benefits = [
           </div>
 
           <div class="text-center mt-12">
-            <Button 
-              variant="outline"
-              size="lg"
-              className="rounded-[var(--radius-pill)] px-8"
-              client:load
-            >
-              Voir tous nos services
-            </Button>
+            <a href="/services">
+              <Button 
+                variant="outline"
+                size="lg"
+                className="rounded-[var(--radius-pill)] px-8"
+                client:load
+              >
+                Voir tous nos services
+              </Button>
+            </a>
           </div>
         </div>
       </section>
@@ -323,22 +329,26 @@ const benefits = [
             Réservez dès maintenant votre rendez-vous et laissez nos expertes sublimer votre beauté naturelle
           </p>
           <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-            <Button 
-              size="lg"
-              className="w-full sm:w-auto gap-2 text-base px-10 py-6 rounded-[var(--radius-pill)] bg-[var(--color-white)] text-[var(--color-accent-rose-gold)] hover:bg-[var(--color-primary-background)] shadow-[var(--shadow-large)] transition-[var(--transition-interactive)]"
-              client:load
-            >
-              <Calendar className="h-5 w-5" />
-              Prendre Rendez-vous
-            </Button>
-            <Button 
-              variant="outline"
-              size="lg"
-              className="w-full sm:w-auto text-base px-10 py-6 rounded-[var(--radius-pill)] border-2 border-[var(--color-white)] bg-transparent text-[var(--color-white)] hover:bg-[var(--color-white)] hover:text-[var(--color-secondary-mauve)] transition-[var(--transition-interactive)]"
-              client:load
-            >
-              Nous Contacter
-            </Button>
+            <a href="/reserver" class="w-full sm:w-auto">
+              <Button 
+                size="lg"
+                className="w-full gap-2 text-base px-10 py-6 rounded-[var(--radius-pill)] bg-[var(--color-white)] text-[var(--color-accent-rose-gold)] hover:bg-[var(--color-primary-background)] shadow-[var(--shadow-large)] transition-[var(--transition-interactive)]"
+                client:load
+              >
+                <Calendar className="h-5 w-5" />
+                Prendre Rendez-vous
+              </Button>
+            </a>
+            <a href="/contact" class="w-full sm:w-auto">
+              <Button 
+                variant="outline"
+                size="lg"
+                className="w-full text-base px-10 py-6 rounded-[var(--radius-pill)] border-2 border-[var(--color-white)] bg-transparent text-[var(--color-white)] hover:bg-[var(--color-white)] hover:text-[var(--color-secondary-mauve)] transition-[var(--transition-interactive)]"
+                client:load
+              >
+                Nous Contacter
+              </Button>
+            </a>
           </div>
         </div>
       </div>
