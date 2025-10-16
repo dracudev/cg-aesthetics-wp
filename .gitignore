@@ -7,7 +7,7 @@
 agent-docs/
 
 # Local development
-AGENT.md
+.agent.md
 
 # Node.js
 node_modules/
