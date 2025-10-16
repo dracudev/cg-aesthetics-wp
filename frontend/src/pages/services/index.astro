@@ -32,32 +32,43 @@ const seoDescription = 'Découvrez notre gamme complète de soins esthétiques :
 >
   <main>
     <!-- Hero Section -->
-    <section class="relative overflow-hidden" style="background: linear-gradient(135deg, var(--color-primary-background) 0%, var(--color-secondary-gray-light) 100%);">
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+    <section class="relative overflow-hidden min-h-[60vh] flex items-center justify-center">
+      <!-- Background Image -->
+      <div class="absolute inset-0 z-0">
+        <OptimizedImage
+          src="https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?q=80&w=2670&auto=format&fit=crop"
+          alt="Produits de beauté et soins esthétiques"
+          width={2670}
+          height={1440}
+          class="w-full h-full object-cover"
+          loading="eager"
+        />
+        <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60"></div>
+      </div>
+
+      <!-- Content -->
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32 relative z-10">
         <div class="max-w-4xl mx-auto text-center space-y-8">
           <div class="space-y-4">
-            <p class="text-sm md:text-base font-medium tracking-[var(--letter-spacing-widest)] uppercase" style="color: var(--color-secondary-mauve);">
+            <p class="text-sm md:text-base font-medium tracking-[var(--letter-spacing-widest)] uppercase text-white/90">
               Nos Services
             </p>
             <h1 
-              class="text-4xl md:text-6xl lg:text-7xl font-[var(--font-weight-bold)] leading-[var(--line-height-tight)] tracking-[var(--letter-spacing-tight)]"
-              style="font-family: var(--font-heading); color: var(--color-text-heading);"
+              class="text-4xl md:text-6xl lg:text-7xl font-[var(--font-weight-bold)] leading-[var(--line-height-tight)] tracking-[var(--letter-spacing-tight)] text-white"
+              style="font-family: var(--font-heading);"
             >
               Des Soins d'Exception
-              <span class="block mt-2" style="color: var(--color-accent-rose-gold);">Pour Votre Bien-être</span>
+              <span class="block mt-2" style="color: var(--color-accent-rose-gold-light);">Pour Votre Bien-être</span>
             </h1>
             <p 
-              class="text-lg md:text-xl max-w-2xl mx-auto leading-[var(--line-height-relaxed)]"
-              style="color: var(--color-text-muted); font-size: var(--font-size-body-lg);"
+              class="text-lg md:text-xl max-w-2xl mx-auto leading-[var(--line-height-relaxed)] text-white/95"
+              style="font-size: var(--font-size-body-lg);"
             >
               Découvrez notre gamme complète de soins personnalisés, conçus pour sublimer votre beauté naturelle
             </p>
           </div>
         </div>
       </div>
-      
-      <!-- Decorative Element -->
-      <div class="absolute bottom-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, var(--color-secondary-gray), transparent);"></div>
     </section>
 
     <!-- Services Grid -->

@@ -68,23 +68,37 @@ const benefits = [
 >
   <main>
     <!-- Hero Section -->
-    <section class="relative overflow-hidden" style="background: linear-gradient(135deg, var(--color-primary-background) 0%, var(--color-secondary-gray-light) 100%);">
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+    <section class="relative overflow-hidden min-h-[70vh] flex items-center justify-center">
+      <!-- Background Image -->
+      <div class="absolute inset-0 z-0">
+        <OptimizedImage
+          src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2670&auto=format&fit=crop"
+          alt="Spa relaxation avec bougies et serviettes"
+          width={2670}
+          height={1440}
+          class="w-full h-full object-cover"
+          loading="eager"
+        />
+        <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50"></div>
+      </div>
+
+      <!-- Content -->
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32 relative z-10">
         <div class="max-w-4xl mx-auto text-center space-y-8">
           <div class="space-y-4">
-            <p class="text-sm md:text-base font-medium tracking-[var(--letter-spacing-widest)] uppercase" style="color: var(--color-secondary-mauve);">
+            <p class="text-sm md:text-base font-medium tracking-[var(--letter-spacing-widest)] uppercase text-white/90">
               Institut de Beauté & Bien-être
             </p>
             <h1 
-              class="text-4xl md:text-6xl lg:text-7xl font-[var(--font-weight-bold)] leading-[var(--line-height-tight)] tracking-[var(--letter-spacing-tight)]"
-              style="font-family: var(--font-heading); color: var(--color-text-heading);"
+              class="text-4xl md:text-6xl lg:text-7xl font-[var(--font-weight-bold)] leading-[var(--line-height-tight)] tracking-[var(--letter-spacing-tight)] text-white"
+              style="font-family: var(--font-heading);"
             >
               Révélez Votre
-              <span class="block mt-2" style="color: var(--color-accent-rose-gold);">Beauté Naturelle</span>
+              <span class="block mt-2" style="color: var(--color-accent-rose-gold-light);">Beauté Naturelle</span>
             </h1>
             <p 
-              class="text-lg md:text-xl max-w-2xl mx-auto leading-[var(--line-height-relaxed)]"
-              style="color: var(--color-text-muted); font-size: var(--font-size-body-lg);"
+              class="text-lg md:text-xl max-w-2xl mx-auto leading-[var(--line-height-relaxed)] text-white/95"
+              style="font-size: var(--font-size-body-lg);"
             >
               Offrez-vous un moment d'exception dans notre sanctuaire dédié à votre bien-être. 
               Des soins personnalisés dans une atmosphère sereine et luxueuse.
@@ -94,7 +108,7 @@ const benefits = [
           <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
             <Button 
               size="lg"
-              className="w-full sm:w-auto gap-2 text-base px-8 py-6 rounded-[var(--radius-pill)] shadow-[var(--shadow-rose-gold)] hover:shadow-[var(--shadow-large)] bg-[var(--color-accent-rose-gold)] hover:bg-[var(--color-accent-rose-gold-dark)]"
+              className="w-full sm:w-auto gap-2 text-base px-8 py-6 rounded-[var(--radius-pill)] shadow-[var(--shadow-large)] bg-[var(--color-accent-rose-gold)] hover:bg-[var(--color-accent-rose-gold-dark)]"
               client:load
             >
               <Calendar className="h-5 w-5" />
@@ -103,7 +117,7 @@ const benefits = [
             <Button 
               variant="outline"
               size="lg"
-              className="w-full sm:w-auto text-base px-8 py-6 rounded-[var(--radius-pill)]"
+              className="w-full sm:w-auto text-base px-8 py-6 rounded-[var(--radius-pill)] border-2 border-[var(--color-white)] bg-transparent text-[var(--color-white)] hover:bg-[var(--color-white)] hover:text-[var(--color-secondary-mauve)]"
               client:load
             >
               Découvrir nos Services
@@ -111,9 +125,6 @@ const benefits = [
           </div>
         </div>
       </div>
-      
-      <!-- Decorative Element -->
-      <div class="absolute bottom-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, var(--color-secondary-gray), transparent);"></div>
     </section>
 
 
