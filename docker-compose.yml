@@ -1,11 +1,10 @@
-version: "3.8"
-
 services:
   # MySQL Database
   db:
     image: mysql:8.0
     container_name: cg-aesthetics-db
     restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_DATABASE: cg_aesthetics
       MYSQL_ROOT_PASSWORD: rootpassword
