@@ -79,7 +79,7 @@ const seoDescription = 'Découvrez notre gamme complète de soins esthétiques :
             {services.map((service) => (
               <Card client:visible noTopPadding className="group border-0 transition-all duration-500 hover:-translate-y-2 hover:shadow-[var(--shadow-large)]">
                 {service.featuredImage?.node.sourceUrl && (
-                  <div class="relative overflow-hidden aspect-[4/3] rounded-t-xl">
+                  <a href={`/services/${service.slug}`} class="block relative overflow-hidden aspect-[4/3] rounded-t-xl">
                     <OptimizedImage
                       src={service.featuredImage.node.sourceUrl} 
                       alt={service.featuredImage.node.altText || service.title}
@@ -90,7 +90,7 @@ const seoDescription = 'Découvrez notre gamme complète de soins esthétiques :
                       loading="lazy"
                     />
                     <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  </div>
+                  </a>
                 )}
                 <CardHeader>
                   <CardTitle client:load>
