@@ -147,7 +147,7 @@ export function buildServiceSchema(service: {
     url: service.url,
     provider: {
       '@type': 'BeautySalon',
-      name: 'CG Aesthetics',
+      name: 'Carmen Gómez',
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'Avenue des Alpes, 60',
@@ -199,7 +199,7 @@ export function buildPersonSchema(person: {
     url: person.url,
     worksFor: {
       '@type': 'BeautySalon',
-      name: 'CG Aesthetics',
+      name: 'Carmen Gómez',
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'Avenue des Alpes, 60',
@@ -236,7 +236,7 @@ export function buildReviewSchema(review: {
     datePublished: review.datePublished,
     itemReviewed: {
       '@type': 'BeautySalon',
-      name: 'CG Aesthetics',
+      name: 'Carmen Gómez',
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'Avenue des Alpes, 60',

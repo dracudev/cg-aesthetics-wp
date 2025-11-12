@@ -53,11 +53,11 @@ export const POST: APIRoute = async ({ request }) => {
         from: 'onboarding@resend.dev',
         to: businessEmail,
         reply_to: email,
-        subject: `[CG Aesthetics Contact] ${subject}`,
+        subject: `[Carmen Gómez Contact] ${subject}`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
             <h2 style="color: #c99a6e; border-bottom: 2px solid #c99a6e; padding-bottom: 10px;">
-              Nouvelle Demande de Contact - CG Aesthetics
+              Nouvelle Demande de Contact - Carmen Gómez
             </h2>
             
             <div style="background-color: #f9f9f9; padding: 15px; margin: 20px 0; border-left: 4px solid #c99a6e;">

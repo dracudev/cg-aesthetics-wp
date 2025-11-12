@@ -19,8 +19,8 @@ try {
 }
 
 // SEO Configuration
-const seoTitle = 'À Propos de CG Aesthetics | Découvrez notre fondatrice Carmen Gómez';
-const seoDescription = 'Découvrez l\'histoire de CG Aesthetics, notre passion pour la beauté et l\'expertise de notre fondatrice, Carmen Gómez. Une approche personnalisée pour des soins d\'exception.';
+const seoTitle = 'À Propos de Carmen Gómez | Découvrez notre fondatrice Carmen Gómez';
+const seoDescription = 'Découvrez l\'histoire de Carmen Gómez, notre passion pour la beauté et l\'expertise de notre fondatrice, Carmen Gómez. Une approche personnalisée pour des soins d\'exception.';
 const canonicalUrl = Astro.site ? new URL('/a-propos', Astro.site).href : undefined;
 const ogImage = heroImages?.aboutHeroImage || (Astro.site ? new URL('/images/about-hero.jpg', Astro.site).href : '/images/about-hero.jpg');
 
@@ -63,7 +63,7 @@ const values = [
   description={seoDescription}
   canonical={canonicalUrl}
   image={ogImage}
-  imageAlt="Carmen Gómez, fondatrice de CG Aesthetics"
+  imageAlt="Carmen Gómez, fondatrice de Carmen Gómez"
   type="profile"
   schema={founderSchema}
 >
@@ -74,7 +74,7 @@ const values = [
       <div class="absolute inset-0 z-0">
         <OptimizedImage
           src={heroImages?.aboutHeroImage || "https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=2574&auto=format&fit=crop"}
-          alt="Intérieur serein du salon CG Aesthetics"
+          alt="Intérieur serein du salon Carmen Gómez"
           width={2574}
           height={1440}
           class="w-full h-full object-cover"
@@ -96,7 +96,7 @@ const values = [
             La Passion de la Beauté
           </h1>
           <p class="text-lg md:text-xl text-white/95 leading-[var(--line-height-relaxed)] max-w-2xl mx-auto">
-            Découvrez la vision et l'expertise qui animent CG Aesthetics.
+            Découvrez la vision et l'expertise qui animent Carmen Gómez.
           </p>
         </div>
       </div>
@@ -117,7 +117,7 @@ const values = [
 
           <div class="space-y-6 text-lg leading-[var(--line-height-relaxed)]" style="color: var(--color-text-body);">
             <p>
-              Chez CG Aesthetics, nous croyons que chaque personne mérite de se sentir belle et confiante dans sa peau. 
+              Chez Carmen Gómez, nous croyons que chaque personne mérite de se sentir belle et confiante dans sa peau. 
               Notre mission est de créer une expérience unique où le bien-être rencontre l'excellence esthétique, 
               dans un environnement chaleureux et accueillant qui vous fait vous sentir chez vous.
             </p>
@@ -203,7 +203,7 @@ const values = [
               <div class="relative aspect-[4/5] md:aspect-auto overflow-hidden rounded-t-xl md:rounded-t-none md:rounded-l-xl">
                 <OptimizedImage
                   src={heroImages?.founderImage || "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?q=80&w=1887&auto=format&fit=crop"}
-                  alt="Carmen Gómez, Fondatrice de CG Aesthetics"
+                  alt="Carmen Gómez, Fondatrice de Carmen Gómez"
                   width={600}
                   height={750}
                   class="w-full h-full object-cover"

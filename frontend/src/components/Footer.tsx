@@ -32,7 +32,7 @@ export default function Footer() {
             <a href='/' className='inline-block'>
               <img
                 src='/images/logotype.webp'
-                alt='CG Aesthetics'
+                alt='Carmen Gómez'
                 className='h-12 w-auto transition-opacity hover:opacity-80'
               />
             </a>

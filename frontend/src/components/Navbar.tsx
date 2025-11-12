@@ -30,13 +30,13 @@ export default function Navbar() {
             {/* Isotype for mobile */}
             <img
               src='/images/isotype.webp'
-              alt='CG Aesthetics'
+              alt='Carmen Gómez'
               className='h-20 w-auto lg:hidden'
             />
             {/* Logotype for desktop */}
             <img
               src='/images/logotype.webp'
-              alt='CG Aesthetics'
+              alt='Carmen Gómez'
               className='hidden h-10 w-auto max-w-[180px] lg:block lg:h-12 lg:max-w-none'
             />
           </a>
