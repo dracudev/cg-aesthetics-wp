@@ -15,7 +15,12 @@
   # Use pnpm instead of npm
   NPM_FLAGS = "--legacy-peer-deps"
 
-# Redirects for SPA routing
+# Redirects for SPA routing (exclude API routes)
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+  
 [[redirects]]
   from = "/*"
   to = "/index.html"
