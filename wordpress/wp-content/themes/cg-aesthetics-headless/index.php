@@ -127,7 +127,7 @@
             <a href="<?php echo esc_url($frontend_url); ?>" class="btn btn-primary" target="_blank">
                 🌐 Voir le site web →
             </a>
-            <a href="<?php echo esc_url(admin_url()); ?>" class="btn btn-secondary">
+            <a href="https://admin.carmeng-beauty.com/wp-admin/" class="btn btn-secondary">
                 ⚙️ Accéder à l'administration
             </a>
         </div>
