@@ -201,7 +201,7 @@ const benefits = [
             {featuredServices.map((service) => (
               <Card client:visible noTopPadding className="group border-0 transition-all duration-500 hover:-translate-y-2">
                 {service.featuredImage?.node.sourceUrl && (
-                  <div class="relative overflow-hidden aspect-[4/3] rounded-t-xl">
+                  <a href={`/services/${service.slug}`} class="block relative overflow-hidden aspect-[4/3] rounded-t-xl">
                     <OptimizedImage
                       src={service.featuredImage.node.sourceUrl} 
                       alt={service.featuredImage.node.altText || service.title}
@@ -212,7 +212,7 @@ const benefits = [
                       loading="lazy"
                     />
                     <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  </div>
+                  </a>
                 )}
                 <CardHeader>
                   <CardTitle client:load>{service.title}</CardTitle>
