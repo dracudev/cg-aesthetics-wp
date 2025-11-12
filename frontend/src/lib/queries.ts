@@ -274,6 +274,7 @@ export const GET_HERO_IMAGES = gql`
         servicesHeroImage
         aboutHeroImage
         contactHeroImage
+        bookingHeroImage
         founderImage
       }
     }

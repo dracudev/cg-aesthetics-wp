@@ -469,6 +469,7 @@ function cg_aesthetics_register_acf_to_graphql() {
             'servicesHeroImage' => ['type' => 'String'],
             'aboutHeroImage' => ['type' => 'String'],
             'contactHeroImage' => ['type' => 'String'],
+            'bookingHeroImage' => ['type' => 'String'],
             'founderImage' => ['type' => 'String'],
         ],
     ]);
@@ -482,6 +483,7 @@ function cg_aesthetics_register_acf_to_graphql() {
             $services_hero = get_field('services_hero_image', $post->ID);
             $about_hero = get_field('about_hero_image', $post->ID);
             $contact_hero = get_field('contact_hero_image', $post->ID);
+            $booking_hero = get_field('booking_hero_image', $post->ID);
             $founder = get_field('founder_image', $post->ID);
             
             return [
@@ -489,6 +491,7 @@ function cg_aesthetics_register_acf_to_graphql() {
                 'servicesHeroImage' => is_array($services_hero) && isset($services_hero['url']) ? $services_hero['url'] : null,
                 'aboutHeroImage' => is_array($about_hero) && isset($about_hero['url']) ? $about_hero['url'] : null,
                 'contactHeroImage' => is_array($contact_hero) && isset($contact_hero['url']) ? $contact_hero['url'] : null,
+                'bookingHeroImage' => is_array($booking_hero) && isset($booking_hero['url']) ? $booking_hero['url'] : null,
                 'founderImage' => is_array($founder) && isset($founder['url']) ? $founder['url'] : null,
             ];
         },
@@ -522,6 +525,7 @@ function cg_aesthetics_register_acf_to_graphql() {
                 $services_hero = get_field('services_hero_image', $post_id);
                 $about_hero = get_field('about_hero_image', $post_id);
                 $contact_hero = get_field('contact_hero_image', $post_id);
+                $booking_hero = get_field('booking_hero_image', $post_id);
                 $founder = get_field('founder_image', $post_id);
                 
                 return [
@@ -530,6 +534,7 @@ function cg_aesthetics_register_acf_to_graphql() {
                         'servicesHeroImage' => is_array($services_hero) && isset($services_hero['url']) ? $services_hero['url'] : null,
                         'aboutHeroImage' => is_array($about_hero) && isset($about_hero['url']) ? $about_hero['url'] : null,
                         'contactHeroImage' => is_array($contact_hero) && isset($contact_hero['url']) ? $contact_hero['url'] : null,
+                        'bookingHeroImage' => is_array($booking_hero) && isset($booking_hero['url']) ? $booking_hero['url'] : null,
                         'founderImage' => is_array($founder) && isset($founder['url']) ? $founder['url'] : null,
                     ],
                 ];
@@ -542,6 +547,7 @@ function cg_aesthetics_register_acf_to_graphql() {
                     'servicesHeroImage' => null,
                     'aboutHeroImage' => null,
                     'contactHeroImage' => null,
+                    'bookingHeroImage' => null,
                     'founderImage' => null,
                 ],
             ];

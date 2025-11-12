@@ -392,6 +392,17 @@ if (function_exists('acf_add_local_field_group')) {
                 'library' => 'all',
                 'show_in_graphql' => 1,
             ),
+            array(
+                'key' => 'field_booking_hero_image',
+                'label' => 'Booking Page Hero Image',
+                'name' => 'booking_hero_image',
+                'type' => 'image',
+                'instructions' => 'Hero background image for booking/reservation page',
+                'return_format' => 'array',
+                'preview_size' => 'medium',
+                'library' => 'all',
+                'show_in_graphql' => 1,
+            ),
         ),
         'location' => array(
             array(

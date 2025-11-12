@@ -170,6 +170,7 @@ export interface HeroImagesData {
   servicesHeroImage?: string;
   aboutHeroImage?: string;
   contactHeroImage?: string;
+  bookingHeroImage?: string;
   founderImage?: string;
 }
 
