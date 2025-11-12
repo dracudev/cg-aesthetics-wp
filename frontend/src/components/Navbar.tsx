@@ -25,11 +25,20 @@ export default function Navbar() {
           {/* Logo */}
           <a
             href='/'
-            className='flex items-center space-x-2 transition-opacity hover:opacity-80'
+            className='flex items-center transition-opacity hover:opacity-80'
           >
-            <div className='text-2xl font-[var(--font-heading)] tracking-[var(--letter-spacing-wide)] text-[var(--color-text-heading)]'>
-              CG Aesthetics
-            </div>
+            {/* Isotype for mobile */}
+            <img
+              src='/images/isotype.webp'
+              alt='CG Aesthetics'
+              className='h-20 w-auto lg:hidden'
+            />
+            {/* Logotype for desktop */}
+            <img
+              src='/images/logotype.webp'
+              alt='CG Aesthetics'
+              className='hidden h-10 w-auto max-w-[180px] lg:block lg:h-12 lg:max-w-none'
+            />
           </a>
 
           {/* Desktop Navigation */}
