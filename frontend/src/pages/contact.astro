@@ -494,24 +494,128 @@ const localBusinessSchema = {
 </Layout>
 
 <script>
+  // Create modal helper function
+  function showModal(title: string, message: string, type: 'success' | 'error') {
+    // Create overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'fixed inset-0 bg-black/50 z-50 flex items-center justify-center';
+    
+    // Create modal
+    const modal = document.createElement('div');
+    modal.className = 'bg-white rounded-lg shadow-2xl p-8 max-w-md mx-4 animate-in fade-in zoom-in-95';
+    
+    // Color based on type
+    const borderColor = type === 'success' ? '#c99a6e' : '#ef4444';
+    const bgColor = type === 'success' ? '#f9f9f9' : '#fef2f2';
+    const textColor = type === 'success' ? '#92400e' : '#991b1b';
+    
+    modal.innerHTML = `
+      <div style="text-align: center;">
+        ${type === 'success' ? `
+          <div style="width: 60px; height: 60px; margin: 0 auto 16px; background-color: ${bgColor}; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid ${borderColor};">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="${borderColor}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="width: 32px; height: 32px;">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+        ` : `
+          <div style="width: 60px; height: 60px; margin: 0 auto 16px; background-color: ${bgColor}; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid ${borderColor};">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="${borderColor}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 32px; height: 32px;">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+          </div>
+        `}
+        
+        <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 8px; color: var(--color-text-heading);">${title}</h3>
+        <p style="color: var(--color-text-body); line-height: 1.6; margin-bottom: 24px;">${message}</p>
+        
+        <button onclick="this.closest('[data-modal]').remove()" style="background-color: ${borderColor}; color: white; padding: 10px 24px; border: none; border-radius: 50px; font-weight: 500; cursor: pointer; transition: opacity 0.3s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
+          Fermer
+        </button>
+      </div>
+    `;
+    
+    overlay.setAttribute('data-modal', '');
+    overlay.appendChild(modal);
+    
+    // Close on overlay click
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) overlay.remove();
+    });
+    
+    // Close on escape key
+    const closeOnEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        overlay.remove();
+        document.removeEventListener('keydown', closeOnEscape);
+      }
+    };
+    document.addEventListener('keydown', closeOnEscape);
+    
+    document.body.appendChild(overlay);
+  }
+
   // Contact form handling
   const form = document.getElementById('contact-form');
+  const submitButton = form?.querySelector('button[type="submit"]') as HTMLButtonElement;
   
   if (form) {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       
+      // Disable submit button to prevent duplicate submissions
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = 'Envoi en cours...';
+      }
+      
       const formData = new FormData(form as HTMLFormElement);
       const data = Object.fromEntries(formData.entries());
       
-      // Here you would normally send the data to your backend
-      console.log('Form submitted:', data);
-      
-      // Show success message (you can customize this)
-      alert('Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.');
-      
-      // Reset form
-      (form as HTMLFormElement).reset();
+      try {
+        // Send form data to API endpoint
+        const response = await fetch('/api/send-email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+
+        if (response.ok) {
+          // Show success modal
+          showModal(
+            'Merci !',
+            'Votre message a été envoyé avec succès. Nous vous répondrons dans les plus brefs délais.',
+            'success'
+          );
+          
+          // Reset form
+          (form as HTMLFormElement).reset();
+        } else {
+          const errorData = await response.json();
+          showModal(
+            'Erreur',
+            'Une erreur est survenue. Veuillez réessayer.',
+            'error'
+          );
+          console.error('Form error:', errorData);
+        }
+      } catch (error) {
+        console.error('Form submission error:', error);
+        showModal(
+          'Erreur',
+          'Une erreur est survenue lors de l\'envoi du formulaire. Veuillez réessayer.',
+          'error'
+        );
+      } finally {
+        // Re-enable submit button
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.innerHTML = '<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg> Envoyer le Message';
+        }
+      }
     });
   }
 </script>
