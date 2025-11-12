@@ -2,15 +2,10 @@ import { MapPin, Phone, Mail, Instagram, Facebook, Clock } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 
 const footerLinks = {
-  services: [
-    { label: 'Massages', href: '/services/massages' },
-    { label: 'Soins du corps', href: '/services/soins-corps' },
-    { label: 'Soins du visage', href: '/services/soins-visage' },
-  ],
+  services: [{ label: 'Services', href: '/services' }],
   info: [
     { label: 'À Propos', href: '/a-propos' },
     { label: 'Contact', href: '/contact' },
-    { label: 'Témoignages', href: '/testimonials' },
   ],
   legal: [
     { label: 'Mentions Légales', href: '/mentions-legales' },
@@ -34,9 +29,13 @@ export default function Footer() {
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12'>
           {/* Brand & Contact Info */}
           <div className='space-y-4'>
-            <h3 className='font-[var(--font-heading)] text-2xl tracking-[var(--letter-spacing-wide)] text-[var(--color-text-heading)]'>
-              CG Aesthetics
-            </h3>
+            <a href='/' className='inline-block'>
+              <img
+                src='/images/logotype.webp'
+                alt='CG Aesthetics'
+                className='h-12 w-auto transition-opacity hover:opacity-80'
+              />
+            </a>
             <p className='text-[var(--font-size-body-sm)] leading-[var(--line-height-relaxed)]'>
               Votre sanctuaire de beauté et de bien-être à Montreux, au bord du
               Lac Léman. Nous offrons des soins de qualité dans une atmosphère
@@ -64,10 +63,10 @@ export default function Footer() {
               <div className='flex items-center gap-3 text-[var(--font-size-body-sm)]'>
                 <Mail className='h-5 w-5 text-[var(--color-accent-rose-gold)] flex-shrink-0' />
                 <a
-                  href='mailto:contact@cgaesthetics.ch'
+                  href='mailto:carmeng.beautych@gmail.com'
                   className='hover:text-[var(--color-secondary-mauve)] transition-colors'
                 >
-                  contact@cgaesthetics.ch
+                  carmeng.beautych@gmail.com
                 </a>
               </div>
               <div className='flex items-start gap-3 text-[var(--font-size-body-sm)]'>
@@ -155,7 +154,7 @@ export default function Footer() {
       <div className='container mx-auto px-4 sm:px-6 lg:px-8 py-6'>
         <div className='flex flex-col md:flex-row justify-between items-center gap-4'>
           <p className='text-[var(--font-size-small)] text-center md:text-left'>
-            © {currentYear} CG Aesthetics. Tous droits réservés.
+            © {currentYear} Carmen Gómez. Tous droits réservés.
           </p>
           <div className='flex flex-wrap justify-center gap-4 md:gap-6'>
             {footerLinks.legal.map((link, index) => (
