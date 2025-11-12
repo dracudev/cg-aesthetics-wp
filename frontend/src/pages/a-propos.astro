@@ -4,13 +4,25 @@ import { Button } from '../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import OptimizedImage from '../components/OptimizedImage.astro';
 import { buildPersonSchema } from '../lib/seo';
+import { query } from '../lib/apollo-client';
+import { GET_HERO_IMAGES } from '../lib/queries';
+import type { HeroImagesResponse } from '../types/wordpress';
 import { User, Heart, Award, Sparkles } from 'lucide-react';
+
+// Fetch hero images from WordPress
+let heroImages;
+try {
+  const heroImagesData = await query<HeroImagesResponse>(GET_HERO_IMAGES);
+  heroImages = heroImagesData.siteHeroImages?.heroImages;
+} catch (e) {
+  console.error('Error fetching hero images:', e);
+}
 
 // SEO Configuration
 const seoTitle = 'À Propos de CG Aesthetics | Découvrez notre fondatrice Carmen Gómez';
 const seoDescription = 'Découvrez l\'histoire de CG Aesthetics, notre passion pour la beauté et l\'expertise de notre fondatrice, Carmen Gómez. Une approche personnalisée pour des soins d\'exception.';
 const canonicalUrl = Astro.site ? new URL('/a-propos', Astro.site).href : undefined;
-const ogImage = Astro.site ? new URL('/images/about-hero.jpg', Astro.site).href : '/images/about-hero.jpg';
+const ogImage = heroImages?.aboutHeroImage || (Astro.site ? new URL('/images/about-hero.jpg', Astro.site).href : '/images/about-hero.jpg');
 
 // Build Person Schema for Carmen Gómez
 const founderSchema = buildPersonSchema({
@@ -61,7 +73,7 @@ const values = [
       <!-- Background Image -->
       <div class="absolute inset-0 z-0">
         <OptimizedImage
-          src="https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=2574&auto=format&fit=crop"
+          src={heroImages?.aboutHeroImage || "https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=2574&auto=format&fit=crop"}
           alt="Intérieur serein du salon CG Aesthetics"
           width={2574}
           height={1440}
@@ -190,7 +202,7 @@ const values = [
               <!-- Image -->
               <div class="relative aspect-[4/5] md:aspect-auto overflow-hidden rounded-t-xl md:rounded-t-none md:rounded-l-xl">
                 <OptimizedImage
-                  src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?q=80&w=1887&auto=format&fit=crop"
+                  src={heroImages?.founderImage || "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?q=80&w=1887&auto=format&fit=crop"}
                   alt="Carmen Gómez, Fondatrice de CG Aesthetics"
                   width={600}
                   height={750}

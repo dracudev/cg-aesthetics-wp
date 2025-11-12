@@ -4,15 +4,16 @@ import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import OptimizedImage from '../components/OptimizedImage.astro';
 import { query } from '../lib/apollo-client';
-import { GET_SITE_SETTINGS, GET_FEATURED_SERVICES, GET_FEATURED_TESTIMONIALS } from '../lib/queries';
+import { GET_SITE_SETTINGS, GET_FEATURED_SERVICES, GET_FEATURED_TESTIMONIALS, GET_HERO_IMAGES } from '../lib/queries';
 import { buildAggregateRatingSchema } from '../lib/seo';
-import type { SiteSettingsResponse, ServicesResponse, TestimonialsResponse } from '../types/wordpress';
+import type { SiteSettingsResponse, ServicesResponse, TestimonialsResponse, HeroImagesResponse } from '../types/wordpress';
 import { Sparkles, Clock, Star, CheckCircle2, Calendar } from 'lucide-react';
 
 // Fetch data from WordPress
 let siteSettings;
 let featuredServices: Array<any> = [];
 let featuredTestimonials: Array<any> = [];
+let heroImages;
 let error: string | null = null;
 
 try {
@@ -24,6 +25,9 @@ try {
 
   const testimonialsData = await query<TestimonialsResponse>(GET_FEATURED_TESTIMONIALS, { first: 3 });
   featuredTestimonials = testimonialsData.testimonials.nodes;
+
+  const heroImagesData = await query<HeroImagesResponse>(GET_HERO_IMAGES);
+  heroImages = heroImagesData.siteHeroImages?.heroImages;
 } catch (e) {
   console.error('Error fetching data from WordPress:', e);
   error = e instanceof Error ? e.message : 'Failed to fetch data from WordPress';
@@ -72,7 +76,7 @@ const benefits = [
       <!-- Background Image -->
       <div class="absolute inset-0 z-0">
         <OptimizedImage
-          src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2670&auto=format&fit=crop"
+          src={heroImages?.homeHeroImage || "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2670&auto=format&fit=crop"}
           alt="Spa relaxation avec bougies et serviettes"
           width={2670}
           height={1440}

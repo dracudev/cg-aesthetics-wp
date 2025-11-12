@@ -264,3 +264,18 @@ export const GET_SITE_SETTINGS = gql`
     }
   }
 `;
+
+// Get hero images from site settings (returns direct image URLs)
+export const GET_HERO_IMAGES = gql`
+  query GetHeroImages {
+    siteHeroImages {
+      heroImages {
+        homeHeroImage
+        servicesHeroImage
+        aboutHeroImage
+        contactHeroImage
+        founderImage
+      }
+    }
+  }
+`;

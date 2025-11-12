@@ -232,6 +232,7 @@ function cg_aesthetics_activation() {
     cg_aesthetics_register_services_cpt();
     cg_aesthetics_register_team_cpt();
     cg_aesthetics_register_testimonials_cpt();
+    cg_aesthetics_register_site_settings_cpt();
     cg_aesthetics_register_service_categories();
     flush_rewrite_rules();
 }
@@ -259,6 +260,51 @@ function cg_aesthetics_remove_admin_bar_css() {
 add_action('get_header', 'cg_aesthetics_remove_admin_bar_css');
 
 /**
+ * Register Custom Post Type: Site Settings
+ * Used for site-wide settings like hero images (ACF Free compatible alternative to Options Page)
+ */
+function cg_aesthetics_register_site_settings_cpt() {
+    $labels = array(
+        'name'                  => _x('Site Settings', 'Post Type General Name', 'cg-aesthetics'),
+        'singular_name'         => _x('Site Setting', 'Post Type Singular Name', 'cg-aesthetics'),
+        'menu_name'             => __('Site Settings', 'cg-aesthetics'),
+        'all_items'             => __('All Settings', 'cg-aesthetics'),
+        'add_new_item'          => __('Add New Setting', 'cg-aesthetics'),
+        'add_new'               => __('Add New', 'cg-aesthetics'),
+        'edit_item'             => __('Edit Setting', 'cg-aesthetics'),
+        'update_item'           => __('Update Setting', 'cg-aesthetics'),
+        'view_item'             => __('View Setting', 'cg-aesthetics'),
+        'search_items'          => __('Search Settings', 'cg-aesthetics'),
+    );
+
+    $args = array(
+        'label'                 => __('Site Setting', 'cg-aesthetics'),
+        'labels'                => $labels,
+        'supports'              => array('title'),
+        'public'                => false,
+        'show_ui'               => true,
+        'show_in_menu'          => true,
+        'menu_position'         => 25,
+        'menu_icon'             => 'dashicons-admin-settings',
+        'show_in_admin_bar'     => false,
+        'show_in_nav_menus'     => false,
+        'can_export'            => true,
+        'has_archive'           => false,
+        'hierarchical'          => false,
+        'exclude_from_search'   => true,
+        'show_in_rest'          => false,
+        'publicly_queryable'    => false,
+        'capability_type'       => 'post',
+        'show_in_graphql'       => true,
+        'graphql_single_name'   => 'siteSetting',
+        'graphql_plural_name'   => 'siteSettings',
+    );
+
+    register_post_type('site_setting', $args);
+}
+add_action('init', 'cg_aesthetics_register_site_settings_cpt', 0);
+
+/**
  * Load ACF Field Groups
  */
 require_once get_template_directory() . '/acf-fields.php';
@@ -267,6 +313,11 @@ require_once get_template_directory() . '/acf-fields.php';
  * Load SEO Configuration
  */
 require_once get_template_directory() . '/seo-setup.php';
+
+/**
+ * Load Debug Script (TEMPORARY - Remove after testing)
+ */
+// require_once get_template_directory() . '/debug-hero-images.php';
 
 /**
  * Register ACF Fields to GraphQL Manually
@@ -405,6 +456,94 @@ function cg_aesthetics_register_acf_to_graphql() {
                 'dateSubmitted' => get_field('date_submitted', $post->ID),
                 'clientPhoto' => $client_photo,
                 'serviceRelated' => $service_related,
+            ];
+        },
+    ]);
+
+    // Register Site Setting Details fields (includes hero images)
+    // Returns image URLs directly instead of MediaItem IDs for simpler frontend consumption
+    register_graphql_object_type('SiteSettingDetails', [
+        'description' => 'Site setting details from ACF',
+        'fields' => [
+            'homeHeroImage' => ['type' => 'String'],
+            'servicesHeroImage' => ['type' => 'String'],
+            'aboutHeroImage' => ['type' => 'String'],
+            'contactHeroImage' => ['type' => 'String'],
+            'founderImage' => ['type' => 'String'],
+        ],
+    ]);
+
+    register_graphql_field('SiteSetting', 'siteSettingDetails', [
+        'type' => 'SiteSettingDetails',
+        'description' => 'ACF Site Setting Details (Hero Images)',
+        'resolve' => function($post) {
+            // ACF returns array with 'url' key when return_format is 'array'
+            $home_hero = get_field('home_hero_image', $post->ID);
+            $services_hero = get_field('services_hero_image', $post->ID);
+            $about_hero = get_field('about_hero_image', $post->ID);
+            $contact_hero = get_field('contact_hero_image', $post->ID);
+            $founder = get_field('founder_image', $post->ID);
+            
+            return [
+                'homeHeroImage' => is_array($home_hero) && isset($home_hero['url']) ? $home_hero['url'] : null,
+                'servicesHeroImage' => is_array($services_hero) && isset($services_hero['url']) ? $services_hero['url'] : null,
+                'aboutHeroImage' => is_array($about_hero) && isset($about_hero['url']) ? $about_hero['url'] : null,
+                'contactHeroImage' => is_array($contact_hero) && isset($contact_hero['url']) ? $contact_hero['url'] : null,
+                'founderImage' => is_array($founder) && isset($founder['url']) ? $founder['url'] : null,
+            ];
+        },
+    ]);
+
+    // Add a helper query to get the site hero images directly (for convenience)
+    register_graphql_object_type('SiteHeroImages', [
+        'description' => 'Site hero images wrapper',
+        'fields' => [
+            'heroImages' => ['type' => 'SiteSettingDetails'],
+        ],
+    ]);
+
+    register_graphql_field('RootQuery', 'siteHeroImages', [
+        'type' => 'SiteHeroImages',
+        'description' => 'Get hero images from site settings',
+        'resolve' => function() {
+            // Get the first (and should be only) site_setting post
+            $args = [
+                'post_type' => 'site_setting',
+                'posts_per_page' => 1,
+                'post_status' => 'publish',
+            ];
+            $query = new WP_Query($args);
+            
+            if ($query->have_posts()) {
+                $post_id = $query->posts[0]->ID;
+                
+                // ACF returns array with 'url' key when return_format is 'array'
+                $home_hero = get_field('home_hero_image', $post_id);
+                $services_hero = get_field('services_hero_image', $post_id);
+                $about_hero = get_field('about_hero_image', $post_id);
+                $contact_hero = get_field('contact_hero_image', $post_id);
+                $founder = get_field('founder_image', $post_id);
+                
+                return [
+                    'heroImages' => [
+                        'homeHeroImage' => is_array($home_hero) && isset($home_hero['url']) ? $home_hero['url'] : null,
+                        'servicesHeroImage' => is_array($services_hero) && isset($services_hero['url']) ? $services_hero['url'] : null,
+                        'aboutHeroImage' => is_array($about_hero) && isset($about_hero['url']) ? $about_hero['url'] : null,
+                        'contactHeroImage' => is_array($contact_hero) && isset($contact_hero['url']) ? $contact_hero['url'] : null,
+                        'founderImage' => is_array($founder) && isset($founder['url']) ? $founder['url'] : null,
+                    ],
+                ];
+            }
+            
+            // Return null values if no settings post exists yet
+            return [
+                'heroImages' => [
+                    'homeHeroImage' => null,
+                    'servicesHeroImage' => null,
+                    'aboutHeroImage' => null,
+                    'contactHeroImage' => null,
+                    'founderImage' => null,
+                ],
             ];
         },
     ]);

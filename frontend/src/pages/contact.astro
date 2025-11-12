@@ -6,13 +6,25 @@ import { Input } from '../components/ui/input';
 import { Textarea } from '../components/ui/textarea';
 import { Label } from '../components/ui/label';
 import OptimizedImage from '../components/OptimizedImage.astro';
+import { query } from '../lib/apollo-client';
+import { GET_HERO_IMAGES } from '../lib/queries';
+import type { HeroImagesResponse } from '../types/wordpress';
 import { MapPin, Phone, Mail, Clock, Send, Instagram, Facebook } from 'lucide-react';
+
+// Fetch hero images from WordPress
+let heroImages;
+try {
+  const heroImagesData = await query<HeroImagesResponse>(GET_HERO_IMAGES);
+  heroImages = heroImagesData.siteHeroImages?.heroImages;
+} catch (e) {
+  console.error('Error fetching hero images:', e);
+}
 
 // SEO Configuration
 const seoTitle = 'Contact - CG Aesthetics | Contactez notre Institut de Beauté à Montreux';
 const seoDescription = 'Contactez CG Aesthetics pour prendre rendez-vous ou poser vos questions. Notre équipe est à votre écoute pour vous offrir une expérience beauté exceptionnelle à Montreux.';
 const canonicalUrl = Astro.site ? new URL('/contact', Astro.site).href : undefined;
-const ogImage = Astro.site ? new URL('/images/contact-hero.jpg', Astro.site).href : '/images/contact-hero.jpg';
+const ogImage = heroImages?.contactHeroImage || (Astro.site ? new URL('/images/contact-hero.jpg', Astro.site).href : '/images/contact-hero.jpg');
 
 // Business Information
 const businessInfo = {
@@ -92,7 +104,7 @@ const localBusinessSchema = {
       <!-- Background Image -->
       <div class="absolute inset-0 z-0">
         <OptimizedImage
-          src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?q=80&w=2667&auto=format&fit=crop"
+          src={heroImages?.contactHeroImage || "https://images.unsplash.com/photo-1600948836101-f9ffda59d250?q=80&w=2667&auto=format&fit=crop"}
           alt="Réception accueillante d'un spa de luxe"
           width={2667}
           height={1440}

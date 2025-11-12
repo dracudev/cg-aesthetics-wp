@@ -163,3 +163,18 @@ export interface SiteSettingsResponse {
   generalSettings: SiteSettings;
   seoSettings?: SEO;
 }
+
+// Hero Images Types (now returns direct URLs as strings)
+export interface HeroImagesData {
+  homeHeroImage?: string;
+  servicesHeroImage?: string;
+  aboutHeroImage?: string;
+  contactHeroImage?: string;
+  founderImage?: string;
+}
+
+export interface HeroImagesResponse {
+  siteHeroImages: {
+    heroImages: HeroImagesData;
+  };
+}

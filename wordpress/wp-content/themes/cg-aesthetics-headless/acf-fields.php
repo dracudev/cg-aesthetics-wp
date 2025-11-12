@@ -300,4 +300,109 @@ if (function_exists('acf_add_local_field_group')) {
         'show_in_graphql' => 1,
         'graphql_field_name' => 'testimonialDetails',
     ));
+
+    // Page Hero Images Field Group
+    acf_add_local_field_group(array(
+        'key' => 'group_page_hero_settings',
+        'title' => 'Hero Section Settings',
+        'fields' => array(
+            array(
+                'key' => 'field_hero_image',
+                'label' => 'Hero Background Image',
+                'name' => 'hero_image',
+                'type' => 'image',
+                'instructions' => 'Main hero background image for this page (recommended size: 2670x1440px)',
+                'required' => 0,
+                'return_format' => 'array',
+                'preview_size' => 'medium',
+                'library' => 'all',
+                'show_in_graphql' => 1,
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'page_template',
+                    'operator' => '==',
+                    'value' => 'default',
+                ),
+            ),
+        ),
+        'show_in_graphql' => 1,
+        'graphql_field_name' => 'pageHeroSettings',
+    ));
+
+    // Site-wide Hero Images Field Group (attached to Site Settings CPT)
+    acf_add_local_field_group(array(
+        'key' => 'group_site_hero_images',
+        'title' => 'Hero Images',
+        'fields' => array(
+            array(
+                'key' => 'field_home_hero_image',
+                'label' => 'Homepage Hero Image',
+                'name' => 'home_hero_image',
+                'type' => 'image',
+                'instructions' => 'Hero background image for homepage (recommended: 2670x1440px)',
+                'return_format' => 'array',
+                'preview_size' => 'medium',
+                'library' => 'all',
+                'show_in_graphql' => 1,
+            ),
+            array(
+                'key' => 'field_services_hero_image',
+                'label' => 'Services Page Hero Image',
+                'name' => 'services_hero_image',
+                'type' => 'image',
+                'instructions' => 'Hero background image for services listing page',
+                'return_format' => 'array',
+                'preview_size' => 'medium',
+                'library' => 'all',
+                'show_in_graphql' => 1,
+            ),
+            array(
+                'key' => 'field_about_hero_image',
+                'label' => 'About Page Hero Image',
+                'name' => 'about_hero_image',
+                'type' => 'image',
+                'instructions' => 'Hero background image for about page',
+                'return_format' => 'array',
+                'preview_size' => 'medium',
+                'library' => 'all',
+                'show_in_graphql' => 1,
+            ),
+            array(
+                'key' => 'field_contact_hero_image',
+                'label' => 'Contact Page Hero Image',
+                'name' => 'contact_hero_image',
+                'type' => 'image',
+                'instructions' => 'Hero background image for contact page',
+                'return_format' => 'array',
+                'preview_size' => 'medium',
+                'library' => 'all',
+                'show_in_graphql' => 1,
+            ),
+            array(
+                'key' => 'field_founder_image',
+                'label' => 'Founder Image (Carmen Gómez)',
+                'name' => 'founder_image',
+                'type' => 'image',
+                'instructions' => 'Photo of Carmen Gómez for About page (recommended: 600x750px)',
+                'return_format' => 'array',
+                'preview_size' => 'medium',
+                'library' => 'all',
+                'show_in_graphql' => 1,
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'site_setting',
+                ),
+            ),
+        ),
+        'show_in_graphql' => 1,
+        'graphql_field_name' => 'siteSettingDetails',
+    ));
 }
