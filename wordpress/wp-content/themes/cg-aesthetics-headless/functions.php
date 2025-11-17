@@ -28,6 +28,24 @@ function cg_aesthetics_setup() {
 add_action('after_setup_theme', 'cg_aesthetics_setup');
 
 /**
+ * Fix REST API JSON errors by cleaning output buffer
+ */
+add_action('init', function() {
+    if (defined('REST_REQUEST') && REST_REQUEST) {
+        // Remove any PHP notices/warnings from output
+        ob_start();
+    }
+});
+
+add_filter('rest_pre_echo_response', function($result) {
+    // Clean any output that might have leaked
+    if (ob_get_level() > 0) {
+        ob_clean();
+    }
+    return $result;
+});
+
+/**
  * Disable unnecessary features for headless setup
  */
 function cg_aesthetics_disable_features() {
@@ -313,11 +331,6 @@ require_once get_template_directory() . '/acf-fields.php';
  * Load SEO Configuration
  */
 require_once get_template_directory() . '/seo-setup.php';
-
-/**
- * Load Debug Script (TEMPORARY - Remove after testing)
- */
-// require_once get_template_directory() . '/debug-hero-images.php';
 
 /**
  * Register ACF Fields to GraphQL Manually
