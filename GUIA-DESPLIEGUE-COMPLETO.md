@@ -96,15 +96,24 @@ PUBLIC_GRAPHQL_ENDPOINT=https://admin.carmeng-beauty.com/graphql
 1. **hPanel → Websites → "Add Website"**
 2. Selecciona **"WordPress"**
 3. Configuración:
-   - **Domain**: Selecciona "Create subdomain"
-   - **Subdomain**: `admin`
-   - **Domain**: `carmeng-beauty.com`
+   - **Domain**: Selecciona **"Create subdomain"**
+   - **Subdomain**: Escribe `admin`
+   - **Domain**: Selecciona `carmeng-beauty.com` del dropdown
    - **Website title**: "CG Aesthetics Admin"
-   - **Admin username**: `admin` (o tu usuario)
-   - **Admin password**: [tu contraseña segura]
-   - **Admin email**: tu email
-4. Click **"Install"**
-5. **Espera 2-3 minutos** a que termine la instalación
+   - **Admin username**: Elige tu usuario (ejemplo: `admin`)
+   - **Admin password**: [contraseña segura - GUÁRDALA]
+   - **Admin email**: Tu email real
+4. Click **"Install"** o **"Create"**
+5. **Espera 2-5 minutos** a que termine la instalación
+
+**IMPORTANTE**: El instalador creará automáticamente:
+
+- Subdominio: `admin.carmeng-beauty.com`
+- Carpeta: `/domains/admin.carmeng-beauty.com/public_html/`
+- Base de datos MySQL nueva
+- Usuario de base de datos
+
+**Anota las credenciales** que te muestre al finalizar.
 
 ### 2.4 Verificar instalación
 
@@ -116,9 +125,10 @@ Deberías ver: `HTTP/2 302` (redirect a login) ✅
 
 ### 2.5 Configurar wp-config.php
 
-1. **File Manager → public_html/** (del sitio admin.carmeng-beauty.com)
-2. Edita **wp-config.php**
-3. **ANTES de la línea** `/* That's all, stop editing! */` añade:
+1. **File Manager**
+2. Navega a: `/domains/admin.carmeng-beauty.com/public_html/`
+3. Edita **wp-config.php**
+4. **ANTES de la línea** `/* That's all, stop editing! */` añade:
 
 ```php
 // Force correct URLs
@@ -153,41 +163,49 @@ unzip wordpress-content-20251112.zip -d temp-restore/
 
 **Via File Manager de Hostinger:**
 
-1. Navega a: `public_html/wp-content/themes/`
-2. **Borra** la carpeta `twentytwentyfour` (o cualquier tema por defecto)
-3. **Crea carpeta**: `cg-aesthetics-headless`
-4. **Entra** en esa carpeta
-5. **Upload** todos los archivos de:
-   ```
-   temp-restore/wp-content/themes/cg-aesthetics-headless/*
-   ```
+1. Navega a: `/domains/admin.carmeng-beauty.com/public_html/wp-content/themes/`
+2. **Borra** la carpeta `twentytwentyfour` o `twentytwentyfive` (temas por defecto)
+3. **Sube la carpeta completa**: `temp-restore/wp-content/themes/cg-aesthetics-headless/`
 
-**Archivos críticos a subir:**
+**IMPORTANTE**: Sube la **carpeta entera**, no los archivos sueltos. Debe quedar:
 
-- `functions.php` ⚠️ (versión limpia del backup)
-- `style.css`
-- Toda la estructura de carpetas del tema
+```
+/wp-content/themes/cg-aesthetics-headless/
+├── functions.php
+├── style.css
+├── screenshot.png
+└── [resto de archivos del tema]
+```
+
+**NO subas archivo por archivo** - usa la opción "Upload Folder" si está disponible, o comprime la carpeta y descomprímela en el servidor.
 
 ### 3.3 Subir plugins
 
-**En `public_html/wp-content/plugins/`** sube estas carpetas:
+**En `/domains/admin.carmeng-beauty.com/public_html/wp-content/plugins/`** sube estas carpetas completas:
 
-```
-temp-restore/wp-content/plugins/advanced-custom-fields/
-temp-restore/wp-content/plugins/wp-graphql/
-temp-restore/wp-content/plugins/ameliabooking/ (opcional)
-temp-restore/wp-content/plugins/wordpress-seo/ (opcional)
-```
+1. `advanced-custom-fields/` ← **OBLIGATORIO**
+2. `wp-graphql/` ← **OBLIGATORIO**
+3. `ameliabooking/` ← (opcional, para sistema de reservas)
+4. `wordpress-seo/` ← (opcional, para SEO)
+
+**Sube las carpetas completas**, no archivos sueltos.
 
 ### 3.4 Subir uploads (imágenes)
 
-**En `public_html/wp-content/`** sube:
+**En `/domains/admin.carmeng-beauty.com/public_html/wp-content/`** sube la carpeta:
 
 ```
-temp-restore/wp-content/uploads/
+uploads/
 ```
 
-Esto incluye todas las imágenes de servicios, hero images, etc.
+**IMPORTANTE**: Verifica que la estructura sea:
+
+```
+/wp-content/uploads/
+└── 2025/
+    └── 11/ (o meses que tengas)
+        └── [archivos .jpg, .png, etc.]
+```
 
 ---
 
