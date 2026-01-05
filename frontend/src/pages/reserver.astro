@@ -9,8 +9,8 @@ import type { HeroImagesResponse } from '../types/wordpress';
 import { Calendar, Clock, CheckCircle2, Mail, Phone, MapPin } from 'lucide-react';
 
 const WP_URL = import.meta.env.PUBLIC_WORDPRESS_URL || 'http://localhost:8000';
-// Use page ID to ensure we get the correct page
-const BOOKING_PAGE_URL = `${WP_URL}/?page_id=20`;
+// Use the WordPress booking iframe page (minimal template)
+const BOOKING_PAGE_URL = `${WP_URL}/booking-form/`;
 
 // Fetch hero images from WordPress
 let heroImages;
