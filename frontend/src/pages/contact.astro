@@ -47,8 +47,8 @@ const businessInfo = {
     { day: 'Dimanche', hours: 'Fermé' }
   ],
   social: {
-    instagram: 'https://instagram.com/cgaesthetics',
-    facebook: 'https://facebook.com/cgaesthetics'
+    instagram: 'https://www.instagram.com/carmeng.beauty/',
+    facebook: 'https://www.facebook.com/profile.php?id=61584112557130'
   }
 };
 
@@ -100,9 +100,9 @@ const localBusinessSchema = {
 >
   <main>
     <!-- Hero Section -->
-    <section class="relative overflow-hidden min-h-[60vh] flex items-center justify-center">
+    <section class="relative overflow-hidden min-h-[60vh] flex items-center justify-center w-full">
       <!-- Background Image -->
-      <div class="absolute inset-0 z-0">
+      <div class="absolute inset-0 z-0 w-full">
         <OptimizedImage
           src={heroImages?.contactHeroImage || "https://images.unsplash.com/photo-1600948836101-f9ffda59d250?q=80&w=2667&auto=format&fit=crop"}
           alt="Réception accueillante d'un spa de luxe"
@@ -135,12 +135,12 @@ const localBusinessSchema = {
     </section>
 
     <!-- Contact Section -->
-    <section class="py-16 md:py-24" style="background-color: var(--color-white);">
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="py-16 md:py-24 w-full overflow-hidden" style="background-color: var(--color-white);">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-full">
         <div class="max-w-6xl mx-auto">
-          <div class="grid lg:grid-cols-2 gap-12">
+          <div class="grid lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12">
             <!-- Contact Form -->
-            <div>
+            <div class="min-w-0">
               <div class="mb-8 space-y-3">
                 <h2 
                   class="text-3xl md:text-4xl font-[var(--font-weight-semibold)]"
@@ -249,7 +249,7 @@ const localBusinessSchema = {
             </div>
 
             <!-- Contact Information -->
-            <div class="space-y-6">
+            <div class="space-y-6 min-w-0">
               <!-- Business Hours -->
               <Card client:visible className="border-0 shadow-[var(--shadow-medium)] mb-6">
                 <CardHeader>
@@ -266,15 +266,15 @@ const localBusinessSchema = {
                 <CardContent client:load>
                   <div class="space-y-2">
                     {businessInfo.hours.map(({ day, hours }) => (
-                      <div class="flex justify-between items-center py-2.5 border-b last:border-b-0 border-[var(--color-secondary-gray)]">
+                      <div class="flex justify-between items-center py-2.5 border-b last:border-b-0 border-[var(--color-secondary-gray)] gap-4">
                         <span 
-                          class="font-[var(--font-weight-medium)]"
+                          class="font-[var(--font-weight-medium)] flex-shrink-0"
                           style="color: var(--color-text-body);"
                         >
                           {day}
                         </span>
                         <span 
-                          class={hours === 'Fermé' ? 'text-[var(--color-text-muted)]' : 'text-[var(--color-accent-rose-gold)] font-[var(--font-weight-medium)]'}
+                          class={`${hours === 'Fermé' ? 'text-[var(--color-text-muted)]' : 'text-[var(--color-accent-rose-gold)] font-[var(--font-weight-medium)]'} text-right whitespace-nowrap`}
                         >
                           {hours}
                         </span>
@@ -294,12 +294,12 @@ const localBusinessSchema = {
                     <!-- Address -->
                     <div class="flex gap-4">
                       <div 
-                        class="p-2 rounded-full h-fit"
+                        class="p-2 rounded-full h-fit flex-shrink-0"
                         style="background-color: var(--color-primary-accent-light);"
                       >
                         <MapPin className="h-5 w-5 text-[var(--color-accent-rose-gold)]" />
                       </div>
-                      <div class="space-y-1">
+                      <div class="space-y-1 min-w-0">
                         <h3 
                           class="font-[var(--font-weight-semibold)]"
                           style="color: var(--color-text-heading);"
@@ -317,12 +317,12 @@ const localBusinessSchema = {
                     <!-- Phone -->
                     <div class="flex gap-4">
                       <div 
-                        class="p-2 rounded-full h-fit"
+                        class="p-2 rounded-full h-fit flex-shrink-0"
                         style="background-color: var(--color-primary-accent-light);"
                       >
                         <Phone className="h-5 w-5 text-[var(--color-accent-rose-gold)]" />
                       </div>
-                      <div class="space-y-1">
+                      <div class="space-y-1 min-w-0">
                         <h3 
                           class="font-[var(--font-weight-semibold)]"
                           style="color: var(--color-text-heading);"
@@ -342,12 +342,12 @@ const localBusinessSchema = {
                     <!-- Email -->
                     <div class="flex gap-4">
                       <div 
-                        class="p-2 rounded-full h-fit"
+                        class="p-2 rounded-full h-fit flex-shrink-0"
                         style="background-color: var(--color-primary-accent-light);"
                       >
                         <Mail className="h-5 w-5 text-[var(--color-accent-rose-gold)]" />
                       </div>
-                      <div class="space-y-1">
+                      <div class="space-y-1 min-w-0">
                         <h3 
                           class="font-[var(--font-weight-semibold)]"
                           style="color: var(--color-text-heading);"
@@ -356,7 +356,7 @@ const localBusinessSchema = {
                         </h3>
                         <a 
                           href={`mailto:${businessInfo.email}`}
-                          class="transition-colors hover:text-[var(--color-accent-rose-gold)]"
+                          class="transition-colors hover:text-[var(--color-accent-rose-gold)] break-all"
                           style="color: var(--color-text-body);"
                         >
                           {businessInfo.email}
@@ -372,7 +372,7 @@ const localBusinessSchema = {
                     >
                       Suivez-nous
                     </h3>
-                    <div class="flex gap-3">
+                    <div class="flex gap-3 flex-wrap">
                       <a 
                         href={businessInfo.social.instagram}
                         target="_blank"
@@ -404,8 +404,8 @@ const localBusinessSchema = {
     </section>
 
     <!-- Map Section -->
-    <section class="py-16 md:py-24" style="background-color: var(--color-secondary-gray-light);">
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="py-16 md:py-24 w-full overflow-hidden" style="background-color: var(--color-secondary-gray-light);">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-full">
         <div class="max-w-6xl mx-auto">
           <div class="text-center mb-12 space-y-3">
             <h2 
@@ -420,7 +420,7 @@ const localBusinessSchema = {
           </div>
 
           <!-- Google Maps Embed -->
-          <div class="rounded-xl overflow-hidden shadow-[var(--shadow-large)]" style="height: 450px;">
+          <div class="rounded-xl overflow-hidden shadow-[var(--shadow-large)] w-full" style="height: 450px;">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2746.8362743927677!2d6.908889776583498!3d46.431199271098345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478ea0c0b8e0a2e7%3A0x8c8c8c8c8c8c8c8c!2sAv.%20des%20Alpes%2C%201820%20Montreux%2C%20Switzerland!5e0!3m2!1sen!2s!4v1697458000000!5m2!1sen!2s"
               width="100%"
@@ -447,10 +447,10 @@ const localBusinessSchema = {
 
     <!-- CTA Section -->
     <section 
-      class="py-20 md:py-32 relative overflow-hidden"
+      class="py-20 md:py-32 relative overflow-hidden w-full"
       style="background: linear-gradient(135deg, var(--color-accent-rose-gold) 0%, var(--color-secondary-mauve) 100%);"
     >
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 max-w-full">
         <div class="max-w-3xl mx-auto text-center space-y-8">
           <h2 
             class="text-3xl md:text-5xl font-[var(--font-weight-bold)] tracking-[var(--letter-spacing-wide)] text-white"
@@ -487,8 +487,8 @@ const localBusinessSchema = {
       </div>
       
       <!-- Decorative circles -->
-      <div class="absolute top-10 right-10 w-64 h-64 rounded-full opacity-10 bg-white blur-3xl"></div>
-      <div class="absolute bottom-10 left-10 w-96 h-96 rounded-full opacity-10 bg-white blur-3xl"></div>
+      <div class="absolute top-10 -right-32 w-64 h-64 rounded-full opacity-10 bg-white blur-3xl pointer-events-none"></div>
+      <div class="absolute bottom-10 -left-48 w-96 h-96 rounded-full opacity-10 bg-white blur-3xl pointer-events-none"></div>
     </section>
   </main>
 </Layout>
@@ -574,8 +574,11 @@ const localBusinessSchema = {
       const data = Object.fromEntries(formData.entries());
       
       try {
-        // Send form data to WordPress REST API endpoint on the same host
-        const response = await fetch('/wp-json/custom/v1/send-email', {
+        // Determine endpoint. Set PUBLIC_WP_API_URL in your dev env when WP runs on a different host.
+        const wpBase = import.meta.env.PUBLIC_WP_API_URL || '';
+        const endpoint = wpBase ? (wpBase.replace(/\/$/, '') + '/wp-json/custom/v1/send-email') : '/wp-json/custom/v1/send-email';
+
+        const response = await fetch(endpoint, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -583,32 +586,21 @@ const localBusinessSchema = {
           body: JSON.stringify(data),
         });
 
+        const text = await response.text();
+        let bodyJson = null;
+        try { bodyJson = JSON.parse(text); } catch (e) { /* non-JSON response */ }
+
         if (response.ok) {
-          // Show success modal
-          showModal(
-            'Merci !',
-            'Votre message a été envoyé avec succès. Nous vous répondrons dans les plus brefs délais.',
-            'success'
-          );
-          
-          // Reset form
+          showModal('Merci !', 'Votre message a été envoyé avec succès. Nous vous répondrons dans les plus brefs délais.', 'success');
           (form as HTMLFormElement).reset();
         } else {
-          const errorData = await response.json();
-          showModal(
-            'Erreur',
-            'Une erreur est survenue. Veuillez réessayer.',
-            'error'
-          );
-          console.error('Form error:', errorData);
+          console.error('Form error:', response.status, text, bodyJson);
+          const msg = (bodyJson && (bodyJson.error || bodyJson.message)) ? (bodyJson.error || bodyJson.message) : 'Une erreur est survenue. Veuillez réessayer.';
+          showModal('Erreur', msg, 'error');
         }
       } catch (error) {
         console.error('Form submission error:', error);
-        showModal(
-          'Erreur',
-          'Une erreur est survenue lors de l\'envoi du formulaire. Veuillez réessayer.',
-          'error'
-        );
+        showModal('Erreur', 'Impossible de contacter le serveur. Vérifiez la configuration.', 'error');
       } finally {
         // Re-enable submit button
         if (submitButton) {
