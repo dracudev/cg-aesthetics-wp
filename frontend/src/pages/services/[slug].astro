@@ -28,8 +28,7 @@ const service = serviceResult.service;
 const seoData = generateSEOMetadata(
   service.seo,
   service.title,
-  service.excerpt || service.serviceDetails.serviceDescription,
-  service.featuredImage?.node.sourceUrl
+  service.excerpt || service.serviceDetails.serviceDescription
 );
 
 // Build service schema
