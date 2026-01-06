@@ -2,6 +2,7 @@
 /**
  * Optimized Image Component with lazy loading and responsive sizes
  */
+import { getFallbackImage } from '../data/cache-utils';
 
 export interface OptimizedImageProps {
   src: string;
@@ -14,6 +15,7 @@ export interface OptimizedImageProps {
   decoding?: 'async' | 'sync' | 'auto';
   fetchpriority?: 'high' | 'low' | 'auto';
   quality?: number;
+  fallbackType?: 'hero' | 'service' | 'testimonial';
 }
 
 const {
@@ -27,33 +29,39 @@ const {
   decoding = 'async',
   fetchpriority = 'auto',
   quality = 85,
+  fallbackType = 'hero',
 } = Astro.props as OptimizedImageProps;
 
-// Generate responsive image sizes
-const responsiveSizes = [400, 600, 800, 1200, 1600];
-const srcset = responsiveSizes
-  .map(size => {
-    const url = new URL(src);
-    url.searchParams.set('w', size.toString());
-    url.searchParams.set('q', quality.toString());
-    return `${url.toString()} ${size}w`;
-  })
-  .join(', ');
+// Ensure we have a valid image source
+let finalSrc = src || getFallbackImage(fallbackType);
 
-// Optimized source URL
-const optimizedSrc = (() => {
-  const url = new URL(src);
-  if (width) url.searchParams.set('w', width.toString());
-  if (height) url.searchParams.set('h', height.toString());
-  url.searchParams.set('q', quality.toString());
-  return url.toString();
-})();
+// Replace localhost URLs with production URLs
+const PRODUCTION_URL = import.meta.env.PUBLIC_WORDPRESS_URL || 'https://carmeng-beauty.com';
+if (finalSrc.includes('localhost:8000')) {
+  finalSrc = finalSrc.replace('http://localhost:8000', PRODUCTION_URL);
+}
+
+// Validate URL
+try {
+  new URL(finalSrc);
+} catch {
+  console.warn(`Invalid image URL: ${finalSrc}, using fallback`);
+  finalSrc = getFallbackImage(fallbackType);
+}
+
+// For WordPress images, don't modify URLs - use as-is
+// WordPress already provides optimized images through its media library
+const isWordPressImage = finalSrc.includes('/wp-content/uploads/');
+
+// Use original WordPress URL without modifications
+const optimizedSrc = finalSrc;
+
+// Don't generate srcset for WordPress images - they have their own responsive variants
+const srcset = isWordPressImage ? '' : '';
 ---
 
 <img
   src={optimizedSrc}
-  srcset={srcset}
-  sizes={sizes}
   alt={alt}
   width={width}
   height={height}

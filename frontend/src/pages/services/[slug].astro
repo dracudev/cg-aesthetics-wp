@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import { Button } from '../../components/ui/button';
 import { Card, CardContent } from '../../components/ui/card';
-import { client } from '../../lib/apollo-client';
+import { query } from '../../lib/apollo-client';
 import { GET_SERVICE_BY_SLUG, GET_SERVICES } from '../../lib/queries';
 import { generateSEOMetadata, buildServiceSchema } from '../../lib/seo';
 import OptimizedImage from '../../components/OptimizedImage.astro';
@@ -12,23 +12,17 @@ import { Clock, DollarSign, CheckCircle2, Calendar, ArrowLeft, Sparkles } from '
 // Dynamic service detail page
 
 export async function getStaticPaths() {
-  const { data } = await client.query({
-    query: GET_SERVICES,
-  }) as { data: { services: { nodes: Service[] } } };
+  const servicesData = await query(GET_SERVICES) as { services: { nodes: Service[] } };
 
-  return data.services.nodes.map((service: Service) => ({
+  return servicesData.services.nodes.map((service: Service) => ({
     params: { slug: service.slug },
   }));
 }
 
 const { slug } = Astro.params;
 
-const { data } = await client.query({
-  query: GET_SERVICE_BY_SLUG,
-  variables: { slug },
-}) as { data: { service: Service } };
-
-const service = data.service;
+const serviceResult = await query(GET_SERVICE_BY_SLUG, { slug }) as { service: Service };
+const service = serviceResult.service;
 
 // Generate SEO metadata from WordPress SEO data
 const seoData = generateSEOMetadata(
@@ -88,18 +82,6 @@ const combinedSchema = service.schemaOrg
           />
           <!-- Gradient Overlay -->
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent"></div>
-          
-          <!-- Back Button -->
-          <div class="absolute top-6 left-6 z-10">
-            <a 
-              href="/"
-              class="inline-flex items-center gap-2 px-4 py-2 rounded-[var(--radius-pill)] bg-white/90 backdrop-blur-sm hover:bg-white transition-[var(--transition-default)]"
-              style="color: var(--color-text-heading);"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              <span class="font-[var(--font-weight-medium)]">Retour</span>
-            </a>
-          </div>
 
           <!-- Title Overlay -->
           <div class="absolute bottom-0 left-0 right-0 p-6 md:p-12">
@@ -120,14 +102,6 @@ const combinedSchema = service.schemaOrg
       {!service.featuredImage?.node && (
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
           <div class="max-w-4xl">
-            <a 
-              href="/"
-              class="inline-flex items-center gap-2 mb-8 transition-colors"
-              style="color: var(--color-secondary-mauve);"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              <span class="font-[var(--font-weight-medium)]">Retour</span>
-            </a>
             <h1 
               class="text-4xl md:text-6xl lg:text-7xl font-[var(--font-weight-bold)] leading-[var(--line-height-tight)] tracking-[var(--letter-spacing-tight)]"
               style="font-family: var(--font-heading); color: var(--color-text-heading);"

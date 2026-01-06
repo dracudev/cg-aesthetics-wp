@@ -574,8 +574,8 @@ const localBusinessSchema = {
       const data = Object.fromEntries(formData.entries());
       
       try {
-        // Send form data to API endpoint
-        const response = await fetch('/api/send-email', {
+        // Send form data to WordPress REST API endpoint on the same host
+        const response = await fetch('/wp-json/custom/v1/send-email', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

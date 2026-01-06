@@ -1,0 +1,1704 @@
+{
+  "services": {
+    "services": {
+      "__typename": "RootQueryToServiceConnection",
+      "nodes": [
+        {
+          "__typename": "Service",
+          "id": "cG9zdDoxOQ==",
+          "title": "Exfoliation corporelle",
+          "slug": "exfoliation-corporelle",
+          "excerpt": "<p>Élimine les cellules mortes et laisse la peau douce, hydratée et éclatante.</p>\n",
+          "featuredImage": {
+            "__typename": "NodeWithFeaturedImageToMediaItemConnectionEdge",
+            "node": {
+              "__typename": "MediaItem",
+              "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-john-tekeridis-21837-3212179-scaled.jpg",
+              "altText": "",
+              "mediaDetails": {
+                "__typename": "MediaDetails",
+                "width": 2560,
+                "height": 1707,
+                "sizes": [
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-john-tekeridis-21837-3212179-300x200.jpg",
+                    "width": "300",
+                    "height": "200",
+                    "name": "medium"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-john-tekeridis-21837-3212179-1024x683.jpg",
+                    "width": "1024",
+                    "height": "683",
+                    "name": "large"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-john-tekeridis-21837-3212179-150x150.jpg",
+                    "width": "150",
+                    "height": "150",
+                    "name": "thumbnail"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-john-tekeridis-21837-3212179-768x512.jpg",
+                    "width": "768",
+                    "height": "512",
+                    "name": "medium_large"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-john-tekeridis-21837-3212179-1536x1024.jpg",
+                    "width": "1536",
+                    "height": "1024",
+                    "name": "1536x1536"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-john-tekeridis-21837-3212179-2048x1366.jpg",
+                    "width": "2048",
+                    "height": "1366",
+                    "name": "2048x2048"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-john-tekeridis-21837-3212179-400x300.jpg",
+                    "width": "400",
+                    "height": "300",
+                    "name": "service-thumbnail"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-john-tekeridis-21837-3212179-1200x600.jpg",
+                    "width": "1200",
+                    "height": "600",
+                    "name": "service-hero"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-john-tekeridis-21837-3212179-400x400.jpg",
+                    "width": "400",
+                    "height": "400",
+                    "name": "team-member"
+                  }
+                ]
+              }
+            }
+          },
+          "serviceDetails": {
+            "__typename": "ServiceDetails",
+            "serviceDescription": "<p>Élimine les cellules mortes et laisse la peau douce, hydratée et éclatante. Un gommage complet du corps suivi d&rsquo;une hydratation pour une peau de velours.</p>\n",
+            "serviceDuration": 60,
+            "servicePrice": "75 CHF",
+            "featuredService": false,
+            "bookableOnline": true,
+            "bookingNotes": "",
+            "serviceBenefits": [
+              "Élimine les cellules mortes",
+              "Peau douce et lisse instantanément",
+              "Améliore l'absorption des soins",
+              "Stimule la régénération cellulaire",
+              "Prépare la peau au bronzage",
+              "Unifie le teint du corps"
+            ],
+            "serviceGallery": []
+          },
+          "serviceCategories": {
+            "__typename": "ServiceToServiceCategoryConnection",
+            "nodes": [
+              {
+                "__typename": "ServiceCategory",
+                "id": "dGVybTo3",
+                "name": "body-treatments",
+                "slug": "body-treatments",
+                "description": null
+              }
+            ]
+          },
+          "seo": {
+            "__typename": "SEO",
+            "title": "Exfoliation corporelle in Geneva | CG Aesthetics",
+            "metaDesc": "Élimine les cellules mortes et laisse la peau douce, hydratée et éclatante.",
+            "canonical": "",
+            "opengraphTitle": "",
+            "opengraphDescription": "",
+            "opengraphImage": null,
+            "twitterTitle": "",
+            "twitterDescription": "",
+            "twitterImage": null,
+            "metaRobotsNoindex": "0",
+            "metaRobotsNofollow": "0",
+            "focuskw": "exfoliation corporelle montreux"
+          },
+          "schemaOrg": "{\"@context\":\"https:\\/\\/schema.org\",\"@type\":\"Service\",\"name\":\"Exfoliation corporelle\",\"description\":\"\\u00c9limine les cellules mortes et laisse la peau douce, hydrat\\u00e9e et \\u00e9clatante.\",\"provider\":{\"@type\":\"LocalBusiness\",\"name\":\"\"},\"offers\":{\"@type\":\"Offer\",\"price\":\"75 CHF\",\"priceCurrency\":\"USD\"}}"
+        },
+        {
+          "__typename": "Service",
+          "id": "cG9zdDoxOA==",
+          "title": "Radiofréquence",
+          "slug": "radiofrequence",
+          "excerpt": "<p>Stimule le collagène et raffermit la peau, pour un effet liftant naturel sans chirurgie.</p>\n",
+          "featuredImage": {
+            "__typename": "NodeWithFeaturedImageToMediaItemConnectionEdge",
+            "node": {
+              "__typename": "MediaItem",
+              "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/lex-lam-H_9RoVZlbzU-unsplash-scaled.jpg",
+              "altText": "",
+              "mediaDetails": {
+                "__typename": "MediaDetails",
+                "width": 2048,
+                "height": 2560,
+                "sizes": [
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/lex-lam-H_9RoVZlbzU-unsplash-240x300.jpg",
+                    "width": "240",
+                    "height": "300",
+                    "name": "medium"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/lex-lam-H_9RoVZlbzU-unsplash-819x1024.jpg",
+                    "width": "819",
+                    "height": "1024",
+                    "name": "large"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/lex-lam-H_9RoVZlbzU-unsplash-150x150.jpg",
+                    "width": "150",
+                    "height": "150",
+                    "name": "thumbnail"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/lex-lam-H_9RoVZlbzU-unsplash-768x960.jpg",
+                    "width": "768",
+                    "height": "960",
+                    "name": "medium_large"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/lex-lam-H_9RoVZlbzU-unsplash-1229x1536.jpg",
+                    "width": "1229",
+                    "height": "1536",
+                    "name": "1536x1536"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/lex-lam-H_9RoVZlbzU-unsplash-1638x2048.jpg",
+                    "width": "1638",
+                    "height": "2048",
+                    "name": "2048x2048"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/lex-lam-H_9RoVZlbzU-unsplash-400x300.jpg",
+                    "width": "400",
+                    "height": "300",
+                    "name": "service-thumbnail"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/lex-lam-H_9RoVZlbzU-unsplash-1200x600.jpg",
+                    "width": "1200",
+                    "height": "600",
+                    "name": "service-hero"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/lex-lam-H_9RoVZlbzU-unsplash-400x400.jpg",
+                    "width": "400",
+                    "height": "400",
+                    "name": "team-member"
+                  }
+                ]
+              }
+            }
+          },
+          "serviceDetails": {
+            "__typename": "ServiceDetails",
+            "serviceDescription": "<p>Stimule le collagène et raffermit la peau, pour un effet liftant naturel sans chirurgie. La radiofréquence chauffe les tissus profonds pour stimuler la production de collagène et retendre la peau.</p>\n",
+            "serviceDuration": 60,
+            "servicePrice": "80 CHF",
+            "featuredService": true,
+            "bookableOnline": true,
+            "bookingNotes": "",
+            "serviceBenefits": [
+              "Raffermit et tonifie la peau",
+              "Réduit les rides et le relâchement cutané",
+              "Stimule la production de collagène",
+              "Améliore l'élasticité de la peau",
+              "Résultats progressifs et naturels",
+              "Effet lifting sans chirurgie"
+            ],
+            "serviceGallery": []
+          },
+          "serviceCategories": {
+            "__typename": "ServiceToServiceCategoryConnection",
+            "nodes": [
+              {
+                "__typename": "ServiceCategory",
+                "id": "dGVybTo3",
+                "name": "body-treatments",
+                "slug": "body-treatments",
+                "description": null
+              }
+            ]
+          },
+          "seo": {
+            "__typename": "SEO",
+            "title": "Radiofréquence in Geneva | CG Aesthetics",
+            "metaDesc": "Stimule le collagène et raffermit la peau, pour un effet liftant naturel sans chirurgie.",
+            "canonical": "",
+            "opengraphTitle": "",
+            "opengraphDescription": "",
+            "opengraphImage": null,
+            "twitterTitle": "",
+            "twitterDescription": "",
+            "twitterImage": null,
+            "metaRobotsNoindex": "0",
+            "metaRobotsNofollow": "0",
+            "focuskw": "radiofréquence montreux"
+          },
+          "schemaOrg": "{\"@context\":\"https:\\/\\/schema.org\",\"@type\":\"Service\",\"name\":\"Radiofr\\u00e9quence\",\"description\":\"Stimule le collag\\u00e8ne et raffermit la peau, pour un effet liftant naturel sans chirurgie.\",\"provider\":{\"@type\":\"LocalBusiness\",\"name\":\"\"},\"offers\":{\"@type\":\"Offer\",\"price\":\"80 CHF\",\"priceCurrency\":\"USD\"}}"
+        },
+        {
+          "__typename": "Service",
+          "id": "cG9zdDoxNw==",
+          "title": "Pressothérapie",
+          "slug": "pressotherapie",
+          "excerpt": "<p>Traitement par pression d&rsquo;air favorisant la circulation sanguine et lymphatique, idéal contre la rétention d&rsquo;eau et la fatigue des jambes.</p>\n",
+          "featuredImage": {
+            "__typename": "NodeWithFeaturedImageToMediaItemConnectionEdge",
+            "node": {
+              "__typename": "MediaItem",
+              "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pressotherapy.jpg",
+              "altText": "pressotherapy",
+              "mediaDetails": {
+                "__typename": "MediaDetails",
+                "width": 2000,
+                "height": 1283,
+                "sizes": [
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pressotherapy-300x192.jpg",
+                    "width": "300",
+                    "height": "192",
+                    "name": "medium"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pressotherapy-1024x657.jpg",
+                    "width": "1024",
+                    "height": "657",
+                    "name": "large"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pressotherapy-150x150.jpg",
+                    "width": "150",
+                    "height": "150",
+                    "name": "thumbnail"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pressotherapy-768x493.jpg",
+                    "width": "768",
+                    "height": "493",
+                    "name": "medium_large"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pressotherapy-1536x985.jpg",
+                    "width": "1536",
+                    "height": "985",
+                    "name": "1536x1536"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pressotherapy-400x300.jpg",
+                    "width": "400",
+                    "height": "300",
+                    "name": "service-thumbnail"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pressotherapy-1200x600.jpg",
+                    "width": "1200",
+                    "height": "600",
+                    "name": "service-hero"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pressotherapy-400x400.jpg",
+                    "width": "400",
+                    "height": "400",
+                    "name": "team-member"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pressotherapy-1920x1080.jpg",
+                    "width": "1920",
+                    "height": "1080",
+                    "name": "hero-large"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pressotherapy-1280x720.jpg",
+                    "width": "1280",
+                    "height": "720",
+                    "name": "hero-medium"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pressotherapy-768x432.jpg",
+                    "width": "768",
+                    "height": "432",
+                    "name": "hero-small"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pressotherapy-800x600.jpg",
+                    "width": "800",
+                    "height": "600",
+                    "name": "card-large"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pressotherapy-600x450.jpg",
+                    "width": "600",
+                    "height": "450",
+                    "name": "card-medium"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pressotherapy-400x300.jpg",
+                    "width": "400",
+                    "height": "300",
+                    "name": "card-small"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pressotherapy-300x300.jpg",
+                    "width": "300",
+                    "height": "300",
+                    "name": "thumbnail-large"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pressotherapy-200x200.jpg",
+                    "width": "200",
+                    "height": "200",
+                    "name": "thumbnail-medium"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pressotherapy-100x100.jpg",
+                    "width": "100",
+                    "height": "100",
+                    "name": "thumbnail-small"
+                  }
+                ]
+              }
+            }
+          },
+          "serviceDetails": {
+            "__typename": "ServiceDetails",
+            "serviceDescription": "<p>Traitement par pression d&rsquo;air favorisant la circulation sanguine et lymphatique, idéal contre la rétention d&rsquo;eau et la fatigue des jambes. Les bottes de pressothérapie massent vos jambes pour une sensation de légèreté immédiate.</p>\n",
+            "serviceDuration": 60,
+            "servicePrice": "80 CHF",
+            "featuredService": false,
+            "bookableOnline": true,
+            "bookingNotes": "",
+            "serviceBenefits": [
+              "Améliore la circulation sanguine",
+              "Réduit la cellulite et la rétention d'eau",
+              "Sensation de jambes légères",
+              "Favorise la récupération musculaire",
+              "Détente et bien-être immédiat",
+              "Prévient les varices et jambes lourdes"
+            ],
+            "serviceGallery": []
+          },
+          "serviceCategories": {
+            "__typename": "ServiceToServiceCategoryConnection",
+            "nodes": [
+              {
+                "__typename": "ServiceCategory",
+                "id": "dGVybTo3",
+                "name": "body-treatments",
+                "slug": "body-treatments",
+                "description": null
+              }
+            ]
+          },
+          "seo": {
+            "__typename": "SEO",
+            "title": "Pressothérapie in Geneva | CG Aesthetics",
+            "metaDesc": "Traitement par pression d'air favorisant la circulation sanguine et lymphatique, idéal contre la rétention d'eau et la fatigue des jambes.",
+            "canonical": "",
+            "opengraphTitle": "",
+            "opengraphDescription": "",
+            "opengraphImage": null,
+            "twitterTitle": "",
+            "twitterDescription": "",
+            "twitterImage": null,
+            "metaRobotsNoindex": "0",
+            "metaRobotsNofollow": "0",
+            "focuskw": "pressothérapie montreux"
+          },
+          "schemaOrg": "{\"@context\":\"https:\\/\\/schema.org\",\"@type\":\"Service\",\"name\":\"Pressoth\\u00e9rapie\",\"description\":\"Traitement par pression d'air favorisant la circulation sanguine et lymphatique, id\\u00e9al contre la r\\u00e9tention d'eau et la fatigue des jambes.\",\"provider\":{\"@type\":\"LocalBusiness\",\"name\":\"\"},\"offers\":{\"@type\":\"Offer\",\"price\":\"80 CHF\",\"priceCurrency\":\"USD\"}}"
+        },
+        {
+          "__typename": "Service",
+          "id": "cG9zdDoxNg==",
+          "title": "Cavitation",
+          "slug": "cavitation",
+          "excerpt": "<p>Soin non invasif utilisant les ultrasons pour réduire la graisse localisée et remodeler la silhouette.</p>\n",
+          "featuredImage": {
+            "__typename": "NodeWithFeaturedImageToMediaItemConnectionEdge",
+            "node": {
+              "__typename": "MediaItem",
+              "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/farhad-ibrahimzade-szpFxaqS658-unsplash-scaled.jpg",
+              "altText": "",
+              "mediaDetails": {
+                "__typename": "MediaDetails",
+                "width": 2048,
+                "height": 2560,
+                "sizes": [
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/farhad-ibrahimzade-szpFxaqS658-unsplash-240x300.jpg",
+                    "width": "240",
+                    "height": "300",
+                    "name": "medium"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/farhad-ibrahimzade-szpFxaqS658-unsplash-819x1024.jpg",
+                    "width": "819",
+                    "height": "1024",
+                    "name": "large"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/farhad-ibrahimzade-szpFxaqS658-unsplash-150x150.jpg",
+                    "width": "150",
+                    "height": "150",
+                    "name": "thumbnail"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/farhad-ibrahimzade-szpFxaqS658-unsplash-768x960.jpg",
+                    "width": "768",
+                    "height": "960",
+                    "name": "medium_large"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/farhad-ibrahimzade-szpFxaqS658-unsplash-1229x1536.jpg",
+                    "width": "1229",
+                    "height": "1536",
+                    "name": "1536x1536"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/farhad-ibrahimzade-szpFxaqS658-unsplash-1638x2048.jpg",
+                    "width": "1638",
+                    "height": "2048",
+                    "name": "2048x2048"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/farhad-ibrahimzade-szpFxaqS658-unsplash-400x300.jpg",
+                    "width": "400",
+                    "height": "300",
+                    "name": "service-thumbnail"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/farhad-ibrahimzade-szpFxaqS658-unsplash-1200x600.jpg",
+                    "width": "1200",
+                    "height": "600",
+                    "name": "service-hero"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/farhad-ibrahimzade-szpFxaqS658-unsplash-400x400.jpg",
+                    "width": "400",
+                    "height": "400",
+                    "name": "team-member"
+                  }
+                ]
+              }
+            }
+          },
+          "serviceDetails": {
+            "__typename": "ServiceDetails",
+            "serviceDescription": "<p>Soin non invasif utilisant les ultrasons pour réduire la graisse localisée et remodeler la silhouette. La cavitation ultrasonique cible les adipocytes pour une perte de centimètres visible et durable.</p>\n",
+            "serviceDuration": 60,
+            "servicePrice": "80 CHF",
+            "featuredService": true,
+            "bookableOnline": true,
+            "bookingNotes": "",
+            "serviceBenefits": [
+              "Réduit les amas graisseux localisés",
+              "Affine la silhouette",
+              "Améliore l'aspect de la cellulite",
+              "Résultats visibles dès les premières séances",
+              "Traitement non invasif et indolore",
+              "Alternative naturelle à la liposuccion"
+            ],
+            "serviceGallery": []
+          },
+          "serviceCategories": {
+            "__typename": "ServiceToServiceCategoryConnection",
+            "nodes": [
+              {
+                "__typename": "ServiceCategory",
+                "id": "dGVybTo3",
+                "name": "body-treatments",
+                "slug": "body-treatments",
+                "description": null
+              }
+            ]
+          },
+          "seo": {
+            "__typename": "SEO",
+            "title": "Cavitation in Geneva | CG Aesthetics",
+            "metaDesc": "Soin non invasif utilisant les ultrasons pour réduire la graisse localisée et remodeler la silhouette.",
+            "canonical": "",
+            "opengraphTitle": "",
+            "opengraphDescription": "",
+            "opengraphImage": null,
+            "twitterTitle": "",
+            "twitterDescription": "",
+            "twitterImage": null,
+            "metaRobotsNoindex": "0",
+            "metaRobotsNofollow": "0",
+            "focuskw": "cavitation montreux"
+          },
+          "schemaOrg": "{\"@context\":\"https:\\/\\/schema.org\",\"@type\":\"Service\",\"name\":\"Cavitation\",\"description\":\"Soin non invasif utilisant les ultrasons pour r\\u00e9duire la graisse localis\\u00e9e et remodeler la silhouette.\",\"provider\":{\"@type\":\"LocalBusiness\",\"name\":\"\"},\"offers\":{\"@type\":\"Offer\",\"price\":\"80 CHF\",\"priceCurrency\":\"USD\"}}"
+        },
+        {
+          "__typename": "Service",
+          "id": "cG9zdDoxNQ==",
+          "title": "Nettoyage du visage simple",
+          "slug": "nettoyage-du-visage-simple",
+          "excerpt": "<p>Soin classique pour éliminer impuretés et excès de sébum, redonnant fraîcheur et douceur à la peau.</p>\n",
+          "featuredImage": {
+            "__typename": "NodeWithFeaturedImageToMediaItemConnectionEdge",
+            "node": {
+              "__typename": "MediaItem",
+              "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/engin-akyurt-g-m8EDc4X6Q-unsplash-scaled.jpg",
+              "altText": "",
+              "mediaDetails": {
+                "__typename": "MediaDetails",
+                "width": 2560,
+                "height": 1707,
+                "sizes": [
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/engin-akyurt-g-m8EDc4X6Q-unsplash-300x200.jpg",
+                    "width": "300",
+                    "height": "200",
+                    "name": "medium"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/engin-akyurt-g-m8EDc4X6Q-unsplash-1024x683.jpg",
+                    "width": "1024",
+                    "height": "683",
+                    "name": "large"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/engin-akyurt-g-m8EDc4X6Q-unsplash-150x150.jpg",
+                    "width": "150",
+                    "height": "150",
+                    "name": "thumbnail"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/engin-akyurt-g-m8EDc4X6Q-unsplash-768x512.jpg",
+                    "width": "768",
+                    "height": "512",
+                    "name": "medium_large"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/engin-akyurt-g-m8EDc4X6Q-unsplash-1536x1024.jpg",
+                    "width": "1536",
+                    "height": "1024",
+                    "name": "1536x1536"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/engin-akyurt-g-m8EDc4X6Q-unsplash-2048x1365.jpg",
+                    "width": "2048",
+                    "height": "1365",
+                    "name": "2048x2048"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/engin-akyurt-g-m8EDc4X6Q-unsplash-400x300.jpg",
+                    "width": "400",
+                    "height": "300",
+                    "name": "service-thumbnail"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/engin-akyurt-g-m8EDc4X6Q-unsplash-1200x600.jpg",
+                    "width": "1200",
+                    "height": "600",
+                    "name": "service-hero"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/engin-akyurt-g-m8EDc4X6Q-unsplash-400x400.jpg",
+                    "width": "400",
+                    "height": "400",
+                    "name": "team-member"
+                  }
+                ]
+              }
+            }
+          },
+          "serviceDetails": {
+            "__typename": "ServiceDetails",
+            "serviceDescription": "<p>Soin classique pour éliminer impuretés et excès de sébum, redonnant fraîcheur et douceur à la peau. Un nettoyage en douceur adapté à tous les types de peau pour retrouver un teint éclatant.</p>\n",
+            "serviceDuration": 60,
+            "servicePrice": "90 CHF",
+            "featuredService": false,
+            "bookableOnline": true,
+            "bookingNotes": "",
+            "serviceBenefits": [
+              "Élimine les impuretés et points noirs",
+              "Purifie la peau en profondeur",
+              "Équilibre la production de sébum",
+              "Prévient l'apparition d'imperfections",
+              "Laisse la peau fraîche et éclatante",
+              "Resserre les pores visiblement"
+            ],
+            "serviceGallery": []
+          },
+          "serviceCategories": {
+            "__typename": "ServiceToServiceCategoryConnection",
+            "nodes": [
+              {
+                "__typename": "ServiceCategory",
+                "id": "dGVybTo2",
+                "name": "facials",
+                "slug": "facials",
+                "description": null
+              }
+            ]
+          },
+          "seo": {
+            "__typename": "SEO",
+            "title": "Nettoyage du visage simple in Geneva | CG Aesthetics",
+            "metaDesc": "Soin classique pour éliminer impuretés et excès de sébum, redonnant fraîcheur et douceur à la peau.",
+            "canonical": "",
+            "opengraphTitle": "",
+            "opengraphDescription": "",
+            "opengraphImage": null,
+            "twitterTitle": "",
+            "twitterDescription": "",
+            "twitterImage": null,
+            "metaRobotsNoindex": "0",
+            "metaRobotsNofollow": "0",
+            "focuskw": "nettoyage du visage simple montreux"
+          },
+          "schemaOrg": "{\"@context\":\"https:\\/\\/schema.org\",\"@type\":\"Service\",\"name\":\"Nettoyage du visage simple\",\"description\":\"Soin classique pour \\u00e9liminer impuret\\u00e9s et exc\\u00e8s de s\\u00e9bum, redonnant fra\\u00eecheur et douceur \\u00e0 la peau.\",\"provider\":{\"@type\":\"LocalBusiness\",\"name\":\"\"},\"offers\":{\"@type\":\"Offer\",\"price\":\"90 CHF\",\"priceCurrency\":\"USD\"}}"
+        },
+        {
+          "__typename": "Service",
+          "id": "cG9zdDoxNA==",
+          "title": "Hydrafacial",
+          "slug": "hydrafacial",
+          "excerpt": "<p>Nettoyage en profondeur combinant exfoliation, extraction et hydratation intense pour une peau purifiée et lumineuse.</p>\n",
+          "featuredImage": {
+            "__typename": "NodeWithFeaturedImageToMediaItemConnectionEdge",
+            "node": {
+              "__typename": "MediaItem",
+              "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-olly-3757942-scaled.jpg",
+              "altText": "",
+              "mediaDetails": {
+                "__typename": "MediaDetails",
+                "width": 2560,
+                "height": 1707,
+                "sizes": [
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-olly-3757942-300x200.jpg",
+                    "width": "300",
+                    "height": "200",
+                    "name": "medium"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-olly-3757942-1024x683.jpg",
+                    "width": "1024",
+                    "height": "683",
+                    "name": "large"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-olly-3757942-150x150.jpg",
+                    "width": "150",
+                    "height": "150",
+                    "name": "thumbnail"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-olly-3757942-768x512.jpg",
+                    "width": "768",
+                    "height": "512",
+                    "name": "medium_large"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-olly-3757942-1536x1024.jpg",
+                    "width": "1536",
+                    "height": "1024",
+                    "name": "1536x1536"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-olly-3757942-2048x1365.jpg",
+                    "width": "2048",
+                    "height": "1365",
+                    "name": "2048x2048"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-olly-3757942-400x300.jpg",
+                    "width": "400",
+                    "height": "300",
+                    "name": "service-thumbnail"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-olly-3757942-1200x600.jpg",
+                    "width": "1200",
+                    "height": "600",
+                    "name": "service-hero"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-olly-3757942-400x400.jpg",
+                    "width": "400",
+                    "height": "400",
+                    "name": "team-member"
+                  }
+                ]
+              }
+            }
+          },
+          "serviceDetails": {
+            "__typename": "ServiceDetails",
+            "serviceDescription": "<p>Nettoyage en profondeur combinant exfoliation, extraction et hydratation intense pour une peau purifiée et lumineuse. Le soin Hydrafacial utilise une technologie brevetée pour transformer instantanément l&rsquo;aspect de votre peau.</p>\n",
+            "serviceDuration": 60,
+            "servicePrice": "150 CHF",
+            "featuredService": true,
+            "bookableOnline": true,
+            "bookingNotes": "",
+            "serviceBenefits": [
+              "Nettoyage en profondeur des pores",
+              "Hydratation intense de la peau",
+              "Éclat immédiat du teint",
+              "Réduit les signes de vieillissement",
+              "Améliore la texture cutanée",
+              "Convient à tous les types de peau"
+            ],
+            "serviceGallery": []
+          },
+          "serviceCategories": {
+            "__typename": "ServiceToServiceCategoryConnection",
+            "nodes": [
+              {
+                "__typename": "ServiceCategory",
+                "id": "dGVybTo2",
+                "name": "facials",
+                "slug": "facials",
+                "description": null
+              }
+            ]
+          },
+          "seo": {
+            "__typename": "SEO",
+            "title": "Hydrafacial in Geneva | CG Aesthetics",
+            "metaDesc": "Nettoyage en profondeur combinant exfoliation, extraction et hydratation intense pour une peau purifiée et lumineuse.",
+            "canonical": "",
+            "opengraphTitle": "",
+            "opengraphDescription": "",
+            "opengraphImage": null,
+            "twitterTitle": "",
+            "twitterDescription": "",
+            "twitterImage": null,
+            "metaRobotsNoindex": "0",
+            "metaRobotsNofollow": "0",
+            "focuskw": "hydrafacial montreux"
+          },
+          "schemaOrg": "{\"@context\":\"https:\\/\\/schema.org\",\"@type\":\"Service\",\"name\":\"Hydrafacial\",\"description\":\"Nettoyage en profondeur combinant exfoliation, extraction et hydratation intense pour une peau purifi\\u00e9e et lumineuse.\",\"provider\":{\"@type\":\"LocalBusiness\",\"name\":\"\"},\"offers\":{\"@type\":\"Offer\",\"price\":\"150 CHF\",\"priceCurrency\":\"USD\"}}"
+        },
+        {
+          "__typename": "Service",
+          "id": "cG9zdDoxMw==",
+          "title": "BB Glow",
+          "slug": "bb-glow",
+          "excerpt": "<p>Un soin innovant qui unifie le teint, hydrate la peau et donne un effet « maquillage naturel » longue durée.</p>\n",
+          "featuredImage": {
+            "__typename": "NodeWithFeaturedImageToMediaItemConnectionEdge",
+            "node": {
+              "__typename": "MediaItem",
+              "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-polina-tankilevitch-3738349-scaled.jpg",
+              "altText": "",
+              "mediaDetails": {
+                "__typename": "MediaDetails",
+                "width": 2560,
+                "height": 1706,
+                "sizes": [
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-polina-tankilevitch-3738349-300x200.jpg",
+                    "width": "300",
+                    "height": "200",
+                    "name": "medium"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-polina-tankilevitch-3738349-1024x683.jpg",
+                    "width": "1024",
+                    "height": "683",
+                    "name": "large"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-polina-tankilevitch-3738349-150x150.jpg",
+                    "width": "150",
+                    "height": "150",
+                    "name": "thumbnail"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-polina-tankilevitch-3738349-768x512.jpg",
+                    "width": "768",
+                    "height": "512",
+                    "name": "medium_large"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-polina-tankilevitch-3738349-1536x1024.jpg",
+                    "width": "1536",
+                    "height": "1024",
+                    "name": "1536x1536"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-polina-tankilevitch-3738349-2048x1365.jpg",
+                    "width": "2048",
+                    "height": "1365",
+                    "name": "2048x2048"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-polina-tankilevitch-3738349-400x300.jpg",
+                    "width": "400",
+                    "height": "300",
+                    "name": "service-thumbnail"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-polina-tankilevitch-3738349-1200x600.jpg",
+                    "width": "1200",
+                    "height": "600",
+                    "name": "service-hero"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-polina-tankilevitch-3738349-400x400.jpg",
+                    "width": "400",
+                    "height": "400",
+                    "name": "team-member"
+                  }
+                ]
+              }
+            }
+          },
+          "serviceDetails": {
+            "__typename": "ServiceDetails",
+            "serviceDescription": "<p>Un soin innovant qui unifie le teint, hydrate la peau et donne un effet « maquillage naturel » longue durée. Traitement semi-permanent qui infuse des pigments et sérums dans la peau pour un teint parfait au réveil.</p>\n",
+            "serviceDuration": 60,
+            "servicePrice": "95 CHF",
+            "featuredService": false,
+            "bookableOnline": true,
+            "bookingNotes": "",
+            "serviceBenefits": [
+              "Unifie le teint instantanément",
+              "Couvre les imperfections naturellement",
+              "Hydrate et nourrit la peau",
+              "Effet maquillage longue durée",
+              "Stimule la régénération cellulaire",
+              "Réduit l'apparence des taches pigmentaires"
+            ],
+            "serviceGallery": []
+          },
+          "serviceCategories": {
+            "__typename": "ServiceToServiceCategoryConnection",
+            "nodes": [
+              {
+                "__typename": "ServiceCategory",
+                "id": "dGVybTo2",
+                "name": "facials",
+                "slug": "facials",
+                "description": null
+              }
+            ]
+          },
+          "seo": {
+            "__typename": "SEO",
+            "title": "BB Glow in Geneva | CG Aesthetics",
+            "metaDesc": "Un soin innovant qui unifie le teint, hydrate la peau et donne un effet \"maquillage naturel\" longue durée.",
+            "canonical": "",
+            "opengraphTitle": "",
+            "opengraphDescription": "",
+            "opengraphImage": null,
+            "twitterTitle": "",
+            "twitterDescription": "",
+            "twitterImage": null,
+            "metaRobotsNoindex": "0",
+            "metaRobotsNofollow": "0",
+            "focuskw": "bb glow montreux"
+          },
+          "schemaOrg": "{\"@context\":\"https:\\/\\/schema.org\",\"@type\":\"Service\",\"name\":\"BB Glow\",\"description\":\"Un soin innovant qui unifie le teint, hydrate la peau et donne un effet \\\"maquillage naturel\\\" longue dur\\u00e9e.\",\"provider\":{\"@type\":\"LocalBusiness\",\"name\":\"\"},\"offers\":{\"@type\":\"Offer\",\"price\":\"95 CHF\",\"priceCurrency\":\"USD\"}}"
+        },
+        {
+          "__typename": "Service",
+          "id": "cG9zdDoxMg==",
+          "title": "Microneedling",
+          "slug": "microneedling",
+          "excerpt": "<p>Stimule la production de collagène pour une peau plus ferme, plus lisse et éclatante. Idéal contre les rides, cicatrices et taches.</p>\n",
+          "featuredImage": {
+            "__typename": "NodeWithFeaturedImageToMediaItemConnectionEdge",
+            "node": {
+              "__typename": "MediaItem",
+              "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-john-tekeridis-21837-3212164-scaled.jpg",
+              "altText": "",
+              "mediaDetails": {
+                "__typename": "MediaDetails",
+                "width": 1707,
+                "height": 2560,
+                "sizes": [
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-john-tekeridis-21837-3212164-200x300.jpg",
+                    "width": "200",
+                    "height": "300",
+                    "name": "medium"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-john-tekeridis-21837-3212164-683x1024.jpg",
+                    "width": "683",
+                    "height": "1024",
+                    "name": "large"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-john-tekeridis-21837-3212164-150x150.jpg",
+                    "width": "150",
+                    "height": "150",
+                    "name": "thumbnail"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-john-tekeridis-21837-3212164-768x1152.jpg",
+                    "width": "768",
+                    "height": "1152",
+                    "name": "medium_large"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-john-tekeridis-21837-3212164-1024x1536.jpg",
+                    "width": "1024",
+                    "height": "1536",
+                    "name": "1536x1536"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-john-tekeridis-21837-3212164-1366x2048.jpg",
+                    "width": "1366",
+                    "height": "2048",
+                    "name": "2048x2048"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-john-tekeridis-21837-3212164-400x300.jpg",
+                    "width": "400",
+                    "height": "300",
+                    "name": "service-thumbnail"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-john-tekeridis-21837-3212164-1200x600.jpg",
+                    "width": "1200",
+                    "height": "600",
+                    "name": "service-hero"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-john-tekeridis-21837-3212164-400x400.jpg",
+                    "width": "400",
+                    "height": "400",
+                    "name": "team-member"
+                  }
+                ]
+              }
+            }
+          },
+          "serviceDetails": {
+            "__typename": "ServiceDetails",
+            "serviceDescription": "<p>Stimule la production de collagène pour une peau plus ferme, plus lisse et éclatante. Idéal contre les rides, cicatrices et taches. Cette technique de micro-perforations contrôlées active les mécanismes naturels de régénération cutanée.</p>\n",
+            "serviceDuration": 60,
+            "servicePrice": "95 CHF",
+            "featuredService": true,
+            "bookableOnline": true,
+            "bookingNotes": "",
+            "serviceBenefits": [
+              "Stimule la production de collagène",
+              "Réduit les rides et ridules",
+              "Améliore la texture de la peau",
+              "Atténue les cicatrices d'acné",
+              "Raffermit et rajeunit le visage",
+              "Réduit les pores dilatés"
+            ],
+            "serviceGallery": []
+          },
+          "serviceCategories": {
+            "__typename": "ServiceToServiceCategoryConnection",
+            "nodes": [
+              {
+                "__typename": "ServiceCategory",
+                "id": "dGVybTo2",
+                "name": "facials",
+                "slug": "facials",
+                "description": null
+              }
+            ]
+          },
+          "seo": {
+            "__typename": "SEO",
+            "title": "Microneedling in Geneva | CG Aesthetics",
+            "metaDesc": "Stimule la production de collagène pour une peau plus ferme, plus lisse et éclatante. Idéal contre les rides, cicatrices et taches.",
+            "canonical": "",
+            "opengraphTitle": "",
+            "opengraphDescription": "",
+            "opengraphImage": null,
+            "twitterTitle": "",
+            "twitterDescription": "",
+            "twitterImage": null,
+            "metaRobotsNoindex": "0",
+            "metaRobotsNofollow": "0",
+            "focuskw": "microneedling montreux"
+          },
+          "schemaOrg": "{\"@context\":\"https:\\/\\/schema.org\",\"@type\":\"Service\",\"name\":\"Microneedling\",\"description\":\"Stimule la production de collag\\u00e8ne pour une peau plus ferme, plus lisse et \\u00e9clatante. Id\\u00e9al contre les rides, cicatrices et taches.\",\"provider\":{\"@type\":\"LocalBusiness\",\"name\":\"\"},\"offers\":{\"@type\":\"Offer\",\"price\":\"95 CHF\",\"priceCurrency\":\"USD\"}}"
+        },
+        {
+          "__typename": "Service",
+          "id": "cG9zdDoxMQ==",
+          "title": "Massage relaxant",
+          "slug": "massage-relaxant",
+          "excerpt": "<p>Un soin apaisant idéal pour relâcher le stress et calmer le système nerveux, offrant une profonde sensation de bien-être.</p>\n",
+          "featuredImage": {
+            "__typename": "NodeWithFeaturedImageToMediaItemConnectionEdge",
+            "node": {
+              "__typename": "MediaItem",
+              "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/toa-heftiba-a9pFSC8dTlo-unsplash-scaled.jpg",
+              "altText": "",
+              "mediaDetails": {
+                "__typename": "MediaDetails",
+                "width": 1707,
+                "height": 2560,
+                "sizes": [
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/toa-heftiba-a9pFSC8dTlo-unsplash-200x300.jpg",
+                    "width": "200",
+                    "height": "300",
+                    "name": "medium"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/toa-heftiba-a9pFSC8dTlo-unsplash-683x1024.jpg",
+                    "width": "683",
+                    "height": "1024",
+                    "name": "large"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/toa-heftiba-a9pFSC8dTlo-unsplash-150x150.jpg",
+                    "width": "150",
+                    "height": "150",
+                    "name": "thumbnail"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/toa-heftiba-a9pFSC8dTlo-unsplash-768x1152.jpg",
+                    "width": "768",
+                    "height": "1152",
+                    "name": "medium_large"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/toa-heftiba-a9pFSC8dTlo-unsplash-1024x1536.jpg",
+                    "width": "1024",
+                    "height": "1536",
+                    "name": "1536x1536"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/toa-heftiba-a9pFSC8dTlo-unsplash-1365x2048.jpg",
+                    "width": "1365",
+                    "height": "2048",
+                    "name": "2048x2048"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/toa-heftiba-a9pFSC8dTlo-unsplash-400x300.jpg",
+                    "width": "400",
+                    "height": "300",
+                    "name": "service-thumbnail"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/toa-heftiba-a9pFSC8dTlo-unsplash-1200x600.jpg",
+                    "width": "1200",
+                    "height": "600",
+                    "name": "service-hero"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/toa-heftiba-a9pFSC8dTlo-unsplash-400x400.jpg",
+                    "width": "400",
+                    "height": "400",
+                    "name": "team-member"
+                  }
+                ]
+              }
+            }
+          },
+          "serviceDetails": {
+            "__typename": "ServiceDetails",
+            "serviceDescription": "<p>Un soin apaisant idéal pour relâcher le stress et calmer le système nerveux, offrant une profonde sensation de bien-être. Ce massage classique utilise des techniques douces pour détendre corps et esprit.</p>\n",
+            "serviceDuration": 60,
+            "servicePrice": "90 CHF",
+            "featuredService": true,
+            "bookableOnline": true,
+            "bookingNotes": "",
+            "serviceBenefits": [
+              "Réduit le stress et l'anxiété",
+              "Améliore la circulation sanguine",
+              "Soulage les tensions musculaires",
+              "Favorise un sommeil réparateur",
+              "Procure une sensation de bien-être profond",
+              "Renforce le système immunitaire"
+            ],
+            "serviceGallery": []
+          },
+          "serviceCategories": {
+            "__typename": "ServiceToServiceCategoryConnection",
+            "nodes": [
+              {
+                "__typename": "ServiceCategory",
+                "id": "dGVybToz",
+                "name": "Massages",
+                "slug": "massages",
+                "description": "Relaxing massage therapies"
+              }
+            ]
+          },
+          "seo": {
+            "__typename": "SEO",
+            "title": "Massage relaxant in Geneva | CG Aesthetics",
+            "metaDesc": "Un soin apaisant idéal pour relâcher le stress et calmer le système nerveux, offrant une profonde sensation de bien-être.",
+            "canonical": "",
+            "opengraphTitle": "",
+            "opengraphDescription": "",
+            "opengraphImage": null,
+            "twitterTitle": "",
+            "twitterDescription": "",
+            "twitterImage": null,
+            "metaRobotsNoindex": "0",
+            "metaRobotsNofollow": "0",
+            "focuskw": "massage relaxant montreux"
+          },
+          "schemaOrg": "{\"@context\":\"https:\\/\\/schema.org\",\"@type\":\"Service\",\"name\":\"Massage relaxant\",\"description\":\"Un soin apaisant id\\u00e9al pour rel\\u00e2cher le stress et calmer le syst\\u00e8me nerveux, offrant une profonde sensation de bien-\\u00eatre.\",\"provider\":{\"@type\":\"LocalBusiness\",\"name\":\"\"},\"offers\":{\"@type\":\"Offer\",\"price\":\"90 CHF\",\"priceCurrency\":\"USD\"}}"
+        },
+        {
+          "__typename": "Service",
+          "id": "cG9zdDoxMA==",
+          "title": "Drainage lymphatique",
+          "slug": "drainage-lymphatique",
+          "excerpt": "<p>Technique douce qui favorise l&rsquo;élimination des toxines et améliore la circulation lymphatique pour une sensation de légèreté et un corps dégonflé.</p>\n",
+          "featuredImage": {
+            "__typename": "NodeWithFeaturedImageToMediaItemConnectionEdge",
+            "node": {
+              "__typename": "MediaItem",
+              "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/toa-heftiba-hBLf2nvp-Yc-unsplash-scaled.jpg",
+              "altText": "",
+              "mediaDetails": {
+                "__typename": "MediaDetails",
+                "width": 2560,
+                "height": 1707,
+                "sizes": [
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/toa-heftiba-hBLf2nvp-Yc-unsplash-300x200.jpg",
+                    "width": "300",
+                    "height": "200",
+                    "name": "medium"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/toa-heftiba-hBLf2nvp-Yc-unsplash-1024x683.jpg",
+                    "width": "1024",
+                    "height": "683",
+                    "name": "large"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/toa-heftiba-hBLf2nvp-Yc-unsplash-150x150.jpg",
+                    "width": "150",
+                    "height": "150",
+                    "name": "thumbnail"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/toa-heftiba-hBLf2nvp-Yc-unsplash-768x512.jpg",
+                    "width": "768",
+                    "height": "512",
+                    "name": "medium_large"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/toa-heftiba-hBLf2nvp-Yc-unsplash-1536x1024.jpg",
+                    "width": "1536",
+                    "height": "1024",
+                    "name": "1536x1536"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/toa-heftiba-hBLf2nvp-Yc-unsplash-2048x1365.jpg",
+                    "width": "2048",
+                    "height": "1365",
+                    "name": "2048x2048"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/toa-heftiba-hBLf2nvp-Yc-unsplash-400x300.jpg",
+                    "width": "400",
+                    "height": "300",
+                    "name": "service-thumbnail"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/toa-heftiba-hBLf2nvp-Yc-unsplash-1200x600.jpg",
+                    "width": "1200",
+                    "height": "600",
+                    "name": "service-hero"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/toa-heftiba-hBLf2nvp-Yc-unsplash-400x400.jpg",
+                    "width": "400",
+                    "height": "400",
+                    "name": "team-member"
+                  }
+                ]
+              }
+            }
+          },
+          "serviceDetails": {
+            "__typename": "ServiceDetails",
+            "serviceDescription": "<p>Technique douce qui favorise l&rsquo;élimination des toxines et améliore la circulation lymphatique pour une sensation de légèreté et un corps dégonflé. Idéal pour combattre la rétention d&rsquo;eau et stimuler le système immunitaire.</p>\n",
+            "serviceDuration": 60,
+            "servicePrice": "95 CHF",
+            "featuredService": true,
+            "bookableOnline": true,
+            "bookingNotes": "",
+            "serviceBenefits": [
+              "Réduit la rétention d'eau",
+              "Améliore le système immunitaire",
+              "Favorise l'élimination des toxines",
+              "Réduit les gonflements et œdèmes",
+              "Améliore la qualité de la peau",
+              "Sensation de légèreté instantanée"
+            ],
+            "serviceGallery": []
+          },
+          "serviceCategories": {
+            "__typename": "ServiceToServiceCategoryConnection",
+            "nodes": [
+              {
+                "__typename": "ServiceCategory",
+                "id": "dGVybToz",
+                "name": "Massages",
+                "slug": "massages",
+                "description": "Relaxing massage therapies"
+              }
+            ]
+          },
+          "seo": {
+            "__typename": "SEO",
+            "title": "Drainage lymphatique in Geneva | CG Aesthetics",
+            "metaDesc": "Technique douce qui favorise l'élimination des toxines et améliore la circulation lymphatique pour une sensation de légèreté et un corps dégonflé.",
+            "canonical": "",
+            "opengraphTitle": "",
+            "opengraphDescription": "",
+            "opengraphImage": null,
+            "twitterTitle": "",
+            "twitterDescription": "",
+            "twitterImage": null,
+            "metaRobotsNoindex": "0",
+            "metaRobotsNofollow": "0",
+            "focuskw": "drainage lymphatique montreux"
+          },
+          "schemaOrg": "{\"@context\":\"https:\\/\\/schema.org\",\"@type\":\"Service\",\"name\":\"Drainage lymphatique\",\"description\":\"Technique douce qui favorise l'\\u00e9limination des toxines et am\\u00e9liore la circulation lymphatique pour une sensation de l\\u00e9g\\u00e8ret\\u00e9 et un corps d\\u00e9gonfl\\u00e9.\",\"provider\":{\"@type\":\"LocalBusiness\",\"name\":\"\"},\"offers\":{\"@type\":\"Offer\",\"price\":\"95 CHF\",\"priceCurrency\":\"USD\"}}"
+        },
+        {
+          "__typename": "Service",
+          "id": "cG9zdDo5",
+          "title": "Massage réducteur",
+          "slug": "massage-reducteur",
+          "excerpt": "<p>Un massage tonifiant qui aide à modeler la silhouette, réduire la rétention d&rsquo;eau et stimuler la circulation lymphatique.</p>\n",
+          "featuredImage": {
+            "__typename": "NodeWithFeaturedImageToMediaItemConnectionEdge",
+            "node": {
+              "__typename": "MediaItem",
+              "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-anntarazevich-6560304-scaled.jpg",
+              "altText": "",
+              "mediaDetails": {
+                "__typename": "MediaDetails",
+                "width": 1707,
+                "height": 2560,
+                "sizes": [
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-anntarazevich-6560304-200x300.jpg",
+                    "width": "200",
+                    "height": "300",
+                    "name": "medium"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-anntarazevich-6560304-683x1024.jpg",
+                    "width": "683",
+                    "height": "1024",
+                    "name": "large"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-anntarazevich-6560304-150x150.jpg",
+                    "width": "150",
+                    "height": "150",
+                    "name": "thumbnail"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-anntarazevich-6560304-768x1152.jpg",
+                    "width": "768",
+                    "height": "1152",
+                    "name": "medium_large"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-anntarazevich-6560304-1024x1536.jpg",
+                    "width": "1024",
+                    "height": "1536",
+                    "name": "1536x1536"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-anntarazevich-6560304-1366x2048.jpg",
+                    "width": "1366",
+                    "height": "2048",
+                    "name": "2048x2048"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-anntarazevich-6560304-400x300.jpg",
+                    "width": "400",
+                    "height": "300",
+                    "name": "service-thumbnail"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-anntarazevich-6560304-1200x600.jpg",
+                    "width": "1200",
+                    "height": "600",
+                    "name": "service-hero"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/pexels-anntarazevich-6560304-400x400.jpg",
+                    "width": "400",
+                    "height": "400",
+                    "name": "team-member"
+                  }
+                ]
+              }
+            }
+          },
+          "serviceDetails": {
+            "__typename": "ServiceDetails",
+            "serviceDescription": "<p>Un massage tonifiant qui aide à modeler la silhouette, réduire la rétention d&rsquo;eau et stimuler la circulation lymphatique. Technique spécialisée qui combine des mouvements drainants et raffermissants pour sculpter votre corps.</p>\n",
+            "serviceDuration": 60,
+            "servicePrice": "95 CHF",
+            "featuredService": false,
+            "bookableOnline": true,
+            "bookingNotes": "",
+            "serviceBenefits": [
+              "Réduit l'apparence de la cellulite",
+              "Améliore la circulation lymphatique",
+              "Raffermit et tonifie la peau",
+              "Favorise l'élimination des toxines",
+              "Améliore la silhouette",
+              "Aide à la perte de centimètres"
+            ],
+            "serviceGallery": []
+          },
+          "serviceCategories": {
+            "__typename": "ServiceToServiceCategoryConnection",
+            "nodes": [
+              {
+                "__typename": "ServiceCategory",
+                "id": "dGVybToz",
+                "name": "Massages",
+                "slug": "massages",
+                "description": "Relaxing massage therapies"
+              }
+            ]
+          },
+          "seo": {
+            "__typename": "SEO",
+            "title": "Massage réducteur in Geneva | CG Aesthetics",
+            "metaDesc": "Un massage tonifiant qui aide à modeler la silhouette, réduire la rétention d'eau et stimuler la circulation lymphatique.",
+            "canonical": "",
+            "opengraphTitle": "",
+            "opengraphDescription": "",
+            "opengraphImage": null,
+            "twitterTitle": "",
+            "twitterDescription": "",
+            "twitterImage": null,
+            "metaRobotsNoindex": "0",
+            "metaRobotsNofollow": "0",
+            "focuskw": "massage réducteur montreux"
+          },
+          "schemaOrg": "{\"@context\":\"https:\\/\\/schema.org\",\"@type\":\"Service\",\"name\":\"Massage r\\u00e9ducteur\",\"description\":\"Un massage tonifiant qui aide \\u00e0 modeler la silhouette, r\\u00e9duire la r\\u00e9tention d'eau et stimuler la circulation lymphatique.\",\"provider\":{\"@type\":\"LocalBusiness\",\"name\":\"\"},\"offers\":{\"@type\":\"Offer\",\"price\":\"95 CHF\",\"priceCurrency\":\"USD\"}}"
+        },
+        {
+          "__typename": "Service",
+          "id": "cG9zdDo4",
+          "title": "Massage aux pierres chaudes",
+          "slug": "massage-aux-pierres-chaudes",
+          "excerpt": "<p>Un massage relaxant et profond utilisant des pierres volcaniques chauffées pour détendre les muscles, améliorer la circulation et libérer les tensions.</p>\n",
+          "featuredImage": {
+            "__typename": "NodeWithFeaturedImageToMediaItemConnectionEdge",
+            "node": {
+              "__typename": "MediaItem",
+              "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/taylor-heery-_TyrA1RUaiI-unsplash-scaled.jpg",
+              "altText": "",
+              "mediaDetails": {
+                "__typename": "MediaDetails",
+                "width": 1920,
+                "height": 2560,
+                "sizes": [
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/taylor-heery-_TyrA1RUaiI-unsplash-225x300.jpg",
+                    "width": "225",
+                    "height": "300",
+                    "name": "medium"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/taylor-heery-_TyrA1RUaiI-unsplash-768x1024.jpg",
+                    "width": "768",
+                    "height": "1024",
+                    "name": "large"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/taylor-heery-_TyrA1RUaiI-unsplash-150x150.jpg",
+                    "width": "150",
+                    "height": "150",
+                    "name": "thumbnail"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/taylor-heery-_TyrA1RUaiI-unsplash-768x1024.jpg",
+                    "width": "768",
+                    "height": "1024",
+                    "name": "medium_large"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/taylor-heery-_TyrA1RUaiI-unsplash-1152x1536.jpg",
+                    "width": "1152",
+                    "height": "1536",
+                    "name": "1536x1536"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/taylor-heery-_TyrA1RUaiI-unsplash-1536x2048.jpg",
+                    "width": "1536",
+                    "height": "2048",
+                    "name": "2048x2048"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/taylor-heery-_TyrA1RUaiI-unsplash-400x300.jpg",
+                    "width": "400",
+                    "height": "300",
+                    "name": "service-thumbnail"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/taylor-heery-_TyrA1RUaiI-unsplash-1200x600.jpg",
+                    "width": "1200",
+                    "height": "600",
+                    "name": "service-hero"
+                  },
+                  {
+                    "__typename": "MediaSize",
+                    "sourceUrl": "http://localhost:8000/wp-content/uploads/2025/10/taylor-heery-_TyrA1RUaiI-unsplash-400x400.jpg",
+                    "width": "400",
+                    "height": "400",
+                    "name": "team-member"
+                  }
+                ]
+              }
+            }
+          },
+          "serviceDetails": {
+            "__typename": "ServiceDetails",
+            "serviceDescription": "<p>Un massage relaxant et profond utilisant des pierres volcaniques chauffées pour détendre les muscles, améliorer la circulation et libérer les tensions. Cette technique ancestrale combine la chaleur thérapeutique des pierres avec des mouvements fluides pour une relaxation optimale.</p>\n",
+            "serviceDuration": 60,
+            "servicePrice": "110 CHF",
+            "featuredService": true,
+            "bookableOnline": true,
+            "bookingNotes": "",
+            "serviceBenefits": [
+              "Détente musculaire profonde",
+              "Amélioration de la circulation",
+              "Réduction du stress et de l'anxiété",
+              "Soulagement des douleurs chroniques",
+              "Équilibre énergétique du corps",
+              "Favorise la relaxation mentale"
+            ],
+            "serviceGallery": []
+          },
+          "serviceCategories": {
+            "__typename": "ServiceToServiceCategoryConnection",
+            "nodes": [
+              {
+                "__typename": "ServiceCategory",
+                "id": "dGVybToz",
+                "name": "Massages",
+                "slug": "massages",
+                "description": "Relaxing massage therapies"
+              }
+            ]
+          },
+          "seo": {
+            "__typename": "SEO",
+            "title": "Massage aux pierres chaudes in Geneva | CG Aesthetics",
+            "metaDesc": "Un massage relaxant et profond utilisant des pierres volcaniques chauffées pour détendre les muscles, améliorer la circulation et libérer les tensions.",
+            "canonical": "",
+            "opengraphTitle": "",
+            "opengraphDescription": "",
+            "opengraphImage": null,
+            "twitterTitle": "",
+            "twitterDescription": "",
+            "twitterImage": null,
+            "metaRobotsNoindex": "0",
+            "metaRobotsNofollow": "0",
+            "focuskw": "massage aux pierres chaudes montreux"
+          },
+          "schemaOrg": "{\"@context\":\"https:\\/\\/schema.org\",\"@type\":\"Service\",\"name\":\"Massage aux pierres chaudes\",\"description\":\"Un massage relaxant et profond utilisant des pierres volcaniques chauff\\u00e9es pour d\\u00e9tendre les muscles, am\\u00e9liorer la circulation et lib\\u00e9rer les tensions.\",\"provider\":{\"@type\":\"LocalBusiness\",\"name\":\"\"},\"offers\":{\"@type\":\"Offer\",\"price\":\"110 CHF\",\"priceCurrency\":\"USD\"}}"
+        }
+      ]
+    }
+  },
+  "serviceCategories": {
+    "serviceCategories": {
+      "__typename": "RootQueryToServiceCategoryConnection",
+      "nodes": [
+        {
+          "__typename": "ServiceCategory",
+          "id": "dGVybTo3",
+          "name": "body-treatments",
+          "slug": "body-treatments",
+          "description": null,
+          "count": 4
+        },
+        {
+          "__typename": "ServiceCategory",
+          "id": "dGVybTo2",
+          "name": "facials",
+          "slug": "facials",
+          "description": null,
+          "count": 4
+        },
+        {
+          "__typename": "ServiceCategory",
+          "id": "dGVybToz",
+          "name": "Massages",
+          "slug": "massages",
+          "description": "Relaxing massage therapies",
+          "count": 4
+        }
+      ]
+    }
+  },
+  "testimonials": {
+    "testimonials": {
+      "__typename": "RootQueryToTestimonialConnection",
+      "nodes": []
+    }
+  },
+  "siteSettings": {
+    "generalSettings": {
+      "__typename": "GeneralSettings",
+      "title": "",
+      "description": "",
+      "url": "http://localhost:8000",
+      "language": "fr_FR"
+    },
+    "seoSettings": {
+      "__typename": "SEO",
+      "title": "%%sitename%% %%page%% %%sep%% %%sitedesc%%",
+      "metaDesc": ""
+    }
+  },
+  "heroImages": {
+    "siteHeroImages": {
+      "__typename": "SiteHeroImages",
+      "heroImages": {
+        "__typename": "SiteSettingDetails",
+        "homeHeroImage": "http://localhost:8000/wp-content/uploads/2025/10/sunny-ng-KVIlNRoGwxk-unsplash-scaled.jpg",
+        "servicesHeroImage": "http://localhost:8000/wp-content/uploads/2025/10/cosmetology-3949746_1280.jpg",
+        "aboutHeroImage": "http://localhost:8000/wp-content/uploads/2025/10/sixteen-miles-out-6pxsopTGyeU-unsplash-scaled.jpg",
+        "contactHeroImage": "http://localhost:8000/wp-content/uploads/2025/10/diana-polekhina-AM5YIYZcCQM-unsplash-scaled.jpg",
+        "bookingHeroImage": "http://localhost:8000/wp-content/uploads/2025/10/scott-webb-hDyO6rr3kqk-unsplash-scaled.jpg",
+        "founderImage": null
+      }
+    }
+  },
+  "cachedAt": "2026-01-06T11:05:38.919Z",
+  "wordpressUrl": "http://localhost:8000"
+}
