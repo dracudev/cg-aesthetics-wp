@@ -15,8 +15,16 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { icon: Instagram, href: 'https://instagram.com', label: 'Instagram' },
-  { icon: Facebook, href: 'https://facebook.com', label: 'Facebook' },
+  {
+    icon: Instagram,
+    href: 'https://www.instagram.com/carmeng.beauty/',
+    label: 'Instagram',
+  },
+  {
+    icon: Facebook,
+    href: 'https://www.facebook.com/profile.php?id=61584112557130',
+    label: 'Facebook',
+  },
 ];
 
 export default function Footer() {
