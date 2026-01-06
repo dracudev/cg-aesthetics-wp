@@ -45,7 +45,7 @@ const siteUrl = Astro.site?.href || 'http://localhost:4321';
 const currentUrl = canonical || (siteUrl + Astro.url.pathname).replace(/\/+$/, '');
 
 // Default image if none provided
-const defaultImage = siteUrl + '/og-image.jpg';
+const defaultImage = siteUrl + '/og.webp';
 const ogImage = image || defaultImage;
 
 // Robots meta
